@@ -41,6 +41,54 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     }
 
+    $(".btn-show-menu-mobile").on("click", function () {
+      $(this).toggleClass("is-active");
+      $(".menu-mobile").slideToggle();
+    });
+
+    var arrowMainMenu = $(".arrow-main-menu-m");
+
+    for (var i = 0; i < arrowMainMenu.length; i++) {
+      $(arrowMainMenu[i]).on("click", function () {
+        $(this).parent().find(".sub-menu-m").slideToggle();
+        $(this).toggleClass("turn-arrow-main-menu-m");
+      });
+    }
+
+    $(window).resize(function () {
+      //@ts-ignore
+      if ($(window).width() >= 992) {
+        if ($(".menu-mobile").css("display") == "block") {
+          $(".menu-mobile").css("display", "none");
+          $(".btn-show-menu-mobile").toggleClass("is-active");
+        }
+
+        $(".sub-menu-m").each(function () {
+          if ($(this).css("display") == "block") {
+            console.log("hello");
+            $(this).css("display", "none");
+            $(arrowMainMenu).removeClass("turn-arrow-main-menu-m");
+          }
+        });
+      }
+    });
+
+    $(".js-show-cart").on("click", function () {
+      $(".js-panel-cart").addClass("show-header-cart");
+    });
+
+    $(".js-hide-cart").on("click", function () {
+      $(".js-panel-cart").removeClass("show-header-cart");
+    });
+
+    $(".js-show-sidebar").on("click", function () {
+      $(".js-sidebar").addClass("show-sidebar");
+    });
+
+    $(".js-hide-sidebar").on("click", function () {
+      $(".js-sidebar").removeClass("show-sidebar");
+    });
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -64,7 +112,7 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <>
       {isHomeWatches ? (
         <header className="header-v3">
           <div className="container-menu-desktop trans-03">
@@ -306,6 +354,13 @@ const Header = () => {
                   >
                     <i className="zmdi zmdi-shopping-cart"></i>
                   </div>
+                  <a
+                    href="#"
+                    className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                    data-notify="0"
+                  >
+                    <i className="zmdi zmdi-favorite-outline"></i>
+                  </a>
                 </div>
               </nav>
             </div>
@@ -329,6 +384,13 @@ const Header = () => {
               >
                 <i className="zmdi zmdi-shopping-cart"></i>
               </div>
+              <a
+                href="#"
+                className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+                data-notify="0"
+              >
+                <i className="zmdi zmdi-favorite-outline"></i>
+              </a>
             </div>
 
             <div className="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -436,7 +498,7 @@ const Header = () => {
           </div>
         </header>
       )}
-    </div>
+    </>
   );
 };
 
