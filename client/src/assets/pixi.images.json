@@ -1,0 +1,122 @@
+[
+    {
+        "id": "images/avatar-01.jpg",
+        "fileName": "images/avatar-01.jpg"
+    },
+    {
+        "id": "images/product-01.jpg",
+        "fileName": "images/product-01.jpg"
+    },
+    {
+        "id": "images/product-02.jpg",
+        "fileName": "images/product-02.jpg"
+    },
+    {
+        "id": "images/product-03.jpg",
+        "fileName": "images/product-03.jpg"
+    },
+    {
+        "id": "images/product-04.jpg",
+        "fileName": "images/product-04.jpg"
+    },
+    {
+        "id": "images/product-05.jpg",
+        "fileName": "images/product-05.jpg"
+    },
+    {
+        "id": "images/product-06.jpg",
+        "fileName": "images/product-06.jpg"
+    },
+    {
+        "id": "images/product-07.jpg",
+        "fileName": "images/product-07.jpg"
+    },
+    {
+        "id": "images/product-08.jpg",
+        "fileName": "images/product-08.jpg"
+    },
+    {
+        "id": "images/product-09.jpg",
+        "fileName": "images/product-09.jpg"
+    },
+    {
+        "id": "images/product-10.jpg",
+        "fileName": "images/product-10.jpg"
+    },
+    {
+        "id": "images/product-11.jpg",
+        "fileName": "images/product-11.jpg"
+    },
+    {
+        "id": "images/product-12.jpg",
+        "fileName": "images/product-12.jpg"
+    },
+    {
+        "id": "images/product-13.jpg",
+        "fileName": "images/product-13.jpg"
+    },
+    {
+        "id": "images/product-14.jpg",
+        "fileName": "images/product-14.jpg"
+    },
+    {
+        "id": "images/product-15.jpg",
+        "fileName": "images/product-15.jpg"
+    },
+    {
+        "id": "images/product-16.jpg",
+        "fileName": "images/product-16.jpg"
+    },
+    {
+        "id": "images/product-detail-01.jpg",
+        "fileName": "images/product-detail-01.jpg"
+    },
+    {
+        "id": "images/product-detail-02.jpg",
+        "fileName": "images/product-detail-02.jpg"
+    },
+    {
+        "id": "images/product-detail-03.jpg",
+        "fileName": "images/product-detail-03.jpg"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_444444_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_444444_256x240.png"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_555555_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_555555_256x240.png"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_777620_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_777620_256x240.png"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_777777_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_777777_256x240.png"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_cc0000_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_cc0000_256x240.png"
+    },
+    {
+        "id": "vendor/jqueryui/images/ui-icons_ffffff_256x240.png",
+        "fileName": "vendor/jqueryui/images/ui-icons_ffffff_256x240.png"
+    },
+    {
+        "id": "vendor/lightbox2/images/close.png",
+        "fileName": "vendor/lightbox2/images/close.png"
+    },
+    {
+        "id": "vendor/lightbox2/images/loading.gif",
+        "fileName": "vendor/lightbox2/images/loading.gif"
+    },
+    {
+        "id": "vendor/lightbox2/images/next.png",
+        "fileName": "vendor/lightbox2/images/next.png"
+    },
+    {
+        "id": "vendor/lightbox2/images/prev.png",
+        "fileName": "vendor/lightbox2/images/prev.png"
+    }
+]
