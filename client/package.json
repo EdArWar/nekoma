@@ -36,7 +36,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "node src/scripts/index.script.js && react-scripts start",
+    "dev": "node src/scripts/index.script.js && react-scripts start",
     "build": "node src/scripts/index.script.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
