@@ -9,6 +9,7 @@ import HomePage from "./pages/homePage/HomePage";
 import ProductDetailsContainer from "./pages/productDetail/ProductDetailsContainer";
 import ShopPage from "./pages/shopPage/ShopPage";
 import ShoppingCartPage from "./pages/shoppingCartPage/ShoppingCartPage";
+import LogAndRegisterPage from "./pages/loginAndregistrationPage/LogAndRegisterPage";
 
 export const useRoutes = () => {
   return (
@@ -24,6 +25,9 @@ export const useRoutes = () => {
       </Route>
       <Route path="/shop" exact>
         <ShopPage />
+      </Route>
+      <Route path="/login" exact>
+        <LogAndRegisterPage />
       </Route>
       <Route path="/singleProduct">
         <ProductDetailsContainer />
