@@ -79,6 +79,7 @@ export const globalSlice = createSlice({
   name: "global",
   initialState: {
     locale: "en",
+    isUser: false,
     initiated: false,
     productId: null,
     sidebar: false,
@@ -225,6 +226,12 @@ export const globalSlice = createSlice({
     navigate: (state, action) => {
       state.route = action.payload;
     },
+    loginUser: (state, action) => {
+      state.isUser = action.payload;
+    },
+    logoutUser: (state, action) => {
+      state.isUser = action.payload;
+    },
     addCartProduct: (state, action) => {
       state.cartData.push(action.payload);
     },
@@ -249,6 +256,8 @@ export const globalSlice = createSlice({
 });
 
 export const {
+  loginUser,
+  logoutUser,
   setProductId,
   setSidebarState,
   setCartState,

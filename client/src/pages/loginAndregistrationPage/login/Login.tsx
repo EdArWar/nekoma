@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { api_login } from "./../../../api/API";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  function onLoginHeandler(e: React.SyntheticEvent<EventTarget>) {
+    e.preventDefault();
+    dispatch(api_login(email, password));
+    console.log("onLoginHeandler");
+  }
 
   return (
     <div className="form-detail">
@@ -11,48 +20,46 @@ const Login = () => {
           <label className="form-row-inner">
             <input
               type="text"
-              name="full_name"
-              id="full_name"
+              name="email"
+              value={email}
               className="input-text"
               required
-            />
-            <span className="label">Username</span>
-            <span className="border"></span>
-          </label>
-        </div>
-        <div className="form-row">
-          <label className="form-row-inner">
-            <input
-              type="text"
-              name="your_email"
-              id="your_email"
-              className="input-text"
-              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <span className="label">E-Mail</span>
             <span className="border"></span>
           </label>
         </div>
+
         <div className="form-row">
           <label className="form-row-inner">
             <input
               type="password"
               name="password"
-              id="password"
+              value={password}
               className="input-text"
               required
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <span className="label">Password</span>
             <span className="border"></span>
           </label>
         </div>
         <div className="form-row-last">
-          <input
-            type="submit"
+          <button
             name="register"
             className="register"
-            value="Register"
-          />
+            style={{ padding: "15px 15px" }}
+            onClick={(e) => {
+              onLoginHeandler(e);
+            }}
+          >
+            Register
+          </button>
         </div>
       </div>
     </div>

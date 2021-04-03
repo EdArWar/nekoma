@@ -1,15 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { api_registration } from "./../../../api/API";
 
 const Registration = () => {
-  const [userName, setUserName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState(0);
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("Ed");
+  const [lastName, setLastName] = useState("Vardanyan");
+  const [email, setEmail] = useState("edgarcho@mail.ru");
+  const [password, setPassword] = useState("ssssss");
   const [avatar, setAvatar] = useState("");
+
+  const dispatch = useDispatch();
 
   const onChange = (e: any) => {
     setAvatar(e.target.files[0]);
+  };
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("userName", userName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("password", password);
+    // formData.append("avatar", avatar);
+    dispatch(api_registration(formData));
   };
 
   return (
@@ -19,12 +33,15 @@ const Registration = () => {
           <label className="form-row-inner">
             <input
               type="text"
-              name="full_name_1"
-              id="full_name_1"
+              name="userName"
+              value={userName}
               className="input-text"
               required
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
             />
-            <span className="label">Username</span>
+            <span className="label">Name</span>
             <span className="border"></span>
           </label>
         </div>
@@ -32,10 +49,29 @@ const Registration = () => {
           <label className="form-row-inner">
             <input
               type="text"
-              name="your_email_1"
-              id="your_email_1"
+              name="lastName"
+              value={lastName}
               className="input-text"
               required
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
+            />
+            <span className="label">Last Name</span>
+            <span className="border"></span>
+          </label>
+        </div>
+        <div className="form-row">
+          <label className="form-row-inner">
+            <input
+              type="test"
+              name="email"
+              value={email}
+              className="input-text"
+              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <span className="label">E-Mail</span>
             <span className="border"></span>
@@ -45,25 +81,15 @@ const Registration = () => {
           <label className="form-row-inner">
             <input
               type="password"
-              name="password_1"
-              id="password_1"
+              name="password"
+              value={password}
               className="input-text"
               required
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <span className="label">Password</span>
-            <span className="border"></span>
-          </label>
-        </div>
-        <div className="form-row">
-          <label className="form-row-inner">
-            <input
-              type="password"
-              name="comfirm_password_1"
-              id="comfirm_password_1"
-              className="input-text"
-              required
-            />
-            <span className="label">Comfirm Password</span>
             <span className="border"></span>
           </label>
         </div>
@@ -81,12 +107,14 @@ const Registration = () => {
           </label>
         </div>
         <div className="form-row-last">
-          <input
-            type="submit"
+          <button
             name="register"
             className="register"
-            value="Sign In"
-          />
+            style={{ padding: "15px 15px" }}
+            onClick={onSubmit}
+          >
+            Sign In
+          </button>
         </div>
       </div>
     </div>

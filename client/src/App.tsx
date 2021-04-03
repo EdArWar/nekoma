@@ -47,9 +47,8 @@ function App() {
     }
   }, [loadProgress, dispatch]);
   dispatch(setInitiated(true));
-  let content;
+  let content = <Loader />;
   if (loadProgress === 100) {
-    content = <Loader />;
     if (loadProgress >= 100) {
       content = <Style children={<BasePages />} />;
     }

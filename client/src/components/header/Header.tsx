@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { icon_close2, logo_01, logo_02 } from "../../assets/image.assets";
 import { setCartState, setSidebarState } from "../../redux/global.slice";
 import "./Header.scss";
+import { api_logout } from "./../../api/API";
 
 const Header = () => {
   const jsShowCart = React.useRef<HTMLDivElement>(null);
@@ -11,6 +12,8 @@ const Header = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartState = useSelector((state: any) => state.global.cart);
   const cartCount = useSelector((state: any) => state.global.cartData.length);
+
+  const isUser = useSelector((state: any) => state.global.isUser);
 
   const dispatch = useDispatch();
 
@@ -92,7 +95,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isUser]);
 
   function handleScroll() {
     console.log("handleScroll");
@@ -109,6 +112,17 @@ const Header = () => {
   }
   function onCartClicked() {
     dispatch(setCartState(!cartState));
+  }
+  function logHeandler(e: any) {
+    console.log("stex");
+    console.log(e.target.innerText);
+
+    e.preventDefault();
+    if (e.target.innerText === "Logout") {
+      console.log("stex 2");
+
+      dispatch(api_logout());
+    }
   }
 
   return (
@@ -241,10 +255,6 @@ const Header = () => {
           </div>
 
           <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-            <button className="flex-c-m btn-hide-modal-search trans-04">
-              <i className="zmdi zmdi-close"></i>
-            </button>
-
             <div className="container-search-header">
               <div className="wrap-search-header">
                 <input
@@ -285,9 +295,9 @@ const Header = () => {
                   <a
                     href="!#"
                     className="flex-c-m trans-04 p-lr-25"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => logHeandler(e)}
                   >
-                    My Account
+                    {isUser ? "Logout" : "Login"}
                   </a>
 
                   <a
@@ -423,7 +433,7 @@ const Header = () => {
                     className="flex-c-m p-lr-10 trans-04"
                     onClick={(e) => e.preventDefault()}
                   >
-                    My Account
+                    {isUser ? "Logout" : "Login"}
                   </a>
 
                   <a

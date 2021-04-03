@@ -6,7 +6,7 @@ import Login from "./login/Login";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const LogAndRegisterPage = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   return (
     <>

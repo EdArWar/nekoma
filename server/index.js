@@ -17,7 +17,7 @@ app.use(corsMiddleware);
 app.use(express.static("static"));
 app.use(express.static("static/avatar"));
 
-app.use("/auth", authRouter);
+app.use("/userAuth", authRouter);
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
 async function startApp() {

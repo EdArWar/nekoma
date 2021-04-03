@@ -5,7 +5,7 @@ class AvatarFileService {
   saveFile(file) {
     try {
       const fileName = uuid.v4() + ".jpg";
-      const filePath = path.resolve("static", fileName);
+      const filePath = path.resolve("static/avatar", fileName);
       console.log("filePath");
       console.log(filePath);
       file.mv(filePath);
