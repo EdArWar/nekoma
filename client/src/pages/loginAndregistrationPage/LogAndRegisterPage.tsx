@@ -1,25 +1,13 @@
 import { AppBar, Tabs, TextField } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./LogAndRegisterPage.scss";
 import Registration from "./registration/Registration";
 import Login from "./login/Login";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const LogAndRegisterPage = () => {
-  function openCity(evt: any, cityName: any) {
-    var i, tabContent, tabLink;
-    tabContent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabContent.length; i++) {
-      //@ts-ignore
-      tabContent[i].style.display = "none";
-    }
-    tabLink = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tabLink.length; i++) {
-      tabLink[i].className = tabLink[i].className.replace(" active", "");
-    }
-    //@ts-ignore
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
+  const [show, setShow] = useState(true);
+
   return (
     <>
       <div className="page-content">
@@ -28,24 +16,32 @@ const LogAndRegisterPage = () => {
             <div className="tab">
               <div className="tab-inner">
                 <button
-                  className="tablinks"
-                  id="defaultOpen"
-                  onClick={(e) => openCity(e, "sign-up")}
+                  className={`tablinks ${show ? "active" : ""}`}
+                  onClick={() => setShow(!show)}
                 >
                   Sign Up
                 </button>
               </div>
               <div className="tab-inner">
                 <button
-                  className="tablinks"
-                  onClick={(e) => openCity(e, "sign-in")}
+                  className={`tablinks ${!show ? "active" : ""}`}
+                  onClick={() => setShow(!show)}
                 >
                   Sign In
                 </button>
               </div>
             </div>
-            <Login />
-            <Registration />
+            <SwitchTransition mode="out-in">
+              <CSSTransition
+                key={show ? "Goodbye, world!" : "Hello, world!"}
+                addEndListener={(node, done) =>
+                  node.addEventListener("transitionend", done, false)
+                }
+                classNames="fade"
+              >
+                {show ? <Login /> : <Registration />}
+              </CSSTransition>
+            </SwitchTransition>
           </div>
         </div>
       </div>

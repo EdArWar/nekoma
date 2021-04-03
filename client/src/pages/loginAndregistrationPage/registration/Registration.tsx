@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Registration = () => {
+  const [userName, setUserName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState(0);
+  const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
+
+  const onChange = (e: any) => {
+    setAvatar(e.target.files[0]);
+  };
+
   return (
-    <form className="form-detail" action="#" method="post">
+    <div className="form-detail">
       <div className="tabcontent" id="sign-in">
         <div className="form-row">
           <label className="form-row-inner">
@@ -56,6 +67,19 @@ const Registration = () => {
             <span className="border"></span>
           </label>
         </div>
+        <div className="form-row">
+          <label className="form-row-inner">
+            <input
+              className="form-control"
+              type="file"
+              multiple={true}
+              name="avatar"
+              onChange={onChange}
+            />
+            <span className="label">Comfirm Password</span>
+            <span className="border"></span>
+          </label>
+        </div>
         <div className="form-row-last">
           <input
             type="submit"
@@ -65,7 +89,7 @@ const Registration = () => {
           />
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

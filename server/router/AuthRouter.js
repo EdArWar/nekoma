@@ -8,7 +8,7 @@ router.post(
   "/registration",
   [
     check("email", "Incorrect email").isEmail(),
-    check("name", "Username cannot be empty").notEmpty(),
+    check("userName", "Username cannot be empty").notEmpty(),
     check("lastName", "LastName cannot be empty").notEmpty(),
     check("age", "Age cannot be empty").notEmpty(),
     check(

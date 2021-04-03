@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <form className="form-detail" action="#" method="post">
+    <div className="form-detail">
       <div className="tabcontent" id="sign-up">
         <div className="form-row">
           <label className="form-row-inner">
@@ -52,7 +55,7 @@ const Login = () => {
           />
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

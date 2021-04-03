@@ -4,6 +4,7 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const Role = require("../models/Role");
+const AvatarFileService = require("../service/AvatarFileService");
 
 const generateAccessToken = (id, roles) => {
   const payload = {
@@ -33,7 +34,8 @@ class AuthController {
         return res.status(400).json({ message: "Registration error", errors });
       }
 
-      const { name, lastName, email, age, password, photo } = req.body;
+      const { userName, lastName, email, age, password } = req.body;
+      const fileName = AvatarFileService.saveFile(req.files.file);
 
       const candidate = await User.findOne({ email });
 
@@ -44,11 +46,12 @@ class AuthController {
       const userRole = await Role.findOne({ value: "USER" });
 
       const user = await User.create({
-        name,
+        userName,
         lastName,
         email,
         age,
         password: hashPassword,
+        avatar: fileName,
         products: [],
         roles: [userRole.value],
       });
@@ -58,6 +61,7 @@ class AuthController {
         token,
         user: {
           id: user.id,
+          userName: user.userName,
           lastName: user.lastName,
           email: user.email,
           age: user.age,

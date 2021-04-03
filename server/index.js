@@ -15,9 +15,11 @@ app.use(express.json());
 app.use(fileUpload({}));
 app.use(corsMiddleware);
 app.use(express.static("static"));
+app.use(express.static("static/avatar"));
 
 app.use("/auth", authRouter);
-
+mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
 async function startApp() {
   try {
     await mongoose.connect(config.get("dbUrl"), {
