@@ -218,6 +218,7 @@ export const globalSlice = createSlice({
         img: [z1, z2, z3, z4],
       },
     ],
+    serverProductData: null,
   },
   reducers: {
     changeLocale: (state, action) => {
@@ -252,6 +253,9 @@ export const globalSlice = createSlice({
     setInitiated: (state, action) => {
       state.initiated = !!action.payload;
     },
+    setServerProductData: (state, action) => {
+      state.serverProductData = action.payload;
+    },
   },
 });
 
@@ -266,6 +270,7 @@ export const {
   setInitiated,
   addCartProduct,
   removeCartProduct,
+  setServerProductData,
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

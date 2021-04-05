@@ -1,13 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import imageLoader from "../../../../loaders/image.loader";
 import { setProductId } from "../../../../redux/global.slice";
 
 const ProductItem: React.FC<any> = ({ id, type, name, price, image }) => {
   const dispatch = useDispatch();
+  console.log("image");
+  console.log(image);
 
   function sss(id: any) {
-    dispatch(setProductId(id));
+    // dispatch(setProductId(id));
   }
 
   return (
@@ -20,7 +23,7 @@ const ProductItem: React.FC<any> = ({ id, type, name, price, image }) => {
           }
           data-label={id <= 1 ? "New" : ""}
         >
-          <img srcSet={image[0]} alt="IMG-PRODUCT" />
+          <img srcSet={image[0].url} alt="IMG-PRODUCT" />
 
           <NavLink
             to={`/singleProduct?id=${id}`}

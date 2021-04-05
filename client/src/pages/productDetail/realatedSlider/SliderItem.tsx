@@ -1,11 +1,28 @@
 import React from "react";
+import { IProduct, IProductDataConfig } from "./../../../types/ProductType";
 
-const SliderItem: React.FC<any> = ({ productData }) => {
+//  _id,
+//   productBrand,
+//   date,
+//   productDescription,
+//   productImage,
+//   productName,
+//   productPrice,
+//   quantity,
+//   productTag,
+//   productTitle,
+
+const SliderItem = ({ configs }: IProductDataConfig) => {
+  console.log("SliderItem");
+
   return (
     <div className="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
       <div className="block2">
         <div className="block2-pic hov-img0">
-          <img srcSet={productData.img} alt="IMG-PRODUCT" />
+          <img
+            srcSet={!!configs.productImage ? configs.productImage[0].url : ""}
+            alt="IMG-PRODUCT"
+          />
 
           <a
             href="!#"
@@ -21,10 +38,10 @@ const SliderItem: React.FC<any> = ({ productData }) => {
               href="product-detail.html"
               className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
             >
-              {productData.name}
+              {configs.productPrice}
             </a>
 
-            <span className="stext-105 cl3">{productData.price}</span>
+            <span className="stext-105 cl3">{configs.productPrice}</span>
           </div>
 
           <div className="block2-txt-child2 flex-r p-t-3">

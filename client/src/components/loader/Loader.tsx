@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { api_auth } from "../../api/API";
+import { api_auth, api_getAllProducts } from "../../api/API";
 import "./Loader.scss";
 
 export default function Loader() {
@@ -10,6 +10,7 @@ export default function Loader() {
 
     // dispatch(auth());
     dispatch(api_auth());
+    dispatch(api_getAllProducts());
   }, []);
   return (
     <div className="loader_wrap">

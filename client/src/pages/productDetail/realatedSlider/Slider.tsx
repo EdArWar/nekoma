@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { IProduct } from "../../../types/ProductType";
 import SliderItem from "./SliderItem";
 
 const Slider = () => {
   const productData = useSelector((state: any) => state.global.productData);
-
+  const serverProductData = useSelector(
+    (state: any) => state.global.serverProductData
+  );
   let content = [];
 
-  for (let i = 0; i < productData.length / 2; i++) {
-    content.push(<SliderItem key={i} productData={productData[i]} />);
+  for (let i = 0; i < serverProductData.length / 2; i++) {
+    content.push(<SliderItem configs={serverProductData[i]} />);
   }
 
   return (

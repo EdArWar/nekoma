@@ -13,7 +13,6 @@ function loadScript(src) {
       //console.log(this.readyState); // uncomment this line to see which ready states are called.
       if (!r && (!this.readyState || this.readyState === "complete")) {
         r = true;
-        console.log("DONE");
         resolve();
       }
     };
@@ -23,7 +22,6 @@ function loadScript(src) {
 }
 
 export async function loadAllScripts() {
-  console.log("loadAllScripts");
   const bodyScripts = document.body.getElementsByTagName("script");
   let scriptsName = [];
   let i = 0;

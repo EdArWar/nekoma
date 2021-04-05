@@ -1,5 +1,9 @@
 import axios from "axios";
-import { loginUser, logoutUser } from "../redux/global.slice";
+import {
+  loginUser,
+  logoutUser,
+  setServerProductData,
+} from "../redux/global.slice";
 import { setToken, setUserData } from "../redux/user.slice";
 
 import { API_URL } from "./API_URL";
@@ -119,6 +123,21 @@ export const api_auth = () => {
     } catch (e) {
       localStorage.removeItem("token");
       console.log(e, "api_auth");
+    }
+  };
+};
+
+export const api_getAllProducts = () => {
+  return async (dispatch: any) => {
+    try {
+      console.log("api_getAllProducts");
+
+      const response = await axios.get(`${API_URL}product`);
+      console.log(response);
+
+      dispatch(setServerProductData(response.data.products));
+    } catch (e) {
+      console.log(e, "api_getAllProducts");
     }
   };
 };
