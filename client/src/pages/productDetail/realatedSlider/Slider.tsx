@@ -4,7 +4,6 @@ import { IProduct } from "../../../types/ProductType";
 import SliderItem from "./SliderItem";
 
 const Slider = () => {
-  const productData = useSelector((state: any) => state.global.productData);
   const serverProductData = useSelector(
     (state: any) => state.global.serverProductData
   );

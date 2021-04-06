@@ -11,7 +11,7 @@ export interface IProduct {
   productTitle?: string;
 }
 
-interface IProductImage {
+export interface IProductImage {
   _id: string;
   public_id: string;
   url: string;
