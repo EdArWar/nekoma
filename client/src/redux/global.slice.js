@@ -9,6 +9,7 @@ export const globalSlice = createSlice({
     initiated: false,
     productId: null,
     sidebar: false,
+    filterTag: "all",
     blogData: [
       {
         id: 1,
@@ -67,6 +68,9 @@ export const globalSlice = createSlice({
     setServerProductData: (state, action) => {
       state.serverProductData = action.payload;
     },
+    updateFilterTag: (state, action) => {
+      state.filterTag = action.payload;
+    },
   },
 });
 
@@ -82,6 +86,7 @@ export const {
   addCartProduct,
   removeCartProduct,
   setServerProductData,
+  updateFilterTag,
 } = globalSlice.actions;
 
 export default globalSlice.reducer;
