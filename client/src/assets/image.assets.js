@@ -10,7 +10,6 @@ export { default as b_2 } from './images/b/b_2.jpeg';
 export { default as b_3 } from './images/b/b_3.jpeg';
 export { default as b_4 } from './images/b/b_4.jpeg';
 export { default as banner_01 } from './images/banner-01.jpg';
-export { default as banner_02 } from './images/banner-02.jpg';
 export { default as banner_03 } from './images/banner-03.jpg';
 export { default as banner_04 } from './images/banner-04.jpg';
 export { default as banner_05 } from './images/banner-05.jpg';

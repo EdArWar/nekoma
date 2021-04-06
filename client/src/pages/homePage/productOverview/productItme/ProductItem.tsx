@@ -14,7 +14,9 @@ const ProductItem: React.FC<any> = ({ id, type, name, price, image }) => {
   }
 
   return (
-    <div className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${type}`}>
+    <div
+      className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${type.toLowerCase()}`}
+    >
       <div className="block2">
         <NavLink
           to={`/singleProduct?id=${id}`}

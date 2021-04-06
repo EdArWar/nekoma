@@ -35,23 +35,16 @@ const TabAndFilter = () => {
 
         <button
           className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-          data-filter=".women"
+          data-filter=".dress"
         >
-          Women
+          Dress
         </button>
 
         <button
           className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-          data-filter=".men"
+          data-filter=".shorts"
         >
-          Men
-        </button>
-
-        <button
-          className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-          data-filter=".bag"
-        >
-          Bag
+          Shorts
         </button>
 
         <button
@@ -63,9 +56,9 @@ const TabAndFilter = () => {
 
         <button
           className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-          data-filter=".watches"
+          data-filter=".jeans"
         >
-          Watches
+          Jeans
         </button>
       </div>
 

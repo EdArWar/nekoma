@@ -23,7 +23,7 @@ const Banner = () => {
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Women
+                    Dress
                   </span>
 
                   <span className="block1-info stext-102 trans-04">
@@ -50,7 +50,7 @@ const Banner = () => {
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Men
+                    Hats
                   </span>
 
                   <span className="block1-info stext-102 trans-04">
