@@ -9,7 +9,7 @@ export const globalSlice = createSlice({
     initiated: false,
     productId: null,
     sidebar: false,
-    filterTag: "all",
+    filterTag: "jeans",
     blogData: [
       {
         id: 1,

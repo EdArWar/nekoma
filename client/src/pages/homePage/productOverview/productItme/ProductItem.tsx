@@ -1,10 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
+import "./ProductItem.scss";
 const ProductItem: React.FC<any> = ({ id, type, name, price, image }) => {
   return (
     <div
-      className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${type.toLowerCase()}`}
+      className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item  h_card_item_show ${type.toLowerCase()}`}
     >
       <div className="block2">
         <NavLink

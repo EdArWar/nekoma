@@ -8,18 +8,33 @@ const ProductOverView: React.FC<any> = ({ page }) => {
   const serverProductData = useSelector(
     (state: any) => state.global.serverProductData
   );
+  const filterTag = useSelector((state: any) => state.global.filterTag);
 
   let content = serverProductData.map((item: IProduct, i: number) => {
-    return (
-      <ProductItem
-        key={i}
-        id={item._id}
-        type={item.productTag}
-        name={item.productName}
-        price={item.productPrice}
-        image={item.productImage}
-      />
-    );
+    if (filterTag === item.productTag?.toLowerCase()) {
+      return (
+        <ProductItem
+          key={i}
+          id={item._id}
+          type={item.productTag}
+          name={item.productName}
+          price={item.productPrice}
+          image={item.productImage}
+        />
+      );
+    }
+    if (filterTag === "all products") {
+      return (
+        <ProductItem
+          key={i}
+          id={item._id}
+          type={item.productTag}
+          name={item.productName}
+          price={item.productPrice}
+          image={item.productImage}
+        />
+      );
+    }
   });
 
   return (
@@ -32,7 +47,7 @@ const ProductOverView: React.FC<any> = ({ page }) => {
         )}
 
         <TabAndFilter />
-        <div className="row isotope-grid">{content}</div>
+        <div className="row ">{content}</div>
       </div>
     </section>
   );
