@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { mask_banner } from "../../../../assets/image.assets";
 import "./ProductBanner.scss";
 const ProductBanner = () => {
+  useEffect(() => {}, []);
+
   return (
     <div className="container">
       <div className="row">
@@ -11,14 +13,14 @@ const ProductBanner = () => {
             backgroundImage: `url(${mask_banner})`,
           }}
         >
-          <h3 className="glitch" data-text="Glitchin!">
+          <h3 className="glitch title" data-text="Glitchin!">
             FACE MASKS
           </h3>
-          <p>
+          <p className=" title">
             Innovative styles, face-loving fabrics and colours for days and
             days.
           </p>
-          <p>
+          <p className=" title">
             Available with or without a nose wire. Designed for a unisex fit and
             offered in 2 sizes.
           </p>
