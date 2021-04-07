@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   banner_04,
@@ -7,8 +8,11 @@ import {
   banner_08,
   banner_09,
 } from "../../../assets/image.assets";
+import { updateFilterTag } from "../../../redux/global.slice";
 
 const Banner = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="sec-banner bg0 p-t-95 p-b-55">
       <div className="container">
@@ -20,6 +24,7 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                onClick={() => dispatch(updateFilterTag("dress"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
@@ -47,6 +52,7 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                onClick={() => dispatch(updateFilterTag("hats"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
@@ -74,6 +80,7 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                onClick={() => dispatch(updateFilterTag("watches"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
@@ -101,6 +108,7 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                onClick={() => dispatch(updateFilterTag("bags"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
@@ -128,6 +136,7 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                onClick={() => dispatch(updateFilterTag("accessories"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
