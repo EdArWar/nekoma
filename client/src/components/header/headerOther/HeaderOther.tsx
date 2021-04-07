@@ -79,13 +79,13 @@ const HeaderOther = () => {
       $(".js-panel-cart").removeClass("show-header-cart");
     });
 
-    $(".js-show-sidebar").on("click", function () {
-      $(".js-sidebar").addClass("show-sidebar");
-    });
+    // $(".js-show-sidebar").on("click", function () {
+    //   $(".js-sidebar").addClass("show-sidebar");
+    // });
 
-    $(".js-hide-sidebar").on("click", function () {
-      $(".js-sidebar").removeClass("show-sidebar");
-    });
+    // $(".js-hide-sidebar").on("click", function () {
+    //   $(".js-sidebar").removeClass("show-sidebar");
+    // });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);

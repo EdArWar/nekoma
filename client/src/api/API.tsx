@@ -44,8 +44,15 @@ export const api_registration = (formData: any) => {
   };
 };
 
-export const api_login = (email: string, password: string) => {
+export const api_login = (
+  email: string,
+  password: string,
+  disableForm: () => void,
+  activateForm: () => void,
+  successForm: () => void
+) => {
   return async (dispatch: any) => {
+    disableForm();
     try {
       const response = await axios.post(`${API_URL}userAuth/login`, {
         email,
@@ -68,10 +75,12 @@ export const api_login = (email: string, password: string) => {
           })
         );
         localStorage.setItem("token", response.data.token);
+        successForm();
       }
     } catch (e) {
       alert(e.response.data.message);
       console.log(e, "api_login");
+      activateForm();
     }
   };
 };

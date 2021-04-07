@@ -1,11 +1,18 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { logo_02 } from "../../../assets/image.assets";
+import { logo_01, logo_02 } from "../../../assets/image.assets";
 import { setCartState, setSidebarState } from "../../../redux/global.slice";
+import {
+  faHeart,
+  faSign,
+  faSignInAlt,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { api_logout } from "../../../api/API";
 
 const HeaderHome = () => {
-  const jsShowCart = React.useRef<HTMLDivElement>(null);
   const isUser = useSelector((state: any) => state.global.isUser);
   const wrapMenu = React.useRef<HTMLDivElement>(null);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
@@ -78,13 +85,13 @@ const HeaderHome = () => {
       $(".js-panel-cart").removeClass("show-header-cart");
     });
 
-    $(".js-show-sidebar").on("click", function () {
-      $(".js-sidebar").addClass("show-sidebar");
-    });
+    // $(".js-show-sidebar").on("click", function () {
+    //   $(".js-sidebar").addClass("show-sidebar");
+    // });
 
-    $(".js-hide-sidebar").on("click", function () {
-      $(".js-sidebar").removeClass("show-sidebar");
-    });
+    // $(".js-hide-sidebar").on("click", function () {
+    //   $(".js-sidebar").removeClass("show-sidebar");
+    // });
 
     var headerDesktop = $(".container-menu-desktop");
     var wrapMenu = $(".wrap-menu-desktop");
@@ -181,6 +188,14 @@ const HeaderHome = () => {
             <div className="wrap-icon-header flex-w flex-r-m h-full">
               <div className="flex-c-m h-full p-r-25 bor6">
                 <div
+                  className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti"
+                  data-notify={0}
+                >
+                  <i className="zmdi zmdi-favorite"></i>
+                </div>
+              </div>
+              <div className="flex-c-m h-full p-r-25 bor6">
+                <div
                   className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
                   data-notify={cartCount}
                   onClick={() => onCartClicked()}
@@ -190,14 +205,20 @@ const HeaderHome = () => {
               </div>
 
               <div className="flex-c-m h-full p-lr-19">
-                <div
-                  className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar"
-                  ref={jsShowCart}
-                  onClick={() => {
-                    onSidebarClicked();
-                  }}
-                >
-                  <i className="zmdi zmdi-menu"></i>
+                <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                  {isUser ? (
+                    <FontAwesomeIcon
+                      icon={faSignOutAlt}
+                      onClick={() => dispatch(api_logout())}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faSignInAlt}
+                      onClick={() => {
+                        onSidebarClicked();
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -207,12 +228,18 @@ const HeaderHome = () => {
 
       <div className="wrap-header-mobile">
         <div className="logo-mobile">
-          <a href="index.html">
-            <img src="images/icons/logo-01.png" alt="IMG-LOGO" />
-          </a>
+          <Link to="/home" className="logo">
+            <img srcSet={logo_01} alt="IMG-LOGO" />
+          </Link>
         </div>
 
         <div className="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+          <div
+            className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+            data-notify="0"
+          >
+            <i className="zmdi zmdi-favorite"></i>
+          </div>
           <div className="flex-c-m h-full p-r-5">
             <div
               className="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
@@ -233,43 +260,16 @@ const HeaderHome = () => {
       <div className="menu-mobile">
         <ul className="topbar-mobile">
           <li>
-            <div className="left-top-bar">
-              Free shipping for standard order over $100
-            </div>
-          </li>
-
-          <li>
-            <div className="right-top-bar flex-w h-full">
-              <a
-                href="!#"
-                className="flex-c-m p-lr-10 trans-04"
-                onClick={(e) => e.preventDefault()}
-              >
-                Help & FAQs
-              </a>
-
+            <div
+              className="right-top-bar flex-w h-full"
+              style={{ display: "flex", justifyContent: "space-around" }}
+            >
               <a
                 href="!#"
                 className="flex-c-m p-lr-10 trans-04"
                 onClick={(e) => e.preventDefault()}
               >
                 {isUser ? "Logout" : "Login"}
-              </a>
-
-              <a
-                href="!#"
-                className="flex-c-m p-lr-10 trans-04"
-                onClick={(e) => e.preventDefault()}
-              >
-                EN
-              </a>
-
-              <a
-                href="!#"
-                className="flex-c-m p-lr-10 trans-04"
-                onClick={(e) => e.preventDefault()}
-              >
-                USD
               </a>
             </div>
           </li>
