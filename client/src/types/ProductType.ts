@@ -1,14 +1,14 @@
 export interface IProduct {
-  _id?: string;
-  productBrand?: string;
-  date?: string;
-  productDescription?: string;
-  productImage?: IProductImage[];
-  productName?: string;
-  productPrice?: number;
-  quantity?: number;
-  productTag?: string;
-  productTitle?: string;
+  _id: string;
+  productBrand: string;
+  date: string;
+  productDescription: string;
+  productImage: IProductImage[];
+  productName: string;
+  productPrice: number;
+  quantity: number;
+  productTag: string;
+  productTitle: string;
 }
 
 export interface IProductImage {

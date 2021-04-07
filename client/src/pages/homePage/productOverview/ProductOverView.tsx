@@ -12,28 +12,10 @@ const ProductOverView: React.FC<any> = ({ page }) => {
 
   let content = serverProductData.map((item: IProduct, i: number) => {
     if (filterTag === item.productTag?.toLowerCase()) {
-      return (
-        <ProductItem
-          key={i}
-          id={item._id}
-          type={item.productTag}
-          name={item.productName}
-          price={item.productPrice}
-          image={item.productImage}
-        />
-      );
+      return <ProductItem key={i} configs={item} />;
     }
     if (filterTag === "all products") {
-      return (
-        <ProductItem
-          key={i}
-          id={item._id}
-          type={item.productTag}
-          name={item.productName}
-          price={item.productPrice}
-          image={item.productImage}
-        />
-      );
+      return <ProductItem key={i} configs={item} />;
     }
   });
 

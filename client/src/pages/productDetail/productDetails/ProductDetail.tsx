@@ -13,7 +13,6 @@ const ProductDetail = () => {
 
   useEffect(() => {
     $(".gallery-lb").each(function () {
-      // the containers for all your galleries
       //@ts-ignore
       $(this).magnificPopup({
         delegate: "a", // the selector for gallery item
