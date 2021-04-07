@@ -10,17 +10,19 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   function onSidebarWrapClicked() {
+    console.log("onSidebarWrapClicked");
+
     dispatch(setSidebarState(!sidebarState));
   }
 
   useEffect(() => {}, [sidebarState]);
 
+  //  ${
+  //       sidebarState ? "show-sidebar" : ""
+  //     }
+
   return (
-    <aside
-      className={`wrap-sidebar js-sidebar ${
-        sidebarState ? "show-sidebar" : ""
-      } `}
-    >
+    <aside className={`wrap-sidebar js-sidebar show-sidebar `}>
       <div
         className="s-full js-hide-sidebar"
         onClick={() => onSidebarWrapClicked()}

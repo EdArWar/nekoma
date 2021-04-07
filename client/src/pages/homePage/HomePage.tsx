@@ -7,6 +7,8 @@ import Sidebar from "./sidebar/Sidebar";
 import Slider from "./slider/Slider";
 import ProductBanner from "./productOverview/productBunner/ProductBanner";
 import { useSelector } from "react-redux";
+import { CSSTransition } from "react-transition-group";
+import "./HomePage.scss";
 
 const HomePage = () => {
   useEffect(() => {
@@ -18,7 +20,14 @@ const HomePage = () => {
 
   return (
     <div>
-      <Sidebar />
+      <CSSTransition
+        in={sidebarState}
+        timeout={1000}
+        classNames="my-node"
+        unmountOnExit
+      >
+        <Sidebar />
+      </CSSTransition>
       <Cart />
       <Slider />
       <Banner />
