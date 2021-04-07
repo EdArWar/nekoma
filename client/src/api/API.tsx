@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  loginUser,
-  logoutUser,
-  setServerProductData,
-} from "../redux/global.slice";
+import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
 import { setToken, setUserData } from "../redux/user.slice";
 
 import { API_URL } from "./API_URL";
@@ -135,7 +131,7 @@ export const api_getAllProducts = () => {
       const response = await axios.get(`${API_URL}product`);
       console.log(response);
 
-      dispatch(setServerProductData(response.data.products));
+      dispatch(setProductData(response.data.products));
     } catch (e) {
       console.log(e, "api_getAllProducts");
     }

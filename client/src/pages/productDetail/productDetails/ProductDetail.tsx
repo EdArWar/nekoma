@@ -4,8 +4,8 @@ import { useLocation } from "react-router";
 import { IProduct, IProductImage } from "../../../types/ProductType";
 
 const ProductDetail = () => {
-  const serverProductData: IProduct[] = useSelector(
-    (state: any) => state.global.serverProductData
+  const productData: IProduct[] = useSelector(
+    (state: any) => state.global.productData
   );
   const location = useLocation();
   const urlId = location.search.split("=")[1];
@@ -23,7 +23,7 @@ const ProductDetail = () => {
         mainClass: "mfp-fade",
       });
     });
-  }, [serverProductData]);
+  }, [productData]);
 
   return (
     <section className="sec-product-detail bg0 p-t-65 p-b-60">
@@ -35,7 +35,7 @@ const ProductDetail = () => {
                 <div className="wrap-slick3-dots"></div>
                 <div className="wrap-slick3-arrows flex-sb-m flex-w"></div>
                 <div className="slick3 gallery-lb" ref={galleryRef}>
-                  {serverProductData?.map((item: IProduct, i: number) => {
+                  {productData?.map((item: IProduct, i: number) => {
                     if (item._id === urlId) {
                       return item.productImage?.map(
                         (item: IProductImage, i: number) => {

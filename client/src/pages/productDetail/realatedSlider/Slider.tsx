@@ -4,13 +4,11 @@ import { IProduct } from "../../../types/ProductType";
 import SliderItem from "./SliderItem";
 
 const Slider = () => {
-  const serverProductData = useSelector(
-    (state: any) => state.global.serverProductData
-  );
+  const productData = useSelector((state: any) => state.global.productData);
   let content = [];
 
-  for (let i = 0; i < serverProductData.length / 2; i++) {
-    content.push(<SliderItem configs={serverProductData[i]} />);
+  for (let i = 0; i < productData.length / 2; i++) {
+    content.push(<SliderItem configs={productData[i]} />);
   }
 
   return (

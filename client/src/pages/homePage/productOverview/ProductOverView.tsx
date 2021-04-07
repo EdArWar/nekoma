@@ -5,12 +5,10 @@ import TabAndFilter from "./tabAndFilter/TabAndFilter";
 import { IProduct } from "./../../../types/ProductType";
 
 const ProductOverView: React.FC<any> = ({ page }) => {
-  const serverProductData = useSelector(
-    (state: any) => state.global.serverProductData
-  );
+  const productData = useSelector((state: any) => state.global.productData);
   const filterTag = useSelector((state: any) => state.global.filterTag);
 
-  let content = serverProductData.map((item: IProduct, i: number) => {
+  let content = productData.map((item: IProduct, i: number) => {
     if (filterTag === item.productTag?.toLowerCase()) {
       return <ProductItem key={i} configs={item} />;
     }

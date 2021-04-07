@@ -30,7 +30,7 @@ export const globalSlice = createSlice({
     cart: false,
     cartCount: 0,
     cartData: [],
-    serverProductData: null,
+    productData: null,
   },
   reducers: {
     changeLocale: (state, action) => {
@@ -65,8 +65,8 @@ export const globalSlice = createSlice({
     setInitiated: (state, action) => {
       state.initiated = !!action.payload;
     },
-    setServerProductData: (state, action) => {
-      state.serverProductData = action.payload;
+    setProductData: (state, action) => {
+      state.productData = action.payload;
     },
     updateFilterTag: (state, action) => {
       state.filterTag = action.payload;
@@ -85,7 +85,7 @@ export const {
   setInitiated,
   addCartProduct,
   removeCartProduct,
-  setServerProductData,
+  setProductData,
   updateFilterTag,
 } = globalSlice.actions;
 
