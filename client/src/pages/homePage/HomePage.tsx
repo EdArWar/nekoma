@@ -5,6 +5,7 @@ import Banner from "./banner/Banner";
 import ProductOverView from "./productOverview/ProductOverView";
 import Sidebar from "./sidebar/Sidebar";
 import Slider from "./slider/Slider";
+import ProductBanner from "./productOverview/productBunner/ProductBanner";
 
 const HomePage = () => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const HomePage = () => {
       <Cart />
       <Slider />
       <Banner />
+      <ProductBanner />
       <ProductOverView page={true} />
     </div>
   );

@@ -98,6 +98,7 @@ export { default as m1 } from './images/m/m1.jpg';
 export { default as m2 } from './images/m/m2.jpg';
 export { default as m3 } from './images/m/m3.jpg';
 export { default as m4 } from './images/m/m4.jpg';
+export { default as mask_banner } from './images/mask_banner.jpg';
 export { default as mena1 } from './images/men_a/mena1.jpg';
 export { default as mena2 } from './images/men_a/mena2.jpg';
 export { default as mena3 } from './images/men_a/mena3.jpg';
