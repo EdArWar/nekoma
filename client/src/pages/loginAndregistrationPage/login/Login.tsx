@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../../redux/global.slice";
 import { api_login } from "./../../../api/API";
 import "./Login.scss";
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("edgarcho@mail.ru");
+  const [password, setPassword] = useState("ssssss");
+
+  const sidebar = useSelector((state: any) => state.global.sidebar);
+
   const dispatch = useDispatch();
 
   function onLoginHeandler(e: React.SyntheticEvent<EventTarget>) {
@@ -42,19 +45,19 @@ const Login = () => {
   }
 
   useEffect(() => {
-    // $('input[type="submit"]').click(function () {
-    //   $(".login").addClass("test");
-    //   setTimeout(function () {
-    //     $(".login").addClass("testtwo");
-    //   }, 300);
-    //   setTimeout(function () {
-    //     $(".login").removeClass("test");
-    //     $(".login div").fadeOut(123);
-    //   }, 2800);
-    //   setTimeout(function () {
-    //     $(".success").fadeIn();
-    //   }, 3200);
-    // });
+    $('input[type="submit"]').click(function () {
+      $(".login").addClass("test");
+      setTimeout(function () {
+        $(".login").addClass("testtwo");
+      }, 300);
+      setTimeout(function () {
+        $(".login").removeClass("test");
+        $(".login div").fadeOut(123);
+      }, 2800);
+      setTimeout(function () {
+        $(".success").fadeIn();
+      }, 3200);
+    });
     $('input[type="text"],input[type="password"]').focus(function () {
       $(this).prev().animate({ opacity: "1" }, 200);
     });
@@ -75,7 +78,7 @@ const Login = () => {
         $(this).parent().animate({ left: "0" });
       });
     });
-  }, []);
+  }, [sidebar]);
 
   return (
     <>

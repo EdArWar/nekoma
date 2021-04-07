@@ -13,6 +13,8 @@ const Sidebar = () => {
     dispatch(setSidebarState(!sidebarState));
   }
 
+  useEffect(() => {}, [sidebarState]);
+
   return (
     <aside
       className={`wrap-sidebar js-sidebar ${

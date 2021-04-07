@@ -6,11 +6,15 @@ import ProductOverView from "./productOverview/ProductOverView";
 import Sidebar from "./sidebar/Sidebar";
 import Slider from "./slider/Slider";
 import ProductBanner from "./productOverview/productBunner/ProductBanner";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   useEffect(() => {
     loadAllScripts();
   }, []);
+
+  const isUser = useSelector((state: any) => state.global.isUser);
+  const sidebarState = useSelector((state: any) => state.global.sidebar);
 
   return (
     <div>

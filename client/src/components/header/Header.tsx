@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { setCartState, setSidebarState } from "../../redux/global.slice";
 import { api_logout } from "./../../api/API";
 import "./Header.scss";
-import HeaderHome from "./headerHome/HeaderTest";
+import HeaderHome from "./headerHome/HeaderHome";
 import HeaderOther from "./headerOther/HeaderOther";
 
 const Header = () => {

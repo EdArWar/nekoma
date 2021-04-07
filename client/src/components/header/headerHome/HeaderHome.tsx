@@ -208,6 +208,7 @@ const HeaderHome = () => {
                 <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                   {isUser ? (
                     <FontAwesomeIcon
+                      style={{ color: "red" }}
                       icon={faSignOutAlt}
                       onClick={() => dispatch(api_logout())}
                     />
