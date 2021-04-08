@@ -3,8 +3,14 @@ import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
 import { setToken, setUserData } from "../redux/user.slice";
 import { API_URL } from "./API_URL";
 
-export const api_registration = (formData: any) => {
+export const api_registration = (
+  formData: any,
+  disableForm: () => void,
+  activateForm: () => void,
+  successForm: () => void
+) => {
   return async (dispatch: any) => {
+    disableForm();
     try {
       const response = await axios.post(
         `${API_URL}userAuth/registration`,
@@ -17,8 +23,16 @@ export const api_registration = (formData: any) => {
       );
 
       if (response.statusText === "OK") {
-        const { id, userName, lastName, email, userCart } = response.data.user;
+        const {
+          id,
+          userName,
+          lastName,
+          email,
+          avatar,
+          userCart,
+        } = response.data.user;
         const token: string = response.data.token;
+        dispatch(loginUser(true));
         dispatch(setToken(token));
         dispatch(
           setUserData({
@@ -26,14 +40,17 @@ export const api_registration = (formData: any) => {
             userName: userName,
             lastName: lastName,
             email: email,
+            avatar: avatar,
             userCart: userCart,
           })
         );
         localStorage.setItem("token", response.data.token);
+        successForm();
       }
     } catch (e) {
       alert(e.response.data.message);
       console.log(e, "api_registration");
+      activateForm();
     }
   };
 };
@@ -54,7 +71,17 @@ export const api_login = (
       });
 
       if (response.statusText === "OK") {
-        const { id, userName, lastName, email, userCart } = response.data.user;
+        console.log("stex");
+
+        successForm();
+        const {
+          id,
+          userName,
+          lastName,
+          email,
+          avatar,
+          userCart,
+        } = response.data.user;
         const token: string = response.data.token;
 
         dispatch(loginUser(true));
@@ -65,11 +92,11 @@ export const api_login = (
             userName: userName,
             lastName: lastName,
             email: email,
+            avatar: avatar,
             userCart: userCart,
           })
         );
         localStorage.setItem("token", response.data.token);
-        successForm();
       }
     } catch (e) {
       alert(e.response.data.message);
@@ -98,7 +125,14 @@ export const api_auth = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
-      const { id, userName, lastName, email, userCart } = response.data.user;
+      const {
+        id,
+        userName,
+        lastName,
+        email,
+        avatar,
+        userCart,
+      } = response.data.user;
       const token: string = response.data.token;
 
       if (response.statusText === "OK") {
@@ -112,6 +146,7 @@ export const api_auth = () => {
             userName: userName,
             lastName: lastName,
             email: email,
+            avatar: avatar,
             userCart: userCart,
           })
         );

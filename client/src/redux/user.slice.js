@@ -8,6 +8,7 @@ export const userSlice = createSlice({
     userName: null,
     lastName: null,
     userMail: null,
+    avatar: null,
     userCart: [],
   },
   reducers: {
@@ -24,6 +25,7 @@ export const userSlice = createSlice({
         state.userName = action.payload.userName;
         state.lastName = action.payload.lastName;
         state.userMail = action.payload.email;
+        state.avatar = action.payload.avatar;
         state.userCart = action.payload.userCart.reverse();
       }
     },

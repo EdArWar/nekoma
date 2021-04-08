@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { api_registration } from "../../../api/API";
+import { setSidebarState } from "../../../redux/global.slice";
 import "./Reagistration.scss";
 
 const Registration = () => {
@@ -22,6 +23,7 @@ const Registration = () => {
 
   const onRegisterHeandler = async (e: any) => {
     e.preventDefault();
+    $(".req_login").addClass("test");
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("lastName", lastName);
@@ -30,9 +32,71 @@ const Registration = () => {
     if (!!avatar) {
       formData.append("file", avatar);
     }
-
-    dispatch(api_registration(formData));
+    dispatch(
+      api_registration(formData, disableForm, activateForm, successForm)
+    );
   };
+
+  function disableForm() {
+    setTimeout(function () {
+      $(".reg_login").addClass("reg_testtwo");
+    }, 300);
+  }
+  function activateForm() {
+    setTimeout(function () {
+      $(".reg_login").removeClass("reg_test");
+      $(".reg_login").removeClass("reg_testtwo");
+    }, 300);
+  }
+  function successForm() {
+    setTimeout(function () {
+      $(".reg_login").removeClass("reg_test");
+      $(".reg_login div").fadeOut(123);
+    }, 2800);
+    setTimeout(function () {
+      $(".reg_success").fadeIn();
+    }, 3200);
+    setTimeout(function () {
+      dispatch(setSidebarState(false));
+    }, 4000);
+  }
+  const sidebar = useSelector((state: any) => state.global.sidebar);
+
+  useEffect(() => {
+    // $('input[type="submit"]').click(function () {
+    //   $(".reg_login").addClass("test");
+    //   setTimeout(function () {
+    //     $(".reg_login").addClass("testtwo");
+    //   }, 300);
+    //   setTimeout(function () {
+    //     $(".reg_login").removeClass("test");
+    //     $(".reg_login div").fadeOut(123);
+    //   }, 2800);
+    //   setTimeout(function () {
+    //     $(".reg_success").fadeIn();
+    //   }, 3200);
+    // });
+    $('input[type="text"],input[type="password"]').focus(function () {
+      $(this).prev().animate({ opacity: "1" }, 200);
+    });
+    $('input[type="text"],input[type="password"]').blur(function () {
+      $(this).prev().animate({ opacity: ".5" }, 200);
+    });
+    $('input[type="text"],input[type="password"]').keyup(function () {
+      //@ts-ignore
+      if (!$(this).val() == "") {
+        $(this).next().animate({ opacity: "1", right: "30" }, 200);
+      } else {
+        $(this).next().animate({ opacity: "0", right: "20" }, 200);
+      }
+    });
+    var open = 0;
+    $(".tab").click(function () {
+      $(this).fadeOut(200, function () {
+        $(this).parent().animate({ left: "0" });
+      });
+    });
+  }, [sidebar]);
 
   return (
     <>
@@ -148,7 +212,7 @@ const Registration = () => {
           </div>
         </div>
         <div className="reg_success">
-          <h2>Authentication Success</h2>
+          <h2>Registration Success</h2>
           <p>Welcome back</p>
         </div>
       </div>
@@ -157,97 +221,6 @@ const Registration = () => {
         <p>Authenticating...</p>
       </div>
     </>
-    // <div className="form-detail">
-    //   <div className="tabcontent" id="sign-in">
-    //     <div className="form-row">
-    //       <label className="form-row-inner">
-    //         <input
-    //           type="text"
-    //           name="userName"
-    //           value={userName}
-    //           className="input-text"
-    //           required
-    //           onChange={(e) => {
-    //             setUserName(e.target.value);
-    //           }}
-    //         />
-    //         <span className="label">Name</span>
-    //         <span className="border"></span>
-    //       </label>
-    //     </div>
-    //     <div className="form-row">
-    //       <label className="form-row-inner">
-    //         <input
-    //           type="text"
-    //           name="lastName"
-    //           value={lastName}
-    //           className="input-text"
-    //           required
-    //           onChange={(e) => {
-    //             setLastName(e.target.value);
-    //           }}
-    //         />
-    //         <span className="label">Last Name</span>
-    //         <span className="border"></span>
-    //       </label>
-    //     </div>
-    //     <div className="form-row">
-    //       <label className="form-row-inner">
-    //         <input
-    //           type="test"
-    //           name="email"
-    //           value={email}
-    //           className="input-text"
-    //           required
-    //           onChange={(e) => {
-    //             setEmail(e.target.value);
-    //           }}
-    //         />
-    //         <span className="label">E-Mail</span>
-    //         <span className="border"></span>
-    //       </label>
-    //     </div>
-    //     <div className="form-row">
-    //       <label className="form-row-inner">
-    //         <input
-    //           type="password"
-    //           name="password"
-    //           value={password}
-    //           className="input-text"
-    //           required
-    //           onChange={(e) => {
-    //             setPassword(e.target.value);
-    //           }}
-    //         />
-    //         <span className="label">Password</span>
-    //         <span className="border"></span>
-    //       </label>
-    //     </div>
-    //     <div className="form-row">
-    //       <label className="form-row-inner">
-    //         <input
-    //           className="form-control"
-    //           type="file"
-    //           multiple={true}
-    //           name="avatar"
-    //           onChange={onChange}
-    //         />
-    //         <span className="label">Comfirm Password</span>
-    //         <span className="border"></span>
-    //       </label>
-    //     </div>
-    //     <div className="form-row-last">
-    //       <button
-    //         name="register"
-    //         className="register"
-    //         style={{ padding: "15px 15px" }}
-    //         onClick={onSubmit}
-    //       >
-    //         Sign In
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

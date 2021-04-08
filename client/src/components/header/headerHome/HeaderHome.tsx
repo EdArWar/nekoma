@@ -195,7 +195,10 @@ const HeaderHome = () => {
                     <FontAwesomeIcon
                       style={{ color: "red" }}
                       icon={faSignOutAlt}
-                      onClick={() => dispatch(api_logout())}
+                      // onClick={() => dispatch(api_logout())}
+                      onClick={() => {
+                        onSidebarClicked();
+                      }}
                     />
                   ) : (
                     <FontAwesomeIcon

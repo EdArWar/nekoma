@@ -90,6 +90,7 @@ class AuthController {
           userName: user.userName,
           lastName: user.lastName,
           email: user.email,
+          avatar: user.avatar,
           userCart: user.products,
         },
       });
@@ -121,6 +122,7 @@ class AuthController {
           userName: user.userName,
           lastName: user.lastName,
           email: user.email,
+          avatar: user.avatar,
           userCart: user.products,
         },
       });
@@ -145,6 +147,7 @@ class AuthController {
           userName: user.userName,
           lastName: user.lastName,
           email: user.email,
+          avatar: user.avatar,
           userCart: user.products,
         },
       });

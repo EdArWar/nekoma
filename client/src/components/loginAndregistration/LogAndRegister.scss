@@ -51,14 +51,26 @@
 }
 .my_node_login-enter-active {
   opacity: 1;
-
-  // transition: opacity 500ms;
 }
 .my_node_login-exit {
   opacity: 1;
 }
 .my_node_login-exit-active {
+  opacity: 0;
+}
+
+//registration
+.my_node_reg-enter {
   transition: all 0.5s ease-in;
+  opacity: 0;
+}
+.my_node_reg-enter-active {
+  opacity: 1;
+}
+.my_node_reg-exit {
+  opacity: 1;
+}
+.my_node_reg-exit-active {
   opacity: 0;
 }
 

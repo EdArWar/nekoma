@@ -82,7 +82,7 @@ const LogAndRegister = () => {
           <CSSTransition
             in={!state}
             timeout={500}
-            classNames="my_node_login"
+            classNames="my_node_reg"
             unmountOnExit
           >
             <div

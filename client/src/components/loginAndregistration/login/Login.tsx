@@ -22,42 +22,46 @@ const Login = () => {
 
   function disableForm() {
     setTimeout(function () {
+      console.log("disableForm");
       $(".login").addClass("testtwo");
     }, 300);
   }
   function activateForm() {
     setTimeout(function () {
+      console.log("activateForm");
+
       $(".login").removeClass("test");
-      $(".login").removeClass("testtwo");
+      // $(".login").removeClass("testtwo");
     }, 300);
   }
   function successForm() {
-    setTimeout(function () {
-      $(".login").removeClass("test");
-      $(".login div").fadeOut(123);
-    }, 2800);
-    setTimeout(function () {
-      $(".success").fadeIn();
-    }, 3200);
+    // console.log("successForm");
+    // setTimeout(function () {
+    //   $(".login").removeClass("test");
+    //   $(".login div").fadeOut(123);
+    // }, 2800);
+    // setTimeout(function () {
+    //   $(".success").fadeIn();
+    // }, 3200);
     setTimeout(function () {
       dispatch(setSidebarState(false));
-    }, 4000);
+    }, 500);
   }
 
   useEffect(() => {
-    $('input[type="submit"]').click(function () {
-      $(".login").addClass("test");
-      setTimeout(function () {
-        $(".login").addClass("testtwo");
-      }, 300);
-      setTimeout(function () {
-        $(".login").removeClass("test");
-        $(".login div").fadeOut(123);
-      }, 2800);
-      setTimeout(function () {
-        $(".success").fadeIn();
-      }, 3200);
-    });
+    // $('input[type="submit"]').click(function () {
+    //   $(".login").addClass("test");
+    //   setTimeout(function () {
+    //     $(".login").addClass("testtwo");
+    //   }, 300);
+    //   setTimeout(function () {
+    //     $(".login").removeClass("test");
+    //     $(".login div").fadeOut(123);
+    //   }, 2800);
+    //   setTimeout(function () {
+    //     $(".success").fadeIn();
+    //   }, 3200);
+    // });
     $('input[type="text"],input[type="password"]').focus(function () {
       $(this).prev().animate({ opacity: "1" }, 200);
     });
