@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { api_registration } from "../../../api/API";
 import "./Reagistration.scss";
@@ -16,8 +16,6 @@ const Registration = () => {
 
   const onChangeFile = (e: any) => {
     setAvatar(e.target.files[0]);
-    console.log("onChangeFile");
-    console.log(avatar);
   };
 
   const dispatch = useDispatch();
@@ -32,9 +30,6 @@ const Registration = () => {
     if (!!avatar) {
       formData.append("file", avatar);
     }
-
-    console.log("avatar");
-    console.log(avatar);
 
     dispatch(api_registration(formData));
   };

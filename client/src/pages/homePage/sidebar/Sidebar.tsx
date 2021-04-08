@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../../redux/global.slice";
-import "./Slider.scss";
 import LogAndRegister from "./../../../components/loginAndregistration/LogAndRegister";
+import "./Slider.scss";
 
 const Sidebar = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
@@ -10,8 +10,6 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   function onSidebarWrapClicked() {
-    console.log("onSidebarWrapClicked");
-
     dispatch(setSidebarState(!sidebarState));
   }
 

@@ -26,8 +26,6 @@ class ProductRouter {
     try {
       const body = req.body;
       const files = req.files.file;
-      console.log("files");
-      console.log(files);
 
       let {
         productBrand,
@@ -41,7 +39,6 @@ class ProductRouter {
       let info = [];
 
       if (files.length > 0) {
-        console.log("stex 1");
         for (let i = 0; i < files.length; i++) {
           await cloudinary.v2.uploader.upload(
             files[i].tempFilePath,
@@ -90,7 +87,6 @@ class ProductRouter {
 
   async getAllProduct(req, res) {
     try {
-      console.log("getAllProduct");
       const products = await Product.find();
       res.status(200).json({ products });
     } catch (error) {

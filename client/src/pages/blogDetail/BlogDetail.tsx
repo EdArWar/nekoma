@@ -12,8 +12,6 @@ const BlogDetail = () => {
   let blog = blogData.filter((item: any) => {
     return +item.id === +location.search.split("=")[1];
   });
-  console.log("blog");
-  console.log(blog);
   return (
     <div>
       <Cart />

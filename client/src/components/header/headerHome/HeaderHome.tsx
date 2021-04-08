@@ -1,16 +1,11 @@
+import { faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { api_logout } from "../../../api/API";
 import { logo_01, logo_02 } from "../../../assets/image.assets";
 import { setCartState, setSidebarState } from "../../../redux/global.slice";
-import {
-  faHeart,
-  faSign,
-  faSignInAlt,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { api_logout } from "../../../api/API";
 
 const HeaderHome = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
@@ -69,7 +64,6 @@ const HeaderHome = () => {
 
         $(".sub-menu-m").each(function () {
           if ($(this).css("display") == "block") {
-            console.log("hello");
             $(this).css("display", "none");
             $(arrowMainMenu).removeClass("turn-arrow-main-menu-m");
           }
@@ -84,14 +78,6 @@ const HeaderHome = () => {
     $(".js-hide-cart").on("click", function () {
       $(".js-panel-cart").removeClass("show-header-cart");
     });
-
-    // $(".js-show-sidebar").on("click", function () {
-    //   $(".js-sidebar").addClass("show-sidebar");
-    // });
-
-    // $(".js-hide-sidebar").on("click", function () {
-    //   $(".js-sidebar").removeClass("show-sidebar");
-    // });
 
     var headerDesktop = $(".container-menu-desktop");
     var wrapMenu = $(".wrap-menu-desktop");
@@ -132,7 +118,6 @@ const HeaderHome = () => {
   }, [isUser, isHomeWatches]);
 
   function handleScroll() {
-    console.log("handleScroll");
     if (window.scrollY > 0 || window.pageYOffset > 0) {
       !!wrapMenu.current && wrapMenu.current.classList.add("setBlack");
     } else {

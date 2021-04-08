@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import { h3 } from "../../../assets/image.assets";
 import { IProduct, IProductImage } from "../../../types/ProductType";
 
 const ProductDetail = () => {
@@ -130,10 +129,8 @@ const ProductDetail = () => {
               <ul className="p-lr-28 p-lr-15-sm">
                 {productData?.map((item: IProduct, i: number) => {
                   if (item._id === urlId) {
-                    // console.log(item.productDescription.split(":"));
                     let splitText = item.productDescription.split(":");
                     return splitText.map((text: string, i: number) => {
-                      console.log(text);
                       return (
                         <li className="flex-w flex-t p-b-7" key={i}>
                           {i === 0 ? (

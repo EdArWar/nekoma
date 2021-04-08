@@ -35,7 +35,6 @@ export default function Cart() {
   }
   const dispatch = useDispatch();
   function onCartHideClicked() {
-    console.log("onCartHideClicked");
     dispatch(setCartState(!cartState));
   }
 

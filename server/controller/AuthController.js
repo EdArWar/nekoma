@@ -40,13 +40,8 @@ class AuthController {
         return res.status(400).json({ message: "Registration error", errors });
       }
       let info = [];
-      console.log("req.files");
-      console.log(req.files);
       if (!!req.files) {
         const files = req.files.file;
-        console.log("avatar");
-        console.log(req.files);
-        console.log(files);
 
         if (files) {
           await cloudinary.v2.uploader.upload(
@@ -87,9 +82,6 @@ class AuthController {
       });
       await user.save();
 
-      console.log("user");
-      console.log(user);
-
       const token = generateAccessToken(user._id, "USER");
       return res.json({
         token,
@@ -113,13 +105,11 @@ class AuthController {
       const user = await User.findOne({ email });
 
       if (!user) {
-        console.log("STEX 1");
         return res.status(400).json({ message: `E-mail ${email} not found` });
       }
 
       const validPassword = bcrypt.compareSync(password, user.password);
       if (!validPassword) {
-        console.log("STEX 2");
         return res.status(400).json({ message: `Wrong password entered` });
       }
 

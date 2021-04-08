@@ -25,12 +25,6 @@ export const userSlice = createSlice({
         state.lastName = action.payload.lastName;
         state.userMail = action.payload.email;
         state.userCart = action.payload.userCart.reverse();
-        console.log("*****************");
-        console.log(state.userId);
-        console.log(state.userName);
-        console.log(state.lastName);
-        console.log(state.userMail);
-        console.log(state.userCart);
       }
     },
     setCartProduct: (state, action) => {
@@ -38,8 +32,6 @@ export const userSlice = createSlice({
       state.userCart.reverse();
     },
     onRemoveCart: (state, action) => {
-      console.log("onRemoveCart");
-      console.log(action.payload);
       state.userCart = state.userCart.filter((item, i) => {
         return item._id !== action.payload;
       });

@@ -13,6 +13,8 @@ import { loginUser } from "../../redux/global.slice";
 import "./LogAndRegister.scss";
 
 const LogAndRegister = () => {
+  const [state, setState] = useState(true);
+
   useEffect(() => {
     $("#tile-1 .nav-tabs a").click(function () {
       var position = $(this).parent().position();
@@ -30,7 +32,7 @@ const LogAndRegister = () => {
     <>
       <div className="tile" id="tile-1">
         <ul className="nav nav-tabs nav-justified" role="tablist">
-          <div className="slider"></div>
+          <div className="slider" style={{ width: "50%" }}></div>
           <li className="nav-item">
             <a
               className="nav-link active"
@@ -40,6 +42,7 @@ const LogAndRegister = () => {
               role="tab"
               aria-controls="home"
               aria-selected="true"
+              onClick={() => setState(true)}
             >
               <FontAwesomeIcon icon={faSignInAlt} /> Login
             </a>
@@ -53,6 +56,7 @@ const LogAndRegister = () => {
               role="tab"
               aria-controls="profile"
               aria-selected="false"
+              onClick={() => setState(false)}
             >
               <FontAwesomeIcon icon={faRegistered} /> Profile
             </a>
@@ -60,25 +64,41 @@ const LogAndRegister = () => {
         </ul>
 
         <div className="tab-content">
-          <div
-            className="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
+          <CSSTransition
+            in={state}
+            timeout={500}
+            classNames="my_node_login"
+            unmountOnExit
           >
-            <Login />
-          </div>
-          <div
-            className="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
+            <div
+              className="tab-pane show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <Login />
+            </div>
+          </CSSTransition>
+          <CSSTransition
+            in={!state}
+            timeout={500}
+            classNames="my_node_login"
+            unmountOnExit
           >
-            <Registration />
-          </div>
+            <div
+              className="tab-pane show active"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <Registration />
+            </div>
+          </CSSTransition>
         </div>
       </div>
     </>
   );
 };
 export default LogAndRegister;
+
+// fade show active

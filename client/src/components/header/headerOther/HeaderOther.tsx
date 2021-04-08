@@ -9,7 +9,6 @@ const HeaderOther = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
   const wrapMenu = React.useRef<HTMLDivElement>(null);
 
-  const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartState = useSelector((state: any) => state.global.cart);
   const cartCount = useSelector((state: any) => state.global.cartData.length);
   const dispatch = useDispatch();
@@ -63,7 +62,6 @@ const HeaderOther = () => {
 
         $(".sub-menu-m").each(function () {
           if ($(this).css("display") == "block") {
-            console.log("hello");
             $(this).css("display", "none");
             $(arrowMainMenu).removeClass("turn-arrow-main-menu-m");
           }
@@ -79,14 +77,6 @@ const HeaderOther = () => {
       $(".js-panel-cart").removeClass("show-header-cart");
     });
 
-    // $(".js-show-sidebar").on("click", function () {
-    //   $(".js-sidebar").addClass("show-sidebar");
-    // });
-
-    // $(".js-hide-sidebar").on("click", function () {
-    //   $(".js-sidebar").removeClass("show-sidebar");
-    // });
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -96,19 +86,13 @@ const HeaderOther = () => {
     dispatch(setCartState(!cartState));
   }
   function logHeandler(e: any) {
-    console.log("stex");
-    console.log(e.target.innerText);
-
     e.preventDefault();
     if (e.target.innerText === "Logout") {
-      console.log("stex 2");
-
       dispatch(api_logout());
     }
   }
 
   function handleScroll() {
-    console.log("handleScroll");
     if (window.scrollY > 0 || window.pageYOffset > 0) {
       !!wrapMenu.current && wrapMenu.current.classList.add("setBlack");
     } else {

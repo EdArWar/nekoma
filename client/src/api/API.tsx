@@ -1,15 +1,11 @@
 import axios from "axios";
 import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
 import { setToken, setUserData } from "../redux/user.slice";
-
 import { API_URL } from "./API_URL";
 
 export const api_registration = (formData: any) => {
   return async (dispatch: any) => {
     try {
-      console.log("formData");
-      console.log(formData);
-
       const response = await axios.post(
         `${API_URL}userAuth/registration`,
         formData,
@@ -35,8 +31,6 @@ export const api_registration = (formData: any) => {
         );
         localStorage.setItem("token", response.data.token);
       }
-      console.log("response");
-      console.log(response);
     } catch (e) {
       alert(e.response.data.message);
       console.log(e, "api_registration");
@@ -135,10 +129,7 @@ export const api_auth = () => {
 export const api_getAllProducts = () => {
   return async (dispatch: any) => {
     try {
-      console.log("api_getAllProducts");
-
       const response = await axios.get(`${API_URL}product`);
-      console.log(response);
 
       dispatch(setProductData(response.data.products));
     } catch (e) {

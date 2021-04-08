@@ -6,9 +6,6 @@ import "./Loader.scss";
 export default function Loader() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("Loader");
-
-    // dispatch(auth());
     dispatch(api_auth());
     dispatch(api_getAllProducts());
   }, []);

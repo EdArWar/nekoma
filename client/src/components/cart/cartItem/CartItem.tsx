@@ -7,8 +7,6 @@ const CartItem: React.FC<any> = ({ id, itemImg, itemName, itemPrice }) => {
   const dispatch = useDispatch();
 
   function onRemoveCart() {
-    console.log("onRemoveCart");
-    console.log(id);
     dispatch(removeCartProduct(id));
   }
 
