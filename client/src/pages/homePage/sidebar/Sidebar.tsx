@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../../redux/global.slice";
+import LogAndRegisterPage from "../../loginAndregistrationPage/LogAndRegisterPage";
 import Login from "../../loginAndregistrationPage/login/Login";
 import "./Slider.scss";
 
@@ -16,10 +17,6 @@ const Sidebar = () => {
   }
 
   useEffect(() => {}, [sidebarState]);
-
-  //  ${
-  //       sidebarState ? "show-sidebar" : ""
-  //     }
 
   return (
     <aside className={`wrap-sidebar js-sidebar show-sidebar `}>
@@ -37,8 +34,9 @@ const Sidebar = () => {
             <i className="zmdi zmdi-close"></i>
           </div>
         </div>
+        <LogAndRegisterPage />
 
-        <Login />
+        {/* <Login /> */}
       </div>
     </aside>
   );

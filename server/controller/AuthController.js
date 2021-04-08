@@ -4,7 +4,13 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const Role = require("../models/Role");
-const AvatarFileService = require("../service/AvatarFileService");
+const cloudinary = require("cloudinary");
+const fs = require("fs");
+cloudinary.config({
+  cloud_name: "mern-archer",
+  api_key: "393523673758456",
+  api_secret: "nHcLrhjETCAI0Ex51jE2aJ_TE8s",
+});
 
 const generateAccessToken = (id, roles) => {
   const payload = {
@@ -33,35 +39,57 @@ class AuthController {
       if (!errors.isEmpty()) {
         return res.status(400).json({ message: "Registration error", errors });
       }
+      let info = [];
+      console.log("req.files");
+      console.log(req.files);
+      if (!!req.files) {
+        const files = req.files.file;
+        console.log("avatar");
+        console.log(req.files);
+        console.log(files);
+
+        if (files) {
+          await cloudinary.v2.uploader.upload(
+            files.tempFilePath,
+            { folder: "nekuma_user_avatar" },
+            async (err, result) => {
+              if (err) throw err;
+              removeTmp(files.tempFilePath);
+              info.push({
+                public_id: result.public_id,
+                url: result.secure_url,
+              });
+            }
+          );
+        }
+      }
 
       const { userName, lastName, email, password } = req.body;
-      // const fileName = AvatarFileService.saveFile(req.files.avatar);
 
       const candidate = await User.findOne({ email });
 
       if (candidate) {
         res.status(400).json({ message: "User exists !!! " });
       }
+      const userRole = await Role.findOne({ value: "USER" });
 
       const hashPassword = bcrypt.hashSync(password, 7);
-      const userRole = await Role.findOne({ value: "USER" });
 
       const user = await User.create({
         userName,
         lastName,
         email,
         password: hashPassword,
-        // avatar: fileName ? fileName : "",
+        avatar: info.length > 0 ? info : [],
+        favorite: [],
         products: [],
         roles: [userRole.value],
       });
       await user.save();
 
-      console.log("registration");
-
-      console.log(req.body);
-      console.log(req.files.avatar);
+      console.log("user");
       console.log(user);
+
       const token = generateAccessToken(user._id, "USER");
       return res.json({
         token,
@@ -74,6 +102,7 @@ class AuthController {
         },
       });
     } catch (e) {
+      console.log(e);
       res.status(400).json({ msg: "Registration error" });
     }
   }
@@ -134,5 +163,11 @@ class AuthController {
     }
   }
 }
+
+const removeTmp = (path) => {
+  fs.unlink(path, (err) => {
+    if (err) throw err;
+  });
+};
 
 module.exports = new AuthController();

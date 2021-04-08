@@ -1,4 +1,4 @@
-.authent {
+.reg_authent {
   display: none;
   background: #35394a;
 
@@ -19,15 +19,15 @@
   height: 70px;
   opacity: 0;
 }
-.authent p {
+.reg_authent p {
   text-align: center;
   color: white;
 }
-.success {
+.reg_success {
   display: none;
   color: #d5d8e2;
 }
-.success p {
+.reg_success p {
   font-size: 14px;
 }
 p {
@@ -35,10 +35,10 @@ p {
   font-size: 10px;
   text-align: left;
 }
-.testtwo {
+.reg_testtwo {
   left: -320px !important;
 }
-.test {
+.reg_test {
   box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
   pointer-events: none;
   top: -100px !important;
@@ -46,7 +46,7 @@ p {
   opacity: 0.6 !important;
   filter: blur(1px);
 }
-.login {
+.reg_login {
   opacity: 1;
   -webkit-transition-timing-function: cubic-bezier(0.68, -0.25, 0.265, 0.85);
   transition-property: transform, opacity, box-shadow, top, left;
@@ -66,39 +66,39 @@ p {
   justify-content: center;
   align-items: center;
 }
-.login .validation {
+.reg_login .reg_validation {
   position: absolute;
   z-index: 1;
   right: 10px;
   top: 6px;
   opacity: 0;
 }
-.login .disclaimer {
+.reg_login .reg_disclaimer {
   position: absolute;
   bottom: 20px;
   left: 35px;
   width: 250px;
 }
-.login_title {
+.reg_login_title {
   color: #afb1be;
   height: 60px;
   text-align: left;
   font-size: 16px;
 }
-.login_fields {
+.reg_login_fields {
 }
-.login_fields .icon {
+.reg_login_fields .reg_icon {
   position: absolute;
   z-index: 1;
   left: 36px;
   top: 8px;
   opacity: 0.5;
 }
-.login_fields input[type="password"] {
+.reg_login_fields input[type="password"] {
   color: #dc6180 !important;
 }
-.login_fields input[type="text"],
-.login_fields input[type="password"] {
+.reg_login_fields input[type="text"],
+.reg_login_fields input[type="password"] {
   color: #afb1be;
   width: 90%;
   margin: 0 auto;
@@ -114,12 +114,12 @@ p {
   font-family: "Gudea", sans-serif;
   box-shadow: none;
 }
-.login_fields__user,
-.login_fields__password {
+.reg_login_fields__user,
+.reg_login_fields__password {
   position: relative;
   margin-bottom: 15px;
 }
-.login_fields__submit {
+.reg_login_fields__submit {
   position: relative;
   top: 35px;
   left: 0;
@@ -127,16 +127,16 @@ p {
   right: 0;
   margin: 0 auto;
 }
-.login_fields__submit .forgot {
+.reg_login_fields__submit .reg_forgot {
   float: right;
   font-size: 10px;
   margin-top: 11px;
   text-decoration: underline;
 }
-.login_fields__submit .forgot a {
+.reg_login_fields__submit .reg_forgot a {
   color: #606479;
 }
-.login_fields__submit input {
+.reg_login_fields__submit input {
   border-radius: 50px;
   background: transparent;
   padding: 10px 50px;
@@ -147,11 +147,11 @@ p {
   transition-property: background, color;
   transition-duration: 0.2s;
 }
-.login_fields__submit input:focus {
+.reg_login_fields__submit input:focus {
   box-shadow: none;
   outline: none;
 }
-.login_fields__submit input:hover {
+.reg_login_fields__submit input:hover {
   color: white;
   background: #dc6180;
   cursor: pointer;
@@ -160,46 +160,47 @@ p {
 }
 
 /* Color Schemes */
-.love {
+.reg_love {
   position: absolute;
   right: 20px;
   bottom: 0px;
   font-size: 11px;
   font-weight: normal;
 }
-.love p {
+.reg_love p {
   color: white;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
 }
-.love a {
+.reg_love a {
   color: white;
   font-weight: 700;
   text-decoration: none;
 }
-.love img {
+.reg_love img {
   position: relative;
   top: 3px;
   margin: 0px 4px;
   width: 10px;
 }
 
-.brand {
+.reg_brand {
   position: absolute;
   left: 20px;
   bottom: 14px;
 }
-.brand img {
+.reg_brand img {
   width: 30px;
 }
 
-.login input:-webkit-autofill,
-.login input:-webkit-autofill:hover,
-.login input:-webkit-autofill:focus,
-.login input:-webkit-autofill:active {
+/* Change the white to any color */
+.reg_login input:-webkit-autofill,
+.reg_login input:-webkit-autofill:hover,
+.reg_login input:-webkit-autofill:focus,
+.reg_login input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #32364a inset !important;
 }
 
-.login input:-webkit-autofill {
+.reg_login input:-webkit-autofill {
   -webkit-text-fill-color: #afb1be !important;
 }

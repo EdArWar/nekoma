@@ -130,6 +130,9 @@ const Login = () => {
               type="submit"
               value="Log In"
               name="register"
+              style={{
+                margin: "0 auto",
+              }}
               onClick={(e) => {
                 onLoginHeandler(e);
               }}
