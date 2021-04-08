@@ -32,7 +32,7 @@ export const api_registration = (
           userCart,
         } = response.data.user;
         const token: string = response.data.token;
-        dispatch(loginUser(true));
+
         dispatch(setToken(token));
         dispatch(
           setUserData({
@@ -44,8 +44,8 @@ export const api_registration = (
             userCart: userCart,
           })
         );
-        localStorage.setItem("token", response.data.token);
         successForm();
+        localStorage.setItem("token", response.data.token);
       }
     } catch (e) {
       alert(e.response.data.message);
@@ -71,9 +71,6 @@ export const api_login = (
       });
 
       if (response.statusText === "OK") {
-        console.log("stex");
-
-        successForm();
         const {
           id,
           userName,
@@ -84,7 +81,6 @@ export const api_login = (
         } = response.data.user;
         const token: string = response.data.token;
 
-        dispatch(loginUser(true));
         dispatch(setToken(token));
         dispatch(
           setUserData({
@@ -96,6 +92,7 @@ export const api_login = (
             userCart: userCart,
           })
         );
+        successForm();
         localStorage.setItem("token", response.data.token);
       }
     } catch (e) {
@@ -110,9 +107,20 @@ export const api_logout = () => {
   return async (dispatch: any) => {
     try {
       dispatch(logoutUser(false));
+      dispatch(setToken(null));
+      dispatch(
+        setUserData({
+          userId: null,
+          userName: null,
+          lastName: null,
+          email: null,
+          avatar: null,
+          userCart: null,
+        })
+      );
       localStorage.removeItem("token");
     } catch (e) {
-      alert(e.response.data.message);
+      alert(e);
       console.log(e, "api_logout");
     }
   };
@@ -150,8 +158,6 @@ export const api_auth = () => {
             userCart: userCart,
           })
         );
-        // const userData = response.data.user;
-        // dispatch(setUserData(userData));
         localStorage.setItem("token", response.data.token);
       }
     } catch (e) {

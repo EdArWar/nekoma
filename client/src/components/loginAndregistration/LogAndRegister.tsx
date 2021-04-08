@@ -100,5 +100,3 @@ const LogAndRegister = () => {
   );
 };
 export default LogAndRegister;
-
-// fade show active

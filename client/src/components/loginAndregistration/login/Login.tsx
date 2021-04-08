@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSidebarState } from "../../../redux/global.slice";
+import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import { api_login } from "../../../api/API";
 import "./Login.scss";
 const Login = () => {
@@ -13,7 +13,6 @@ const Login = () => {
 
   function onLoginHeandler(e: React.SyntheticEvent<EventTarget>) {
     e.preventDefault();
-    $(".login").addClass("test");
 
     dispatch(
       api_login(email, password, disableForm, activateForm, successForm)
@@ -21,31 +20,29 @@ const Login = () => {
   }
 
   function disableForm() {
+    $(".login").addClass("test");
     setTimeout(function () {
-      console.log("disableForm");
       $(".login").addClass("testtwo");
     }, 300);
   }
   function activateForm() {
     setTimeout(function () {
-      console.log("activateForm");
-
-      $(".login").removeClass("test");
-      // $(".login").removeClass("testtwo");
+      // $(".login").removeClass("test");
+      $(".login").removeClass("testtwo");
     }, 300);
   }
   function successForm() {
-    // console.log("successForm");
-    // setTimeout(function () {
-    //   $(".login").removeClass("test");
-    //   $(".login div").fadeOut(123);
-    // }, 2800);
-    // setTimeout(function () {
-    //   $(".success").fadeIn();
-    // }, 3200);
+    setTimeout(function () {
+      $(".login").removeClass("test");
+      $(".login div").fadeOut(123);
+    }, 2800);
+    setTimeout(function () {
+      $(".success").fadeIn();
+    }, 3200);
     setTimeout(function () {
       dispatch(setSidebarState(false));
-    }, 500);
+      dispatch(loginUser(true));
+    }, 4000);
   }
 
   useEffect(() => {

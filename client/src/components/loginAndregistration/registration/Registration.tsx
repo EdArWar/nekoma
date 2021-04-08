@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { api_registration } from "../../../api/API";
-import { setSidebarState } from "../../../redux/global.slice";
+import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import "./Reagistration.scss";
 
 const Registration = () => {
@@ -23,7 +23,7 @@ const Registration = () => {
 
   const onRegisterHeandler = async (e: any) => {
     e.preventDefault();
-    $(".req_login").addClass("test");
+
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("lastName", lastName);
@@ -38,17 +38,20 @@ const Registration = () => {
   };
 
   function disableForm() {
+    console.log("disableForm");
+    $(".reg_login").addClass("reg_test");
     setTimeout(function () {
       $(".reg_login").addClass("reg_testtwo");
     }, 300);
   }
   function activateForm() {
+    console.log("activateForm");
     setTimeout(function () {
-      $(".reg_login").removeClass("reg_test");
       $(".reg_login").removeClass("reg_testtwo");
     }, 300);
   }
   function successForm() {
+    console.log("successForm");
     setTimeout(function () {
       $(".reg_login").removeClass("reg_test");
       $(".reg_login div").fadeOut(123);
@@ -58,6 +61,7 @@ const Registration = () => {
     }, 3200);
     setTimeout(function () {
       dispatch(setSidebarState(false));
+      dispatch(loginUser(true));
     }, 4000);
   }
   const sidebar = useSelector((state: any) => state.global.sidebar);

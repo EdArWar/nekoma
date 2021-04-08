@@ -81,7 +81,6 @@ class AuthController {
         roles: [userRole.value],
       });
       await user.save();
-
       const token = generateAccessToken(user._id, "USER");
       return res.json({
         token,

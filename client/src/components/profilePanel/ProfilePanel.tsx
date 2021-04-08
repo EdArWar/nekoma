@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../redux/global.slice";
 import "./ProfilePanel.scss";
@@ -11,8 +11,9 @@ const ProfilePanel = () => {
   const userMail = useSelector((state: any) => state.user.userMail);
   const avatar = useSelector((state: any) => state.user.avatar);
 
-  const dispatch = useDispatch();
+  useEffect(() => {}, [userName]);
 
+  const dispatch = useDispatch();
   function onSidebarWrapClicked() {
     dispatch(setSidebarState(!sidebarState));
   }
@@ -31,10 +32,12 @@ const ProfilePanel = () => {
         <div className="user_info">
           <h2>{`${userName} ${lastName}`}</h2>
           <small>User</small>
+          <br />
+          <small>{userMail}</small>
         </div>
         <div className="user_details">
-          <figure>
-            <img src="https://picsum.photos/g/80/80" />
+          <figure style={{ width: "150px", height: "150px" }}>
+            <img srcSet={avatar[0].url} width="100%" />
           </figure>
           <ul className="tracking">
             <li>

@@ -13,21 +13,15 @@ export const userSlice = createSlice({
   },
   reducers: {
     setToken: (state, action) => {
-      console.log("--------TOKEN--------");
-      console.log(state.token);
       state.token = action.payload;
-      console.log(state.token);
-      console.log("--------TOKEN--------");
     },
     setUserData: (state, action) => {
-      if (state.userId === null && state.userName === null) {
-        state.userId = action.payload.userId;
-        state.userName = action.payload.userName;
-        state.lastName = action.payload.lastName;
-        state.userMail = action.payload.email;
-        state.avatar = action.payload.avatar;
-        state.userCart = action.payload.userCart.reverse();
-      }
+      state.userId = action.payload.userId;
+      state.userName = action.payload.userName;
+      state.lastName = action.payload.lastName;
+      state.userMail = action.payload.email;
+      state.avatar = action.payload.avatar;
+      state.userCart = action.payload.userCart?.reverse();
     },
     setCartProduct: (state, action) => {
       state.userCart.push(action.payload);
