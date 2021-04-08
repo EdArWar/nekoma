@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { api_registration } from "./../../../api/API";
+import { api_registration } from "../../../api/API";
 import "./Reagistration.scss";
 
 const Registration = () => {

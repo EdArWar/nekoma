@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../../redux/global.slice";
-import { api_login } from "./../../../api/API";
+import { api_login } from "../../../api/API";
 import "./Login.scss";
 const Login = () => {
   const [email, setEmail] = useState("edgarcho@mail.ru");

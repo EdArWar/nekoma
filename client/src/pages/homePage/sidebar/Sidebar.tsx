@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../../redux/global.slice";
-import LogAndRegisterPage from "../../loginAndregistrationPage/LogAndRegisterPage";
-import Login from "../../loginAndregistrationPage/login/Login";
 import "./Slider.scss";
+import LogAndRegister from "./../../../components/loginAndregistration/LogAndRegister";
 
 const Sidebar = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
@@ -34,7 +33,7 @@ const Sidebar = () => {
             <i className="zmdi zmdi-close"></i>
           </div>
         </div>
-        <LogAndRegisterPage />
+        <LogAndRegister />
 
         {/* <Login /> */}
       </div>

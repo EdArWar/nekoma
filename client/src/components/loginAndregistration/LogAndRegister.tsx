@@ -1,6 +1,5 @@
 import { AppBar, Tabs, TextField } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import "./LogAndRegisterPage.scss";
 import Registration from "./registration/Registration";
 import Login from "./login/Login";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
@@ -11,9 +10,9 @@ import {
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { loginUser } from "../../redux/global.slice";
-import "./LogAndRegisterPage.scss";
+import "./LogAndRegister.scss";
 
-const LogAndRegisterPage = () => {
+const LogAndRegister = () => {
   useEffect(() => {
     $("#tile-1 .nav-tabs a").click(function () {
       var position = $(this).parent().position();
@@ -82,4 +81,4 @@ const LogAndRegisterPage = () => {
     </>
   );
 };
-export default LogAndRegisterPage;
+export default LogAndRegister;
