@@ -10,7 +10,7 @@ const ProductDetailsContainer = () => {
 
   return (
     <div>
-      <Cart />
+      {/* <Cart /> */}
       <ProductDetail />
     </div>
   );

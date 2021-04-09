@@ -17,6 +17,9 @@ const HomePage = () => {
 
   const isUser = useSelector((state: any) => state.global.isUser);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
+  const cartSidebarState = useSelector(
+    (state: any) => state.global.cartSidebarState
+  );
 
   return (
     <div>
@@ -28,7 +31,15 @@ const HomePage = () => {
       >
         <Sidebar />
       </CSSTransition>
-      <Cart />
+      <CSSTransition
+        in={cartSidebarState}
+        timeout={1000}
+        classNames="my-cart-node"
+        unmountOnExit
+      >
+        <Cart />
+      </CSSTransition>
+
       <Slider />
       <Banner />
       <ProductBanner />

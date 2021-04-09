@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { api_logout } from "../../../api/API";
 import { logo_01, logo_02 } from "../../../assets/image.assets";
-import { setCartState, setSidebarState } from "../../../redux/global.slice";
+import {
+  setCartSidebarState,
+  setCartState,
+  setSidebarState,
+} from "../../../redux/global.slice";
 
 const HeaderHome = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
@@ -71,13 +75,13 @@ const HeaderHome = () => {
       }
     });
 
-    $(".js-show-cart").on("click", function () {
-      $(".js-panel-cart").addClass("show-header-cart");
-    });
+    // $(".js-show-cart").on("click", function () {
+    //   $(".js-panel-cart").addClass("show-header-cart");
+    // });
 
-    $(".js-hide-cart").on("click", function () {
-      $(".js-panel-cart").removeClass("show-header-cart");
-    });
+    // $(".js-hide-cart").on("click", function () {
+    //   $(".js-panel-cart").removeClass("show-header-cart");
+    // });
 
     var headerDesktop = $(".container-menu-desktop");
     var wrapMenu = $(".wrap-menu-desktop");
@@ -130,7 +134,7 @@ const HeaderHome = () => {
     dispatch(setSidebarState(!sidebarState));
   }
   function onCartClicked() {
-    dispatch(setCartState(!cartState));
+    dispatch(setCartSidebarState(true));
   }
 
   return (

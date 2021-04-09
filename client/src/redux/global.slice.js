@@ -9,6 +9,7 @@ export const globalSlice = createSlice({
     initiated: false,
     productId: null,
     sidebar: false,
+    cartSidebarState: false,
     filterTag: "jeans",
     blogData: [
       {
@@ -59,6 +60,9 @@ export const globalSlice = createSlice({
     setSidebarState: (state, action) => {
       state.sidebar = action.payload;
     },
+    setCartSidebarState: (state, action) => {
+      state.cartSidebarState = action.payload;
+    },
     setCartState: (state, action) => {
       state.cart = action.payload;
     },
@@ -79,6 +83,7 @@ export const {
   logoutUser,
   setProductId,
   setSidebarState,
+  setCartSidebarState,
   setCartState,
   changeLocale,
   navigate,

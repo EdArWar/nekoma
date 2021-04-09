@@ -2,11 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { cart_empty } from "../../assets/image.assets";
-import { setCartState } from "../../redux/global.slice";
+import { setCartSidebarState, setCartState } from "../../redux/global.slice";
 import CartItem from "./cartItem/CartItem";
-
+import "./Cart.scss";
 export default function Cart() {
-  const cartState = useSelector((state: any) => state.global.cart);
   const cartData = useSelector((state: any) => state.global.cartData);
   let totalPrice = 0;
   let content = [];
@@ -35,14 +34,12 @@ export default function Cart() {
   }
   const dispatch = useDispatch();
   function onCartHideClicked() {
-    dispatch(setCartState(!cartState));
+    dispatch(setCartSidebarState(false));
   }
 
   return (
     <div
-      className={`wrap-header-cart js-panel-cart ${
-        cartState ? "show-header-cart" : ""
-      }`}
+      className={`wrap-header-cart js-panel-cart show-header-cart`}
       style={{ zIndex: 5555 }}
     >
       <div

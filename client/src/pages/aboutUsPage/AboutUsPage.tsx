@@ -5,7 +5,7 @@ import Cart from "../../components/cart/Cart";
 const AboutUsPage = () => {
   return (
     <div>
-      <Cart />
+      {/* <Cart /> */}
       <section
         className="bg-img1 txt-center p-lr-15 p-tb-92"
         style={{

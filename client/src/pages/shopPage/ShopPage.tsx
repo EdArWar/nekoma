@@ -10,7 +10,7 @@ const ShopPage = () => {
 
   return (
     <div>
-      <Cart />
+      {/* <Cart /> */}
       <div className="bg0 m-t-23 p-b-140">
         <div className="container">
           <div className="flex-w flex-sb-m p-b-52">
