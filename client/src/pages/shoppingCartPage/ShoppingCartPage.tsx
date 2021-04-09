@@ -11,7 +11,6 @@ const ShoppingCartPage = () => {
 
   return (
     <div>
-      {/* <Cart /> */}
       <form className="bg0 p-t-75 p-b-85">
         <div className="container">
           <div className="row">

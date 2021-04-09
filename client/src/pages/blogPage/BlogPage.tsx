@@ -7,7 +7,6 @@ import BlogSideMenu from "./blogSideMenu/BlogSideMenu";
 const BlogPage = () => {
   return (
     <div>
-      {/* <Cart /> */}
       <section
         className="bg-img1 txt-center p-lr-15 p-tb-92"
         style={{

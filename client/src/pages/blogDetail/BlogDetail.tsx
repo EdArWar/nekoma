@@ -14,7 +14,6 @@ const BlogDetail = () => {
   });
   return (
     <div>
-      {/* <Cart /> */}
       <section className="bg0 p-t-52 p-b-20">
         <div className="container">
           <div className="row">
