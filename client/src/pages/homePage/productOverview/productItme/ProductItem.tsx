@@ -1,24 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./ProductItem.scss";
 import { IProductDataConfig } from "./../../../../types/ProductType";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCartArrowDown,
   faCartPlus,
   faHeart,
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { api_addToCart } from "../../../../api/API";
+import { api_addToCart, api_removeCart } from "../../../../api/API";
 const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   const dispatch = useDispatch();
+  const isUser = useSelector((state: any) => state.global.isUser);
 
   const token = useSelector((state: any) => state.user.token);
+  const [added, setAdded] = useState(false);
+  const userCart = useSelector((state: any) => state.user.userCart);
 
-  function onCartClicked() {
-    !!token
-      ? dispatch(api_addToCart(token, configs._id))
-      : console.log("Need To Registration");
+  useEffect(() => {
+    const isCard = userCart.find((item: any, i: number) => {
+      return item._id === configs._id;
+    });
+    !isUser ? setAdded(false) : setAdded(isCard);
+  }, [userCart, isUser]);
+
+  function onAddCartClicked() {
+    console.log("onAddCartClicked");
+
+    if (!isUser) {
+      console.log("Need To Registration");
+    } else {
+      dispatch(api_addToCart(token, configs._id));
+      !isUser ? setAdded(false) : setAdded(!added);
+    }
+  }
+
+  function onRemoveCart(cartId: string) {
+    console.log("onRemoveCart");
+    console.log(cartId);
+
+    dispatch(api_removeCart(token, cartId));
   }
 
   return (
@@ -68,11 +91,27 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
               icon={faHeart}
               style={{ color: "#717FDF", fontSize: "22px", cursor: "pointer" }}
             />
-            <FontAwesomeIcon
-              icon={faCartPlus}
-              style={{ color: "#717FDF", fontSize: "22px", cursor: "pointer" }}
-              onClick={() => onCartClicked()}
-            />
+            {added ? (
+              <FontAwesomeIcon
+                icon={faCartArrowDown}
+                style={{
+                  color: "#00DA00",
+                  fontSize: "22px",
+                  cursor: "pointer",
+                }}
+                onClick={() => onRemoveCart(configs._id)}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faCartPlus}
+                style={{
+                  color: "#717FDF",
+                  fontSize: "22px",
+                  cursor: "pointer",
+                }}
+                onClick={() => onAddCartClicked()}
+              />
+            )}
           </div>
         </div>
       </div>

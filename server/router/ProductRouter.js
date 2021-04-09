@@ -8,6 +8,7 @@ const router = new Router();
 router.get("/", ProductController.getAllProduct);
 router.post("/create", ProductController.createProduct);
 router.post("/addCart", ProductController.addCart);
+router.post("/removeCart", ProductController.removeCart);
 
 // router.post("/role", AuthController.createRole);
 

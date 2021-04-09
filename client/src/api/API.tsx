@@ -1,6 +1,11 @@
 import axios from "axios";
 import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
-import { setCartProduct, setToken, setUserData } from "../redux/user.slice";
+import {
+  onRemoveCart,
+  setCartProduct,
+  setToken,
+  setUserData,
+} from "../redux/user.slice";
 import { API_URL } from "./API_URL";
 
 export const api_registration = (
@@ -184,7 +189,7 @@ export const api_addToCart = (token: string, cartId: string) => {
     try {
       const response = await axios.post(`${API_URL}product/addCart`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${token}`,
         },
         cartId,
       });
@@ -196,6 +201,24 @@ export const api_addToCart = (token: string, cartId: string) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const api_removeCart = (token: string, cartId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.post(`${API_URL}product/removeCart`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        cartId,
+      });
+      if (response.statusText === "OK") {
+        dispatch(onRemoveCart(cartId));
+      }
+    } catch (error) {
+      console.log(error, "api_removeCart");
     }
   };
 };

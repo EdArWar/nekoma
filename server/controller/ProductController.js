@@ -117,7 +117,34 @@ class ProductRouter {
 
       res.json({ msg: "Added to cart", userCart: product });
     } catch (error) {
+      res.status(400).json({ msg: `Cart added error ${error}` });
+    }
+  }
+
+  async removeCart(req, res) {
+    try {
+      console.log("removeCart");
+      const token = req.body.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, config.get("secretKey"));
+      const userId = decoded.id;
+      const cartId = req.body.cartId;
+
+      const user = await User.findOne({ _id: userId });
+      const product = await Product.findOne({ _id: cartId });
+      if (!user) return res.status(400).json({ msg: "User does not exist." });
+      await User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: {
+            products: { _id: product._id },
+          },
+        }
+      );
+
+      res.json({ msg: "Added to cart", userCart: product });
+    } catch (error) {
       console.log(error);
+      res.status(400).json({ msg: `Cart removed error ${error}` });
     }
   }
 }
