@@ -2,6 +2,9 @@ const cloudinary = require("cloudinary");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const Product = require("../models/Product.js");
+const config = require("config");
+const User = require("../models/User.js");
+
 // cloudinary.config({
 //   cloud_name: process.env.CLOUD_NAME,
 //   api_key: process.env.CLOUD_API_KEY,
@@ -89,6 +92,30 @@ class ProductRouter {
     try {
       const products = await Product.find();
       res.status(200).json({ products });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async addCart(req, res) {
+    try {
+      const token = req.body.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, config.get("secretKey"));
+      const userId = decoded.id;
+      const cartId = req.body.cartId;
+      const product = await Product.findOne({ _id: cartId });
+      const user = await User.findOne({ _id: userId });
+
+      if (!user) {
+        return res.status(400).json({ msg: "User does not exist." });
+      }
+
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { products: product } }
+      );
+
+      res.json({ msg: "Added to cart", userCart: product });
     } catch (error) {
       console.log(error);
     }

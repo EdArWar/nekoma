@@ -24,6 +24,7 @@ export const userSlice = createSlice({
       state.userCart = action.payload.userCart?.reverse();
     },
     setCartProduct: (state, action) => {
+      console.log("setCartProduct");
       state.userCart.push(action.payload);
       state.userCart.reverse();
     },

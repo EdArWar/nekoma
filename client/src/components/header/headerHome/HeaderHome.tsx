@@ -12,7 +12,7 @@ const HeaderHome = () => {
   const wrapMenu = React.useRef<HTMLDivElement>(null);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartState = useSelector((state: any) => state.global.cart);
-  const cartCount = useSelector((state: any) => state.global.cartData.length);
+  const cartCount = useSelector((state: any) => state.user.userCart.length);
   const dispatch = useDispatch();
 
   const location = useLocation();

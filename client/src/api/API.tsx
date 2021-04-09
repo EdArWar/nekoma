@@ -1,6 +1,6 @@
 import axios from "axios";
 import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
-import { setToken, setUserData } from "../redux/user.slice";
+import { setCartProduct, setToken, setUserData } from "../redux/user.slice";
 import { API_URL } from "./API_URL";
 
 export const api_registration = (
@@ -175,6 +175,27 @@ export const api_getAllProducts = () => {
       dispatch(setProductData(response.data.products));
     } catch (e) {
       console.log(e, "api_getAllProducts");
+    }
+  };
+};
+
+export const api_addToCart = (token: string, cartId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.post(`${API_URL}product/addCart`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cartId,
+      });
+
+      if (response.statusText === "OK") {
+        dispatch(setCartProduct(response.data.userCart));
+        console.log("------------");
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };

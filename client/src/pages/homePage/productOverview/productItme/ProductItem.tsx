@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./ProductItem.scss";
 import { IProductDataConfig } from "./../../../../types/ProductType";
@@ -9,9 +9,17 @@ import {
   faHeart,
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { api_addToCart } from "../../../../api/API";
 const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
-  console.log("ProductItem");
-  console.log(configs);
+  const dispatch = useDispatch();
+
+  const token = useSelector((state: any) => state.user.token);
+
+  function onCartClicked() {
+    !!token
+      ? dispatch(api_addToCart(token, configs._id))
+      : console.log("Need To Registration");
+  }
 
   return (
     <div
@@ -63,6 +71,7 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
             <FontAwesomeIcon
               icon={faCartPlus}
               style={{ color: "#717FDF", fontSize: "22px", cursor: "pointer" }}
+              onClick={() => onCartClicked()}
             />
           </div>
         </div>
