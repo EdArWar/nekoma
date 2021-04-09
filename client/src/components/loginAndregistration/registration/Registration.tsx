@@ -17,6 +17,16 @@ const Registration = () => {
 
   const onChangeFile = (e: any) => {
     setAvatar(e.target.files[0]);
+
+    if (e.target.files && e.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e: any) {
+        $("#prev").attr("srcSet", e.target.result);
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    }
   };
 
   const dispatch = useDispatch();
@@ -104,7 +114,7 @@ const Registration = () => {
 
   return (
     <>
-      <div className="reg_login" style={{ height: "85%" }}>
+      <div className="reg_login" style={{ height: "100%" }}>
         <div className="reg_login_title">
           <span>Registration</span>
         </div>
@@ -166,6 +176,7 @@ const Registration = () => {
               <img srcSet="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png" />
             </div>
           </div>
+
           <div className="reg_login_fields__password">
             <div className="reg_icon">
               <img srcSet="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png" />
@@ -199,6 +210,20 @@ const Registration = () => {
             />
             <div className="reg_validation">
               <img srcSet="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png" />
+            </div>
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                margin: "0 auto",
+                marginTop: "15px",
+              }}
+            >
+              <img
+                id="prev"
+                srcSet=""
+                style={{ borderRadius: "50%", width: "100%" }}
+              />
             </div>
           </div>
           <div className="reg_login_fields__submit">
