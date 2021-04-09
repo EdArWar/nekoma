@@ -1,19 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeCartProduct } from "../../../redux/global.slice";
+import { IProductDataConfig } from "../../../types/ProductType";
+import { IProduct } from "./../../../types/ProductType";
+import { api_removeCart } from "./../../../api/API";
 
-const CartItem: React.FC<any> = ({ id, itemImg, itemName, itemPrice }) => {
+const CartItem: React.FC<IProductDataConfig> = ({ configs }) => {
+  const token = useSelector((state: any) => state.user.token);
+
   const dispatch = useDispatch();
 
   function onRemoveCart() {
-    dispatch(removeCartProduct(id));
+    dispatch(api_removeCart(token, configs._id));
   }
 
   return (
     <li className="header-cart-item flex-w flex-t m-b-12">
       <div className="header-cart-item-img" onClick={() => onRemoveCart()}>
-        <img srcSet={itemImg[0]} alt="IMG" />
+        <img srcSet={configs.productImage[0].url} alt="IMG" />
       </div>
 
       <div className="header-cart-item-txt p-t-8">
@@ -21,10 +26,10 @@ const CartItem: React.FC<any> = ({ id, itemImg, itemName, itemPrice }) => {
           to="/shopping-cart"
           className="header-cart-item-name m-b-18 hov-cl1 trans-04"
         >
-          {itemName}
+          {configs.productName}
         </Link>
 
-        <span className="header-cart-item-info">{itemPrice}</span>
+        <span className="header-cart-item-info">{configs.productPrice} $</span>
       </div>
     </li>
   );

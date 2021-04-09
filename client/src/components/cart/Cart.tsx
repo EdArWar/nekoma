@@ -6,23 +6,17 @@ import { setCartSidebarState, setCartState } from "../../redux/global.slice";
 import CartItem from "./cartItem/CartItem";
 import "./Cart.scss";
 export default function Cart() {
-  const cartData = useSelector((state: any) => state.global.cartData);
+  const cartData = useSelector((state: any) => state.user.userCart);
   let totalPrice = 0;
   let content = [];
+  console.log("cartData");
+  console.log(cartData);
 
   if (!!cartData && cartData.length > 0) {
     content = cartData.map((item: any, i: any) => {
-      totalPrice += +item.price;
-      if (i < 3) {
-        return (
-          <CartItem
-            key={i}
-            id={item.id}
-            itemImg={item.img}
-            itemName={item.name}
-            itemPrice={item.price}
-          />
-        );
+      totalPrice += +item.productPrice;
+      if (i < 4) {
+        return <CartItem key={i} configs={item} />;
       }
     });
   } else {
@@ -39,7 +33,7 @@ export default function Cart() {
 
   return (
     <div
-      className={`wrap-header-cart js-panel-cart show-header-cart`}
+      className={`wrap-header-cart  show-header-cart`}
       style={{ zIndex: 5555 }}
     >
       <div
