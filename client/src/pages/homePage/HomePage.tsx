@@ -15,18 +15,8 @@ const HomePage = () => {
     loadAllScripts();
   }, []);
 
-  const sidebarState = useSelector((state: any) => state.global.sidebar);
-
   return (
     <div>
-      <CSSTransition
-        in={sidebarState}
-        timeout={1000}
-        classNames="my-node"
-        unmountOnExit
-      >
-        <Sidebar />
-      </CSSTransition>
       <Slider />
       <Banner />
       <ProductBanner />
