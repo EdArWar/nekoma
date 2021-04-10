@@ -5,23 +5,23 @@
  * This file generates image exports
  * */
 
-const fs = require('fs');
-const fileFinder = require('./fileFinder.script');
+const fs = require("fs");
+const fileFinder = require("./fileFinder.script");
 
 (async () => {
-  console.time('===== generating imageAssets exports =====');
+  console.time("===== generating imageAssets exports =====");
 
   const imageFiles = await fileFinder.getFilesFromPath(
-    __dirname + '/../assets/images/'
+    __dirname + "/../assets/images/"
   );
 
   if (imageFiles && imageFiles.length) {
-    let imageAssetsFileContent = '';
+    let imageAssetsFileContent = "";
     imageFiles.forEach((imageFile) => {
       const splitted = imageFile
-        .replace(/.png|.jpeg|.jpg|.svg/g, '')
-        .replace(/-/g, '_')
-        .split('/');
+        .replace(/.png|.jpeg|.jpg|.gif|.svg/g, "")
+        .replace(/-/g, "_")
+        .split("/");
 
       const imageVarName = splitted[splitted.length - 1];
 
@@ -30,11 +30,11 @@ const fileFinder = require('./fileFinder.script');
 
     if (imageAssetsFileContent) {
       await fs.writeFileSync(
-        __dirname + '/../assets/image.assets.js',
+        __dirname + "/../assets/image.assets.js",
         imageAssetsFileContent
       );
     }
   }
 
-  console.timeEnd('===== generating imageAssets exports =====');
+  console.timeEnd("===== generating imageAssets exports =====");
 })();

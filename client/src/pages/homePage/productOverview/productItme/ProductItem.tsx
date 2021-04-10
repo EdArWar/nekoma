@@ -11,6 +11,12 @@ import {
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { api_addToCart, api_removeCart } from "../../../../api/API";
+import { CSSTransition } from "react-transition-group";
+import {
+  bg_01,
+  load_effect,
+  product_04,
+} from "../../../../assets/image.assets";
 const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   const dispatch = useDispatch();
   const isUser = useSelector((state: any) => state.global.isUser);
@@ -37,10 +43,9 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
     }
   }
 
-  function onRemoveCart(cartId: string) {
-    console.log("onRemoveCart");
-    console.log(cartId);
+  const [load, setLoad] = useState(true);
 
+  function onRemoveCart(cartId: string) {
     dispatch(api_removeCart(token, cartId));
   }
 
@@ -58,7 +63,35 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
           }
           data-label={configs._id <= "1" ? "New" : ""}
         >
-          <img srcSet={configs.productImage[0].url} alt="IMG-PRODUCT" />
+          <img
+            srcSet={configs.productImage[0].url}
+            alt="IMG-PRODUCT"
+            loading="lazy"
+            onLoad={() => {
+              console.log("onLoad");
+              setLoad(false);
+            }}
+          />
+          <CSSTransition
+            in={load}
+            timeout={1000}
+            classNames="my-cart-item-node"
+            unmountOnExit
+          >
+            <img
+              srcSet={load_effect}
+              alt=""
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "450px",
+                zIndex: 33333,
+                top: "0%",
+                left: "0%",
+              }}
+            />
+          </CSSTransition>
+
           <NavLink
             to={`/singleProduct?id=${configs._id}`}
             className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04"

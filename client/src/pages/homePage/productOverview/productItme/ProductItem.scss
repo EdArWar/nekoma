@@ -28,3 +28,24 @@
     opacity: 0;
   }
 }
+
+.my-cart-item-node-enter {
+  // opacity: 0;
+  transform: translateX(-800px);
+  filter: blur(1.5rem);
+}
+.my-cart-item-node-enter-active {
+  // opacity: 1;
+  transform: translateX(0px);
+  filter: blur(0rem);
+}
+.my-cart-item-node-exit {
+  // opacity: 1;
+  transform: translateX(0px);
+  filter: blur(0rem);
+}
+.my-cart-item-node-exit-active {
+  // opacity: 0;
+  transform: translateX(-800px);
+  filter: blur(1.5rem);
+}
