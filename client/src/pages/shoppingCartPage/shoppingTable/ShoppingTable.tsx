@@ -1,23 +1,84 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { SetStateAction, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cartCountUpdate } from "../../../redux/user.slice";
+import { IProduct } from "./../../../types/ProductType";
+import { api_removeCart } from "./../../../api/API";
+import { bg_01 } from "../../../assets/image.assets";
 
 const ShoppingTable = () => {
-  const cartData = useSelector((state: any) => state.global.cartData);
+  const cartData: IProduct[] = useSelector((state: any) => state.user.userCart);
+  const token = useSelector((state: any) => state.user.token);
 
-  let content = cartData.map((item: any, i: any) => {
+  const [total, setTotal] = React.useState<SetStateAction<string>>("");
+
+  useEffect(() => {
+    const getTotal = () => {
+      const total = cartData.reduce((prev: any, item: any) => {
+        return (
+          parseInt(prev) + parseInt(item.productPrice) * parseInt(item.quantity)
+        );
+      }, 0);
+      setTotal(`${total}`);
+    };
+
+    getTotal();
+  }, [cartData]);
+
+  const dispatch = useDispatch();
+
+  function onStartRemoveCart(cartId: string) {
+    dispatch(api_removeCart(token, cartId));
+  }
+
+  const onCartCountChange = (operator: string, id: string) => {
+    dispatch(cartCountUpdate({ id, operator }));
+  };
+
+  let content = cartData?.map((item: IProduct, i: any) => {
     return (
-      <tbody className="table_row" key={i}>
-        <tr>
-          <td className="column-1">
-            <div className="how-itemcart1">
-              <img srcSet={item.img[0]} alt="IMG" />
-            </div>
-          </td>
-          <td className="column-2">{item.name}</td>
-          <td className="column-3">$ {item.price}</td>
-          <td className="column-5">$ {item.price}</td>
-        </tr>
-      </tbody>
+      <>
+        <tbody className="table_row" key={i}>
+          <tr>
+            <td className="column-1">
+              <div
+                className="how-itemcart1"
+                onClick={() => onStartRemoveCart(item._id)}
+              >
+                <img srcSet={item.productImage[0].url} alt="IMG" />
+              </div>
+            </td>
+            <td className="column-2">{item.productName}</td>
+            <td className="column-3">$ {item.productPrice}</td>
+            <td className="column-4">
+              <div className="wrap-num-product flex-w m-l-auto m-r-0">
+                <div
+                  className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+                  onClick={() => onCartCountChange("-", item._id)}
+                >
+                  <i className="fs-16 zmdi zmdi-minus"></i>
+                </div>
+
+                <input
+                  className="mtext-104 cl3 txt-center num-product"
+                  type="number"
+                  name="num-product2"
+                  value={item.quantity}
+                />
+
+                <div
+                  className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
+                  onClick={() => onCartCountChange("+", item._id)}
+                >
+                  <i className="fs-16 zmdi zmdi-plus"></i>
+                </div>
+              </div>
+            </td>
+            <td className="column-5">
+              $ {+item.quantity * +item.productPrice}
+            </td>
+          </tr>
+        </tbody>
+      </>
     );
   });
 
@@ -31,7 +92,7 @@ const ShoppingTable = () => {
                 <th className="column-1">Product</th>
                 <th className="column-2"></th>
                 <th className="column-3">Price</th>
-                {/* <th className="column-4">Quantity</th> */}
+                <th className="column-4">Quantity</th>
                 <th className="column-5">Total</th>
               </tr>
             </thead>
@@ -49,7 +110,7 @@ const ShoppingTable = () => {
             />
 
             <div className="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-              Apply coupon
+              Apply coupon{total}
             </div>
           </div>
 
