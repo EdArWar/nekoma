@@ -1,6 +1,6 @@
 import React from "react";
 import { bg_01, icon_email } from "../../assets/image.assets";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 
 const ContactPage = () => {
   return (

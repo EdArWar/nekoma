@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 import BlogSideMenu from "./../blogPage/blogSideMenu/BlogSideMenu";
 import BlogDetailContent from "./BlogDetailContent";
 

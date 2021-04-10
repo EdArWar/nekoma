@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 import { loadAllScripts } from "../../utils/Utils";
 import Banner from "./banner/Banner";
 import ProductOverView from "./productOverview/ProductOverView";

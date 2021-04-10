@@ -4,7 +4,7 @@ import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import { useRoutes } from "./../routes";
 import { CSSTransition } from "react-transition-group";
-import Cart from "./../components/cart/Cart";
+import CartPanel from "../components/cart/CartPanel";
 import Sidebar from "./homePage/sidebar/Sidebar";
 
 export default function BasePage() {
@@ -32,7 +32,7 @@ export default function BasePage() {
         classNames="my-cart-node"
         unmountOnExit
       >
-        <Cart />
+        <CartPanel />
       </CSSTransition>
       {routes}
       <Footer />

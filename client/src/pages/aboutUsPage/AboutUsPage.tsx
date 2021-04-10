@@ -1,6 +1,6 @@
 import React from "react";
 import { about_01, about_02, bg_01 } from "../../assets/image.assets";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 
 const AboutUsPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { bg_02 } from "../../assets/image.assets";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 import BlogContent from "./blogContent/BlogContent";
 import BlogSideMenu from "./blogSideMenu/BlogSideMenu";
 

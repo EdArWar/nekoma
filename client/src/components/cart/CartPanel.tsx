@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { cart_empty } from "../../assets/image.assets";
 import { setCartSidebarState, setCartState } from "../../redux/global.slice";
 import CartItem from "./cartItem/CartItem";
-import "./Cart.scss";
-export default function Cart() {
+import "./CartPanel.scss";
+export default function CartPanel() {
   const cartData = useSelector((state: any) => state.user.userCart);
   let totalPrice = 0;
   let content = [];

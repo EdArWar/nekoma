@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { bg_01 } from "../../assets/image.assets";
-import Cart from "../../components/cart/Cart";
+import CartPanel from "../../components/cart/CartPanel";
 import { loadAllScripts } from "../../utils/Utils";
 import ProductDetail from "./productDetails/ProductDetail";
 
