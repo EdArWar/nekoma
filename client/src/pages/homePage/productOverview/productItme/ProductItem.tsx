@@ -52,8 +52,17 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   return (
     <div
       className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item  h_card_item_show ${configs.productTag.toLowerCase()}`}
+      style={{
+        height: "450px",
+      }}
     >
-      <div className="block2">
+      <div
+        className="block2"
+        style={{
+          width: "100%",
+          height: "450px",
+        }}
+      >
         <NavLink
           to={`/singleProduct?id=${configs._id}`}
           className={
@@ -68,15 +77,21 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
             alt="IMG-PRODUCT"
             loading="lazy"
             onLoad={() => {
-              console.log("onLoad");
               setLoad(false);
             }}
           />
           <CSSTransition
             in={load}
-            timeout={1000}
+            timeout={500}
             classNames="my-cart-item-node"
+            onEntered={() => console.log("onEntered")}
+            onEntering={() => console.log("onEntered")}
+            onEnter={() => console.log("onEnter")}
+            onExit={() => console.log("onExit")}
+            onExiting={() => console.log("onExiting")}
+            onExited={() => console.log("onExited")}
             unmountOnExit
+            mountOnEnter
           >
             <img
               srcSet={load_effect}
