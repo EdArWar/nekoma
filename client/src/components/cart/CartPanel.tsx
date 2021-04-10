@@ -5,6 +5,7 @@ import { cart_empty } from "../../assets/image.assets";
 import { setCartSidebarState, setCartState } from "../../redux/global.slice";
 import CartItem from "./cartItem/CartItem";
 import "./CartPanel.scss";
+
 export default function CartPanel() {
   const cartData = useSelector((state: any) => state.user.userCart);
   let totalPrice = 0;

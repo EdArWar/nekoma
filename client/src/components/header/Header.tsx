@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./Header.scss";
 import HeaderHome from "./headerHome/HeaderHome";
@@ -17,7 +17,9 @@ const Header = () => {
     isHomeWatches = false;
   }
 
-  window.scroll(0, 0);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [isHomeWatches]);
 
   return <>{isHomeWatches ? <HeaderHome /> : <HeaderOther />}</>;
 };
