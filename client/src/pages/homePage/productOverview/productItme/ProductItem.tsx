@@ -26,7 +26,7 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   const userCart = useSelector((state: any) => state.user.userCart);
 
   useEffect(() => {
-    const isCard = userCart.find((item: any, i: number) => {
+    const isCard = userCart?.find((item: any, i: number) => {
       return item._id === configs._id;
     });
     !isUser ? setAdded(false) : setAdded(isCard);

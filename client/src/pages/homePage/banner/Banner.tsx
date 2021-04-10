@@ -80,11 +80,11 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-                onClick={() => dispatch(updateFilterTag("watches"))}
+                onClick={() => dispatch(updateFilterTag("jeans"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Watches
+                    Jeans
                   </span>
 
                   <span className="block1-info stext-102 trans-04">
@@ -108,11 +108,11 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-                onClick={() => dispatch(updateFilterTag("bags"))}
+                onClick={() => dispatch(updateFilterTag("shorts"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Bags
+                    Shorts
                   </span>
 
                   <span className="block1-info stext-102 trans-04">
@@ -136,11 +136,11 @@ const Banner = () => {
               <Link
                 to="/shop"
                 className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-                onClick={() => dispatch(updateFilterTag("accessories"))}
+                onClick={() => dispatch(updateFilterTag("masks"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Accessories
+                    Masks
                   </span>
 
                   <span className="block1-info stext-102 trans-04">

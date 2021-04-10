@@ -16,7 +16,7 @@ const HeaderHome = () => {
   const wrapMenu = React.useRef<HTMLDivElement>(null);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartState = useSelector((state: any) => state.global.cart);
-  const cartCount = useSelector((state: any) => state.user.userCart.length);
+  const cartCount = useSelector((state: any) => state.user.userCart);
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -186,7 +186,7 @@ const HeaderHome = () => {
               <div className="flex-c-m h-full p-r-25 bor6">
                 <div
                   className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                  data-notify={cartCount}
+                  data-notify={cartCount?.length > 0 ? cartCount?.length : 0}
                   onClick={() => onCartClicked()}
                 >
                   <i className="zmdi zmdi-shopping-cart"></i>

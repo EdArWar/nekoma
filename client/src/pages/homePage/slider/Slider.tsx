@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   slide_01,
-  slide_06,
-  slide_07,
+  slide_04,
+  slide_05,
   thumb_01,
   thumb_02,
   thumb_03,
@@ -63,7 +63,7 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_06})`,
+              backgroundImage: `url(${slide_04})`,
             }}
             data-thumb={thumb_02}
             data-caption="Men’s Wear"
@@ -109,7 +109,7 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_07})`,
+              backgroundImage: `url(${slide_05})`,
             }}
             data-thumb={thumb_03}
             data-caption="Men’s Wear"
