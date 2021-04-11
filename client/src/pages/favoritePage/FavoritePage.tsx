@@ -56,7 +56,7 @@ const FavoritePage = () => {
         }, 800);
       }
     });
-  }, []);
+  }, [userFavorites]);
 
   return (
     <>
