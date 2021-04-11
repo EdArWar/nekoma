@@ -147,7 +147,7 @@ const HeaderHome = () => {
             <Link
               to="/home"
               className="logo"
-              style={{ fontFamily: "dock11", color: NEKOMA.RED }}
+              style={{ fontFamily: "dock11", color: "white" }}
             >
               <h1>
                 NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
@@ -165,19 +165,19 @@ const HeaderHome = () => {
                 </li>
 
                 <li>
-                  <Link to="shopping-cart">Features</Link>
-                </li>
-
-                {/* <li>
-                  <Link to="blog">Blog</Link>
-                </li> */}
-
-                <li>
-                  <Link to="about">About</Link>
+                  <Link to="/favorite">Favorite</Link>
                 </li>
 
                 <li>
-                  <Link to="contact">Contact</Link>
+                  <Link to="/favorite">Favorite</Link>
+                </li>
+
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+
+                <li>
+                  <Link to="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -285,9 +285,7 @@ const HeaderHome = () => {
           </li>
 
           <li>
-            <Link to="shopping-cart" className="label1 rs1" data-label1="hot">
-              Features
-            </Link>
+            <Link to="/favorite">Favorite</Link>
           </li>
 
           <li>

@@ -105,7 +105,7 @@ const HeaderOther = () => {
             <Link
               to="/home"
               className="logo"
-              style={{ fontFamily: "dock11", color: NEKOMA.RED }}
+              style={{ fontFamily: "dock11", color: "white" }}
             >
               <h1>
                 NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
@@ -121,8 +121,8 @@ const HeaderOther = () => {
                   <NavLink to="/shop">Shop</NavLink>
                 </li>
 
-                <li className="label1" data-label1="hot">
-                  <NavLink to="shopping-cart">Features</NavLink>
+                <li>
+                  <Link to="/favorite">Favorite</Link>
                 </li>
 
                 <li>
@@ -248,9 +248,7 @@ const HeaderOther = () => {
           </li>
 
           <li>
-            <Link to="shopping-cart" className="label1 rs1" data-label1="hot">
-              Features
-            </Link>
+            <Link to="/favorite">Favorite</Link>
           </li>
 
           <li>

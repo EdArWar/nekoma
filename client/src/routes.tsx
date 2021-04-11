@@ -9,6 +9,7 @@ import HomePage from "./pages/homePage/HomePage";
 import ProductDetailsContainer from "./pages/productDetail/ProductDetailsContainer";
 import ShopPage from "./pages/shopPage/ShopPage";
 import ShoppingCartPage from "./pages/shoppingCartPage/ShoppingCartPage";
+import FavoritePage from "./pages/favoritePage/FavoritePage";
 
 export const useRoutes = () => {
   return (
@@ -25,7 +26,9 @@ export const useRoutes = () => {
       <Route path="/shop" exact>
         <ShopPage />
       </Route>
-
+      <Route path="/favorite" exact>
+        <FavoritePage />
+      </Route>
       <Route path="/singleProduct">
         <ProductDetailsContainer />
       </Route>
