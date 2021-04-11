@@ -123,7 +123,6 @@ class ProductRouter {
 
   async removeCart(req, res) {
     try {
-      console.log("removeCart");
       const token = req.body.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, config.get("secretKey"));
       const userId = decoded.id;
@@ -142,6 +141,56 @@ class ProductRouter {
       );
 
       res.json({ msg: "Added to cart", userCart: product });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: `Cart removed error ${error}` });
+    }
+  }
+
+  async addFavorite(req, res) {
+    try {
+      const token = req.body.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, config.get("secretKey"));
+      const userId = decoded.id;
+      const cartId = req.body.favoriteId;
+      const product = await Product.findOne({ _id: cartId });
+      const user = await User.findOne({ _id: userId });
+
+      if (!user) {
+        return res.status(400).json({ msg: "User does not exist." });
+      }
+
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { favorite: product } }
+      );
+
+      res.json({ msg: "Added to cart", favorites: product });
+    } catch (error) {
+      res.status(400).json({ msg: `Cart added error ${error}` });
+    }
+  }
+
+  async removeFavorite(req, res) {
+    try {
+      const token = req.body.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, config.get("secretKey"));
+      const userId = decoded.id;
+      const cartId = req.body.favoriteId;
+
+      const user = await User.findOne({ _id: userId });
+      const product = await Product.findOne({ _id: cartId });
+      if (!user) return res.status(400).json({ msg: "User does not exist." });
+      await User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: {
+            favorite: { _id: product._id },
+          },
+        }
+      );
+
+      res.json({ msg: "Added to cart", favorites: product });
     } catch (error) {
       console.log(error);
       res.status(400).json({ msg: `Cart removed error ${error}` });

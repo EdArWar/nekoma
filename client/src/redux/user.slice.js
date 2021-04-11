@@ -10,6 +10,7 @@ export const userSlice = createSlice({
     userMail: null,
     avatar: null,
     userCart: [],
+    favorites: [],
   },
   reducers: {
     setToken: (state, action) => {
@@ -21,6 +22,7 @@ export const userSlice = createSlice({
       state.lastName = action.payload.lastName;
       state.userMail = action.payload.email;
       state.avatar = action.payload.avatar;
+      state.favorites = action.payload.favorites?.reverse();
       state.userCart = action.payload.userCart?.reverse();
     },
     setCartProduct: (state, action) => {
@@ -30,6 +32,16 @@ export const userSlice = createSlice({
     },
     onRemoveCart: (state, action) => {
       state.userCart = state.userCart.filter((item, i) => {
+        return item._id !== action.payload;
+      });
+    },
+    setFavorites: (state, action) => {
+      console.log("setCartProduct");
+      state.favorites.push(action.payload);
+      state.favorites.reverse();
+    },
+    removeFavorite: (state, action) => {
+      state.favorites = state.favorites.filter((item, i) => {
         return item._id !== action.payload;
       });
     },
@@ -55,6 +67,8 @@ export const {
   setUserData,
   setCartProduct,
   onRemoveCart,
+  setFavorites,
+  removeFavorite,
   cartCountUpdate,
 } = userSlice.actions;
 

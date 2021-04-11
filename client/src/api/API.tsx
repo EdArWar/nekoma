@@ -2,7 +2,9 @@ import axios from "axios";
 import { loginUser, logoutUser, setProductData } from "../redux/global.slice";
 import {
   onRemoveCart,
+  removeFavorite,
   setCartProduct,
+  setFavorites,
   setToken,
   setUserData,
 } from "../redux/user.slice";
@@ -34,6 +36,7 @@ export const api_registration = (
           lastName,
           email,
           avatar,
+          favorites,
           userCart,
         } = response.data.user;
         const token: string = response.data.token;
@@ -46,6 +49,7 @@ export const api_registration = (
             lastName: lastName,
             email: email,
             avatar: avatar,
+            favorites: favorites,
             userCart: userCart,
           })
         );
@@ -82,6 +86,7 @@ export const api_login = (
           lastName,
           email,
           avatar,
+          favorites,
           userCart,
         } = response.data.user;
         const token: string = response.data.token;
@@ -94,6 +99,7 @@ export const api_login = (
             lastName: lastName,
             email: email,
             avatar: avatar,
+            favorites: favorites,
             userCart: userCart,
           })
         );
@@ -120,6 +126,7 @@ export const api_logout = () => {
           lastName: null,
           email: null,
           avatar: null,
+          favorites: null,
           userCart: null,
         })
       );
@@ -144,6 +151,7 @@ export const api_auth = () => {
         lastName,
         email,
         avatar,
+        favorites,
         userCart,
       } = response.data.user;
       const token: string = response.data.token;
@@ -160,6 +168,7 @@ export const api_auth = () => {
             lastName: lastName,
             email: email,
             avatar: avatar,
+            favorites: favorites,
             userCart: userCart,
           })
         );
@@ -216,6 +225,45 @@ export const api_removeCart = (token: string, cartId: string) => {
       });
       if (response.statusText === "OK") {
         dispatch(onRemoveCart(cartId));
+      }
+    } catch (error) {
+      console.log(error, "api_removeCart");
+    }
+  };
+};
+
+export const api_addToFavorite = (token: string, favoriteId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.post(`${API_URL}product/addFavorite`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        favoriteId,
+      });
+
+      if (response.statusText === "OK") {
+        dispatch(setFavorites(response.data.favorites));
+        console.log("------------");
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const api_removeFavorite = (token: string, favoriteId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.post(`${API_URL}product/removeFavorite`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        favoriteId,
+      });
+      if (response.statusText === "OK") {
+        dispatch(removeFavorite(favoriteId));
       }
     } catch (error) {
       console.log(error, "api_removeCart");

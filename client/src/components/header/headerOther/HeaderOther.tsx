@@ -3,18 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { icon_close2, logo_01, logo_02 } from "../../../assets/image.assets";
-import { NEKOMA } from "./../../../style/Nekoma";
+import { icon_close2, logo_01 } from "../../../assets/image.assets";
 import {
   setCartSidebarState,
   setSidebarState,
 } from "../../../redux/global.slice";
+import { NEKOMA } from "./../../../style/Nekoma";
 
 const HeaderOther = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
   const wrapMenu = React.useRef<HTMLDivElement>(null);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartCount = useSelector((state: any) => state.user.userCart.length);
+  const favoriteCount = useSelector((state: any) => state.user.favorites);
+
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -144,9 +146,14 @@ const HeaderOther = () => {
               >
                 <div
                   className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti"
-                  data-notify={0}
+                  data-notify={
+                    favoriteCount?.length > 0 ? favoriteCount?.length : 0
+                  }
                 >
-                  <i className="zmdi zmdi-favorite"></i>
+                  <Link to="/favorite">
+                    {" "}
+                    <i className="zmdi zmdi-favorite "></i>
+                  </Link>
                 </div>
               </div>
               <div

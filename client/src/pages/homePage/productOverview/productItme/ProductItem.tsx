@@ -1,40 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import "./ProductItem.scss";
-import { IProductDataConfig } from "./../../../../types/ProductType";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartArrowDown,
   faCartPlus,
   faHeart,
-  faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { api_addToCart, api_removeCart } from "../../../../api/API";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import {
-  bg_01,
-  load_effect,
-  product_04,
-} from "../../../../assets/image.assets";
+  api_addToCart,
+  api_addToFavorite,
+  api_removeCart,
+  api_removeFavorite,
+} from "../../../../api/API";
+import { load_effect } from "../../../../assets/image.assets";
+import { NEKOMA } from "../../../../style/Nekoma";
+import { IProductDataConfig } from "./../../../../types/ProductType";
+import "./ProductItem.scss";
 const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   const dispatch = useDispatch();
   const isUser = useSelector((state: any) => state.global.isUser);
 
   const token = useSelector((state: any) => state.user.token);
   const [added, setAdded] = useState(false);
+  const [addedFavorite, setAddedFavorite] = useState(false);
   const userCart = useSelector((state: any) => state.user.userCart);
+  const userFavorite = useSelector((state: any) => state.user.favorites);
 
   useEffect(() => {
     const isCard = userCart?.find((item: any, i: number) => {
       return item._id === configs._id;
     });
+    const isFavorite = userFavorite?.find((item: any, i: number) => {
+      return item._id === configs._id;
+    });
     !isUser ? setAdded(false) : setAdded(isCard);
-  }, [userCart, isUser]);
+    !isUser ? setAddedFavorite(false) : setAddedFavorite(isFavorite);
+  }, [userCart, isUser, userFavorite]);
 
   function onAddCartClicked() {
     console.log("onAddCartClicked");
-
     if (!isUser) {
       console.log("Need To Registration");
     } else {
@@ -42,11 +48,23 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
       !isUser ? setAdded(false) : setAdded(!added);
     }
   }
+  function onAddFavoriteClicked() {
+    console.log("onAddCartClicked");
+    if (!isUser) {
+      console.log("Need To Registration");
+    } else {
+      dispatch(api_addToFavorite(token, configs._id));
+      !isUser ? setAddedFavorite(false) : setAddedFavorite(!added);
+    }
+  }
 
   const [load, setLoad] = useState(true);
 
   function onRemoveCart(cartId: string) {
     dispatch(api_removeCart(token, cartId));
+  }
+  function onRemoveFavorite(cartId: string) {
+    dispatch(api_removeFavorite(token, cartId));
   }
 
   return (
@@ -84,12 +102,12 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
             in={load}
             timeout={500}
             classNames="my-cart-item-node"
-            onEntered={() => console.log("onEntered")}
-            onEntering={() => console.log("onEntered")}
-            onEnter={() => console.log("onEnter")}
-            onExit={() => console.log("onExit")}
-            onExiting={() => console.log("onExiting")}
-            onExited={() => console.log("onExited")}
+            // onEntered={() => console.log("onEntered")}
+            // onEntering={() => console.log("onEntered")}
+            // onEnter={() => console.log("onEnter")}
+            // onExit={() => console.log("onExit")}
+            // onExiting={() => console.log("onExiting")}
+            // onExited={() => console.log("onExited")}
             unmountOnExit
             mountOnEnter
           >
@@ -135,10 +153,27 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
             className="col-lg-4 col-md-4 col-sm-4 col-xs-12"
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <FontAwesomeIcon
-              icon={faHeart}
-              style={{ color: "#717FDF", fontSize: "22px", cursor: "pointer" }}
-            />
+            {addedFavorite ? (
+              <FontAwesomeIcon
+                icon={faHeart}
+                style={{
+                  color: NEKOMA.RED,
+                  fontSize: "22px",
+                  cursor: "pointer",
+                }}
+                onClick={() => onRemoveFavorite(configs._id)}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faHeart}
+                style={{
+                  color: "#717FDF",
+                  fontSize: "22px",
+                  cursor: "pointer",
+                }}
+                onClick={() => onAddFavoriteClicked()}
+              />
+            )}
             {added ? (
               <FontAwesomeIcon
                 icon={faCartArrowDown}

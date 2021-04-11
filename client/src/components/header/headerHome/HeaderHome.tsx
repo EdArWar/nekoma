@@ -3,22 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { api_logout } from "../../../api/API";
-import { logo_01, logo_02 } from "../../../assets/image.assets";
+import { logo_01 } from "../../../assets/image.assets";
 import {
   setCartSidebarState,
-  setCartState,
   setSidebarState,
 } from "../../../redux/global.slice";
 import { NEKOMA } from "../../../style/Nekoma";
-import { FONTS } from "./../../../style/Fonts";
 
 const HeaderHome = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
   const wrapMenu = React.useRef<HTMLDivElement>(null);
   const sidebarState = useSelector((state: any) => state.global.sidebar);
-  const cartState = useSelector((state: any) => state.global.cart);
   const cartCount = useSelector((state: any) => state.user.userCart);
+  const favoriteCount = useSelector((state: any) => state.user.favorites);
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -76,14 +73,6 @@ const HeaderHome = () => {
         });
       }
     });
-
-    // $(".js-show-cart").on("click", function () {
-    //   $(".js-panel-cart").addClass("show-header-cart");
-    // });
-
-    // $(".js-hide-cart").on("click", function () {
-    //   $(".js-panel-cart").removeClass("show-header-cart");
-    // });
 
     var headerDesktop = $(".container-menu-desktop");
     var wrapMenu = $(".wrap-menu-desktop");
@@ -186,9 +175,13 @@ const HeaderHome = () => {
               <div className="flex-c-m h-full p-r-25 bor6">
                 <div
                   className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti"
-                  data-notify={0}
+                  data-notify={
+                    favoriteCount?.length > 0 ? favoriteCount?.length : 0
+                  }
                 >
-                  <i className="zmdi zmdi-favorite"></i>
+                  <Link to="/favorite">
+                    <i className="zmdi zmdi-favorite"></i>
+                  </Link>
                 </div>
               </div>
               <div className="flex-c-m h-full p-r-25 bor6">

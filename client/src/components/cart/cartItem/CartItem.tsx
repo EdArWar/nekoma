@@ -1,9 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeCartProduct } from "../../../redux/global.slice";
 import { IProductDataConfig } from "../../../types/ProductType";
-import { IProduct } from "./../../../types/ProductType";
 import { api_removeCart } from "./../../../api/API";
 
 const CartItem: React.FC<IProductDataConfig> = ({ configs }) => {
