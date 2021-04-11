@@ -2,6 +2,7 @@ import {
   faCartArrowDown,
   faCartPlus,
   faHeart,
+  faHeartBroken,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { RefObject, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +17,7 @@ import { api_addToCart, api_addToFavorite } from "../../../api/API";
 import { api_removeFavorite, api_removeCart } from "./../../../api/API";
 import { NEKOMA } from "./../../../style/Nekoma";
 import "./FavoriteItemSlider.scss";
+import { CSSTransition } from "react-transition-group";
 
 const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
   const [state, setState] = useState(false);
@@ -135,7 +137,7 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
           <div className="btn-container">
             {addedFavorite ? (
               <FontAwesomeIcon
-                icon={faHeart}
+                icon={faHeartBroken}
                 className="proxz-btn"
                 style={{
                   color: NEKOMA.RED,
@@ -146,7 +148,7 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
               />
             ) : (
               <FontAwesomeIcon
-                icon={faHeart}
+                icon={faHeartBroken}
                 className="proxz-btn"
                 style={{
                   color: "#717FDF",

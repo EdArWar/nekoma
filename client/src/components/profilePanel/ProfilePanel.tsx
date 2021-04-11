@@ -10,6 +10,8 @@ const ProfilePanel = () => {
   const lastName = useSelector((state: any) => state.user.lastName);
   const userMail = useSelector((state: any) => state.user.userMail);
   const avatar = useSelector((state: any) => state.user.avatar);
+  const favorites = useSelector((state: any) => state.user.favorites);
+  const userCart = useSelector((state: any) => state.user.userCart);
 
   useEffect(() => {}, [userName]);
 
@@ -41,16 +43,16 @@ const ProfilePanel = () => {
           </figure>
           <ul className="tracking">
             <li>
-              <div className="count">165</div>
-              <div className="items">Posts</div>
+              <div className="count">{favorites?.length}</div>
+              <div className="items">Favorites</div>
             </li>
             <li>
-              <div className="count">934</div>
-              <div className="items">Followers</div>
+              <div className="count">{userCart?.length}</div>
+              <div className="items">Cart</div>
             </li>
             <li>
-              <div className="count">120</div>
-              <div className="items">Following</div>
+              <div className="count">0</div>
+              <div className="items">BUY</div>
             </li>
           </ul>
         </div>
