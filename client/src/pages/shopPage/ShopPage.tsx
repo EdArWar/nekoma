@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 import { bg_01 } from "../../assets/image.assets";
 import CartPanel from "../../components/cart/CartPanel";
 import { loadAllScripts } from "../../utils/Utils";
@@ -6,6 +7,22 @@ import ProductOverView from "../homePage/productOverview/ProductOverView";
 import ProductBanner from "./../homePage/productOverview/productBunner/ProductBanner";
 
 const ShopPage = () => {
+  const location = useLocation();
+  let isHomeWatches: any;
+  if (
+    location.pathname === "/home" ||
+    location.pathname === "/" ||
+    location.pathname === "/index"
+  ) {
+    isHomeWatches = true;
+  } else {
+    isHomeWatches = false;
+  }
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [isHomeWatches]);
+
   useEffect(() => {
     loadAllScripts();
   }, []);

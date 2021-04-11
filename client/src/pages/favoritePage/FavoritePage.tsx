@@ -6,8 +6,24 @@ import { useSelector } from "react-redux";
 import { loadAllScripts } from "../../utils/Utils";
 import { IProduct } from "./../../types/ProductType";
 import FavoriteEmpty from "./favoriteEmpty/FavoriteEmpty";
+import { useLocation } from "react-router";
 
 const FavoritePage = () => {
+  const location = useLocation();
+  let isHomeWatches: any;
+  if (
+    location.pathname === "/home" ||
+    location.pathname === "/" ||
+    location.pathname === "/index"
+  ) {
+    isHomeWatches = true;
+  } else {
+    isHomeWatches = false;
+  }
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [isHomeWatches]);
   const userFavorites = useSelector((state: any) => state.user.favorites);
 
   useEffect(() => {
