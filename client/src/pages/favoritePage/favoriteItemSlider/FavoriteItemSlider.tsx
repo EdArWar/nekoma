@@ -71,16 +71,44 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
     }
   }
 
+  const card = React.useRef<HTMLElement>(null);
+  const icon = React.useRef<any>(null);
+
   function onRemoveCart(cartId: string) {
     dispatch(api_removeCart(token, cartId));
   }
-  function onRemoveFavorite(cartId: string) {
+  function onRemoveFavorite(e: any, cartId: string) {
+    console.log("icon.current?.firstElementChild");
+    console.log(icon.current?.firstElementChild);
+
+    icon.current?.firstElementChild?.classList.add("fa-spin-fast");
+    console.log("card.current?.className");
+    console.log(card.current?.className);
+    console.log(card.current?.className == "mc-active");
+
+    if (card.current?.className.indexOf("mc-active") !== -1) {
+      card.current?.classList.remove("mc-active");
+      // window.setTimeout(function () {
+      icon.current?.firstElementChild?.classList.remove("fa-arrow-left");
+      icon.current?.firstElementChild?.classList.remove("fa-spin-fast");
+      icon.current?.firstElementChild?.classList.add("fa-bars");
+      // }, 800);
+    } else {
+      card.current?.classList.add("mc-active");
+      // window.setTimeout(function () {
+      icon.current?.firstElementChild?.classList.remove("fa-bars");
+      icon.current?.firstElementChild?.classList.remove("fa-spin-fast");
+      icon.current?.firstElementChild?.classList.add("fa-arrow-left");
+      // }, 800);
+    }
+
     dispatch(api_removeFavorite(token, cartId));
+    setState(false);
   }
 
   return (
     <>
-      <article className="material-card Blue">
+      <article className="material-card Blue" ref={card}>
         <h2>
           <span>{configs.productBrand}</span>
           <strong>
@@ -123,7 +151,11 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
             </div>
           </div>
         </div>
-        <a className="mc-btn-action" onClick={() => setState(!state)}>
+        <a
+          className="mc-btn-action"
+          ref={icon}
+          onClick={() => setState(!state)}
+        >
           <i className="fa fa-bars"></i>
         </a>
         <div
@@ -144,7 +176,7 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
                   fontSize: "22px",
                   cursor: "pointer",
                 }}
-                onClick={() => onRemoveFavorite(configs._id)}
+                onClick={(e: any) => onRemoveFavorite(e, configs._id)}
               />
             ) : (
               <FontAwesomeIcon
