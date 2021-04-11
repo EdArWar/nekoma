@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   slide_01,
-  slide_04,
-  slide_05,
+  slide_02,
+  slide_03,
   thumb_01,
   thumb_02,
   thumb_03,
@@ -30,7 +30,7 @@ const Slider = () => {
                   data-delay="0"
                 >
                   <span className="ltext-202 txt-center cl0 respon2">
-                    Women Collection 2018
+                    Women Collection 2021
                   </span>
                 </div>
 
@@ -63,10 +63,10 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_04})`,
+              backgroundImage: `url(${slide_02})`,
             }}
             data-thumb={thumb_02}
-            data-caption="Men’s Wear"
+            data-caption="Women’s Wear"
           >
             <div className="container h-full">
               <div className="flex-col-c-m h-full p-t-100 p-b-60 respon5">
@@ -76,7 +76,7 @@ const Slider = () => {
                   data-delay="0"
                 >
                   <span className="ltext-202 txt-center cl0 respon2">
-                    Men New-Season
+                    New-Season
                   </span>
                 </div>
 
@@ -86,7 +86,7 @@ const Slider = () => {
                   data-delay="800"
                 >
                   <h2 className="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
-                    Jackets & Coats
+                    Jeans & Shorts
                   </h2>
                 </div>
 
@@ -109,10 +109,10 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_05})`,
+              backgroundImage: `url(${slide_03})`,
             }}
             data-thumb={thumb_03}
-            data-caption="Men’s Wear"
+            data-caption="Women’s Wear"
           >
             <div className="container h-full">
               <div className="flex-col-c-m h-full p-t-100 p-b-60 respon5">
@@ -122,7 +122,7 @@ const Slider = () => {
                   data-delay="0"
                 >
                   <span className="ltext-202 txt-center cl0 respon2">
-                    Men Collection 2018
+                    Woman Collection 2021
                   </span>
                 </div>
 

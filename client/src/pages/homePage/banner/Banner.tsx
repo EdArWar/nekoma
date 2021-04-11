@@ -17,13 +17,13 @@ const Banner = () => {
     <div className="sec-banner bg0 p-t-95 p-b-55">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 p-b-30 m-lr-auto">
+          <div className="col-md-6 p-b-30 m-lr-auto" style={{ color: "white" }}>
             <div className="block1 wrap-pic-w">
               <img srcSet={banner_04} alt="IMG-BANNER" />
 
               <Link
                 to="/shop"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-20 p-tb-20 trans-03 respon3"
                 onClick={() => dispatch(updateFilterTag("dress"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
@@ -51,7 +51,7 @@ const Banner = () => {
 
               <Link
                 to="/shop"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-20 p-tb-20 trans-03 respon3"
                 onClick={() => dispatch(updateFilterTag("hats"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
@@ -79,7 +79,7 @@ const Banner = () => {
 
               <Link
                 to="/shop"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-20 p-tb-20 trans-03 respon3"
                 onClick={() => dispatch(updateFilterTag("jeans"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
@@ -107,7 +107,7 @@ const Banner = () => {
 
               <Link
                 to="/shop"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-20 p-tb-20 trans-03 respon3"
                 onClick={() => dispatch(updateFilterTag("shorts"))}
               >
                 <div className="block1-txt-child1 flex-col-l">
@@ -135,7 +135,7 @@ const Banner = () => {
 
               <Link
                 to="/shop"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-20 p-tb-20 trans-03 respon3"
                 onClick={() => dispatch(updateFilterTag("masks"))}
               >
                 <div className="block1-txt-child1 flex-col-l">

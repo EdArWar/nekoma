@@ -10,6 +10,8 @@ import {
   setCartState,
   setSidebarState,
 } from "../../../redux/global.slice";
+import { NEKOMA } from "../../../style/Nekoma";
+import { FONTS } from "./../../../style/Fonts";
 
 const HeaderHome = () => {
   const isUser = useSelector((state: any) => state.global.isUser);
@@ -142,8 +144,14 @@ const HeaderHome = () => {
       <div className="container-menu-desktop trans-03">
         <div className="wrap-menu-desktop">
           <nav className="limiter-menu-desktop p-l-45">
-            <Link to="/home" className="logo">
-              <img srcSet={logo_02} alt="IMG-LOGO" />
+            <Link
+              to="/home"
+              className="logo"
+              style={{ fontFamily: "dock11", color: NEKOMA.RED }}
+            >
+              <h1>
+                NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
+              </h1>
             </Link>
 
             <div className="menu-desktop">
@@ -156,13 +164,13 @@ const HeaderHome = () => {
                   <Link to="/shop">Shop</Link>
                 </li>
 
-                <li className="label1" data-label1="hot">
+                <li>
                   <Link to="shopping-cart">Features</Link>
                 </li>
 
-                <li>
+                {/* <li>
                   <Link to="blog">Blog</Link>
-                </li>
+                </li> */}
 
                 <li>
                   <Link to="about">About</Link>
@@ -197,7 +205,7 @@ const HeaderHome = () => {
                 <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                   {isUser ? (
                     <FontAwesomeIcon
-                      style={{ color: "red" }}
+                      style={{ color: NEKOMA.RED }}
                       icon={faSignOutAlt}
                       // onClick={() => dispatch(api_logout())}
                       onClick={() => {

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Dock11";
+  src: url("./dock11.ttf");
+}
+@font-face {
+  font-family: "DejaVu-Sans-Book";
+  src: url("./DejaVu-Sans-Book.ttf");
+}
+@font-face {
+  font-family: "DejaVu-Sans-ExtraLight";
+  src: url("./DejaVu-Sans-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "DejaVuSans-Bold";
+  src: url("./DejaVuSans-Bold.ttf");
+}
+@font-face {
+  font-family: "Kanit-Bold";
+  src: url("./Kanit-Bold.ttf");
+}
+@font-face {
+  font-family: "Mont-Heavy";
+  src: url("./Mont-Heavy.ttf");
+}

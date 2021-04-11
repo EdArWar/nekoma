@@ -12,6 +12,7 @@ import "./vendor/slick/slick.css";
 import "./vendor/MagnificPopup/magnific-popup.css";
 import "./vendor/perfect-scrollbar/perfect-scrollbar.css";
 import "./css/util.css";
+import "./myFonts/font.css";
 import "./css/main.css";
 
 export default function Style({ children }) {

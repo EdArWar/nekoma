@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { icon_close2, logo_01, logo_02 } from "../../../assets/image.assets";
+import { NEKOMA } from "./../../../style/Nekoma";
 import {
   setCartSidebarState,
   setSidebarState,
@@ -101,8 +102,14 @@ const HeaderOther = () => {
           style={{ top: "0px", backgroundColor: "black" }}
         >
           <nav className="limiter-menu-desktop p-l-45 ">
-            <Link to="/home" className="logo">
-              <img srcSet={logo_02} alt="IMG-LOGO" />
+            <Link
+              to="/home"
+              className="logo"
+              style={{ fontFamily: "dock11", color: NEKOMA.RED }}
+            >
+              <h1>
+                NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
+              </h1>
             </Link>
             <div className="menu-desktop">
               <ul className="main-menu">
@@ -116,10 +123,6 @@ const HeaderOther = () => {
 
                 <li className="label1" data-label1="hot">
                   <NavLink to="shopping-cart">Features</NavLink>
-                </li>
-
-                <li>
-                  <NavLink to="blog">Blog</NavLink>
                 </li>
 
                 <li>
@@ -165,7 +168,7 @@ const HeaderOther = () => {
                 <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                   {isUser ? (
                     <FontAwesomeIcon
-                      style={{ color: "red" }}
+                      style={{ color: NEKOMA.RED }}
                       icon={faSignOutAlt}
                       // onClick={() => dispatch(api_logout())}
                       onClick={() => {
