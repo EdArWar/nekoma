@@ -5,6 +5,7 @@ import FavoriteItem from "./favoriteItem/FavoriteItem";
 import { useSelector } from "react-redux";
 import { loadAllScripts } from "../../utils/Utils";
 import { IProduct } from "./../../types/ProductType";
+import FavoriteEmpty from "./favoriteEmpty/FavoriteEmpty";
 
 const FavoritePage = () => {
   const userFavorites = useSelector((state: any) => state.user.favorites);
@@ -49,15 +50,16 @@ const FavoritePage = () => {
           backgroundImage: `url(${bg_01})`,
         }}
       >
-        <h2 className="ltext-105 cl0 txt-center">Shop</h2>
+        <h2 className="ltext-105 cl0 txt-center">FAVORITE</h2>
       </section>
       <section className="container" style={{ marginTop: "5%" }}>
         <div className="row active-with-click">
           {userFavorites?.map((item: IProduct, i: number) => {
-            return <FavoriteItem configs={item} />;
+            return <FavoriteItem configs={item} key={i} />;
           })}
         </div>
       </section>
+      {userFavorites.length <= 0 && <FavoriteEmpty />}
     </>
   );
 };

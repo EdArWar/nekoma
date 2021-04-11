@@ -47,7 +47,7 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
                   {configs.productImage?.map(
                     (item: IProductImage, i: number) => {
                       return (
-                        <div>
+                        <div key={i}>
                           <img
                             style={{
                               width: "85%",

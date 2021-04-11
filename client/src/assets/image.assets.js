@@ -20,6 +20,7 @@ export { default as blog_04 } from './images/blog-04.jpg';
 export { default as blog_05 } from './images/blog-05.jpg';
 export { default as blog_06 } from './images/blog-06.jpg';
 export { default as cart_empty } from './images/cart_empty.png';
+export { default as favorite_empty_bg } from './images/favorite-empty-bg.jpg';
 export { default as gallery_01 } from './images/gallery-01.jpg';
 export { default as gallery_02 } from './images/gallery-02.jpg';
 export { default as gallery_03 } from './images/gallery-03.jpg';
