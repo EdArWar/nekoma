@@ -158,10 +158,6 @@ const HeaderHome = () => {
                 </li>
 
                 <li>
-                  <Link to="/favorite">Favorite</Link>
-                </li>
-
-                <li>
                   <Link to="/about">About</Link>
                 </li>
 
