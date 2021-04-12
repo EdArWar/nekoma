@@ -116,11 +116,11 @@ const HeaderOther = () => {
             <div className="menu-desktop">
               <ul className="main-menu">
                 <li>
-                  <NavLink to="/home">Home</NavLink>
+                  <Link to="/home">Home</Link>
                 </li>
 
                 <li>
-                  <NavLink to="/shop">Shop</NavLink>
+                  <Link to="/shop">Shop</Link>
                 </li>
 
                 <li>
@@ -128,11 +128,11 @@ const HeaderOther = () => {
                 </li>
 
                 <li>
-                  <NavLink to="about">About</NavLink>
+                  <Link to="/about">About</Link>
                 </li>
 
                 <li>
-                  <NavLink to="contact">Contact</NavLink>
+                  <Link to="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -177,7 +177,6 @@ const HeaderOther = () => {
                     <FontAwesomeIcon
                       style={{ color: NEKOMA.RED }}
                       icon={faSignOutAlt}
-                      // onClick={() => dispatch(api_logout())}
                       onClick={() => {
                         onSidebarClicked();
                       }}
@@ -199,17 +198,26 @@ const HeaderOther = () => {
 
       <div className="wrap-header-mobile">
         <div className="logo-mobile">
-          <Link to="/home">
-            <img srcSet={logo_01} alt="IMG-LOGO" />
+          <Link
+            to="/home"
+            className="logo"
+            style={{ fontFamily: "dock11", color: "black" }}
+          >
+            <h4>
+              NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
+            </h4>
           </Link>
         </div>
 
         <div className="wrap-icon-header flex-w flex-r-m h-full m-r-15">
           <div
             className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-            data-notify="0"
+            data-notify={favoriteCount?.length > 0 ? favoriteCount?.length : 0}
           >
-            <i className="zmdi zmdi-favorite"></i>
+            <Link to="/favorite">
+              {" "}
+              <i className="zmdi zmdi-favorite "></i>
+            </Link>
           </div>
           <div className="flex-c-m h-full p-r-5">
             <div
@@ -236,19 +244,30 @@ const HeaderOther = () => {
               className="right-top-bar flex-w h-full"
               style={{ display: "flex", justifyContent: "space-around" }}
             >
-              <a
-                href="!#"
-                className="flex-c-m p-lr-10 trans-04"
-                onClick={(e) => e.preventDefault()}
-              >
-                {isUser ? "Logout" : "Login"}
-              </a>
+              <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                {isUser ? (
+                  <FontAwesomeIcon
+                    style={{ color: NEKOMA.RED }}
+                    icon={faSignOutAlt}
+                    onClick={() => {
+                      onSidebarClicked();
+                    }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faSignInAlt}
+                    onClick={() => {
+                      onSidebarClicked();
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </li>
         </ul>
         <ul className="main-menu-m">
           <li>
-            <NavLink to="/home">Home</NavLink>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/shop">Shop</Link>

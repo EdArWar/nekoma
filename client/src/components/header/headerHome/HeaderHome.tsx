@@ -218,22 +218,31 @@ const HeaderHome = () => {
 
       <div className="wrap-header-mobile">
         <div className="logo-mobile">
-          <Link to="/home" className="logo">
-            <img srcSet={logo_01} alt="IMG-LOGO" />
+          <Link
+            to="/home"
+            className="logo"
+            style={{ fontFamily: "dock11", color: "black" }}
+          >
+            <h4>
+              NE<span style={{ color: NEKOMA.ORANGE }}>KO</span>MA
+            </h4>
           </Link>
         </div>
 
         <div className="wrap-icon-header flex-w flex-r-m h-full m-r-15">
           <div
             className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-            data-notify="0"
+            data-notify={favoriteCount?.length > 0 ? favoriteCount?.length : 0}
           >
-            <i className="zmdi zmdi-favorite"></i>
+            <Link to="/favorite">
+              <i className="zmdi zmdi-favorite"></i>
+            </Link>
           </div>
           <div className="flex-c-m h-full p-r-5">
             <div
               className="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-              data-notify="2"
+              data-notify={cartCount?.length > 0 ? cartCount?.length : 0}
+              onClick={() => onCartClicked()}
             >
               <i className="zmdi zmdi-shopping-cart"></i>
             </div>
@@ -254,13 +263,24 @@ const HeaderHome = () => {
               className="right-top-bar flex-w h-full"
               style={{ display: "flex", justifyContent: "space-around" }}
             >
-              <a
-                href="!#"
-                className="flex-c-m p-lr-10 trans-04"
-                onClick={(e) => e.preventDefault()}
-              >
-                {isUser ? "Logout" : "Login"}
-              </a>
+              <div className="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                {isUser ? (
+                  <FontAwesomeIcon
+                    style={{ color: NEKOMA.RED }}
+                    icon={faSignOutAlt}
+                    onClick={() => {
+                      onSidebarClicked();
+                    }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faSignInAlt}
+                    onClick={() => {
+                      onSidebarClicked();
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </li>
         </ul>
