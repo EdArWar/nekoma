@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { IProduct } from "./../../../types/ProductType";
 import ProductItem from "./productItme/ProductItem";
 import TabAndFilter from "./tabAndFilter/TabAndFilter";
-import { IProduct } from "./../../../types/ProductType";
 
 const ProductOverView: React.FC<any> = ({ page }) => {
   const productData = useSelector((state: any) => state.global.productData);
@@ -12,9 +12,9 @@ const ProductOverView: React.FC<any> = ({ page }) => {
     if (filterTag === item.productTag?.toLowerCase()) {
       return <ProductItem key={i} configs={item} />;
     }
-    if (filterTag === "all products") {
-      return <ProductItem key={i} configs={item} />;
-    }
+    // if (filterTag === "all products") {
+    //   return <ProductItem key={i} configs={item} />;
+    // }
   });
 
   return (
