@@ -16,7 +16,9 @@ const HeaderOther = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const cartCount = useSelector((state: any) => state.user.userCart.length);
   const favoriteCount = useSelector((state: any) => state.user.favorites);
-
+  const cartSidebarState = useSelector(
+    (state: any) => state.global.cartSidebarState
+  );
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -30,6 +32,7 @@ const HeaderOther = () => {
   } else {
     isHomeWatches = false;
   }
+  const menuBurgerRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     var wrapMenu = $(".wrap-menu-desktop");
@@ -43,11 +46,6 @@ const HeaderOther = () => {
     } else {
       window.removeEventListener("scroll", handleScroll);
     }
-
-    $(".btn-show-menu-mobile").on("click", function () {
-      $(this).toggleClass("is-active");
-      $(".menu-mobile").slideToggle();
-    });
 
     var arrowMainMenu = $(".arrow-main-menu-m");
 
@@ -79,6 +77,11 @@ const HeaderOther = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isUser, isHomeWatches]);
+
+  useEffect(() => {
+    menuBurgerRef.current?.classList.remove("is-active");
+    $(".menu-mobile").slideUp();
+  }, [location.pathname, sidebarState, cartSidebarState]);
 
   function onSidebarClicked() {
     dispatch(setSidebarState(!sidebarState));
@@ -230,8 +233,14 @@ const HeaderOther = () => {
           </div>
         </div>
 
-        <div className="btn-show-menu-mobile hamburger hamburger--squeeze">
-          <span className="hamburger-box">
+        <div
+          className="btn-show-menu-mobile hamburger hamburger--squeeze"
+          onClick={(e: any) => {
+            $(e.target).toggleClass("is-active");
+            $(".menu-mobile").slideToggle();
+          }}
+        >
+          <span className="hamburger-box" ref={menuBurgerRef}>
             <span className="hamburger-inner"></span>
           </span>
         </div>
