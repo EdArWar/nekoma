@@ -79,6 +79,7 @@ export { default as product_min_03 } from './images/product-min-03.jpg';
 export { default as slide_01 } from './images/slide-01.jpg';
 export { default as slide_02 } from './images/slide-02.jpg';
 export { default as slide_03 } from './images/slide-03.jpg';
+export { default as test_photo } from './images/test_photo.jpg';
 export { default as thumb_01 } from './images/thumb-01.jpg';
 export { default as thumb_02 } from './images/thumb-02.jpg';
 export { default as thumb_03 } from './images/thumb-03.jpg';

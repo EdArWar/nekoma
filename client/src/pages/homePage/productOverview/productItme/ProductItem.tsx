@@ -14,7 +14,7 @@ import {
   api_removeCart,
   api_removeFavorite,
 } from "../../../../api/API";
-import { load_effect } from "../../../../assets/image.assets";
+import { load_effect, test_photo } from "../../../../assets/image.assets";
 import { NEKOMA } from "../../../../style/Nekoma";
 import { IProductDataConfig } from "./../../../../types/ProductType";
 import "./ProductItem.scss";
@@ -70,17 +70,8 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   return (
     <div
       className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item  h_card_item_show ${configs.productTag.toLowerCase()}`}
-      style={{
-        height: "450px",
-      }}
     >
-      <div
-        className="block2"
-        style={{
-          width: "100%",
-          height: "450px",
-        }}
-      >
+      <div className="block2">
         <NavLink
           to={`/singleProduct?id=${configs._id}`}
           className={
@@ -91,7 +82,8 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
           data-label={configs._id <= "1" ? "New" : ""}
         >
           <img
-            srcSet={configs.productImage[0].url}
+            srcSet={!load ? configs.productImage[0].url : test_photo}
+            style={{ visibility: !load ? "visible" : "hidden" }}
             alt="IMG-PRODUCT"
             loading="lazy"
             onLoad={() => {
@@ -102,12 +94,6 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
             in={load}
             timeout={500}
             classNames="my-cart-item-node"
-            // onEntered={() => console.log("onEntered")}
-            // onEntering={() => console.log("onEntered")}
-            // onEnter={() => console.log("onEnter")}
-            // onExit={() => console.log("onExit")}
-            // onExiting={() => console.log("onExiting")}
-            // onExited={() => console.log("onExited")}
             unmountOnExit
             mountOnEnter
           >
