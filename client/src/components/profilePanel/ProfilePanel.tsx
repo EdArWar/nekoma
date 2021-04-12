@@ -52,7 +52,7 @@ const ProfilePanel = () => {
             </li>
             <li>
               <div className="count">0</div>
-              <div className="items">BUY</div>
+              <div className="items">Buy</div>
             </li>
           </ul>
         </div>
