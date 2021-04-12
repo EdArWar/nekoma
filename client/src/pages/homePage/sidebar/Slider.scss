@@ -44,8 +44,19 @@
 }
 
 @media (max-width: 991px) {
-  .wrap-sidebar {
-    display: none;
+  // .log_close_button {
+  //   display: inline-block;
+  // }
+}
+@media (max-width: 411px) {
+  #tile-1 .nav-tabs li a {
+    padding: 20px 29px !important;
+  }
+  .tile {
+    width: 97% !important;
+  }
+  .reg_login {
+    height: 88vh !important;
   }
 }
 

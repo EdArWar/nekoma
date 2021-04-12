@@ -18,7 +18,7 @@ const Sidebar = () => {
   useEffect(() => {}, [sidebarState]);
 
   return (
-    <aside className={`wrap-sidebar js-sidebar show-sidebar `}>
+    <div className={`wrap-sidebar js-sidebar show-sidebar `}>
       <div
         className="s-full js-hide-sidebar"
         onClick={() => onSidebarWrapClicked()}
@@ -35,7 +35,7 @@ const Sidebar = () => {
         </div> */}
         {isUser ? <ProfilePanel /> : <LogAndRegister />}
       </div>
-    </aside>
+    </div>
   );
 };
 

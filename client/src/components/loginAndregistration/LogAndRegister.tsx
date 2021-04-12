@@ -33,6 +33,7 @@ const LogAndRegister = () => {
       <div className="tile" id="tile-1">
         <ul className="nav nav-tabs nav-justified" role="tablist">
           <div className="slider" style={{ width: "50%" }}></div>
+
           <li className="nav-item">
             <a
               className="nav-link active"

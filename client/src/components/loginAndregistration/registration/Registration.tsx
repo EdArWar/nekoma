@@ -115,6 +115,13 @@ const Registration = () => {
   return (
     <>
       <div className="reg_login" style={{ height: "100%" }}>
+        <div
+          className="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart log_close_button"
+          onClick={() => dispatch(setSidebarState(false))}
+          style={{}}
+        >
+          <i className="zmdi zmdi-close"></i>
+        </div>
         <div className="reg_login_title">
           <span>Registration</span>
         </div>

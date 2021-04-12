@@ -84,9 +84,17 @@ const Login = () => {
   return (
     <>
       <div className="login">
+        <div
+          className="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart log_close_button"
+          onClick={() => dispatch(setSidebarState(false))}
+          style={{}}
+        >
+          <i className="zmdi zmdi-close"></i>
+        </div>
         <div className="login_title">
           <span>Login to your account</span>
         </div>
+
         <div className="login_fields">
           <div className="login_fields__user">
             <div className="icon">
