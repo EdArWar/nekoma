@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { IProduct, IProductImage } from "../../../types/ProductType";
+import { loadAllScripts } from "../../../utils/Utils";
 
 const ProductDetail = () => {
   const productData: IProduct[] = useSelector(
@@ -12,6 +13,16 @@ const ProductDetail = () => {
   const galleryRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // loadAllScripts();
+    window.scroll(0, 0);
+
+    $(".js-select2").each(function () {
+      //@ts-ignore
+      $(this).select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $(this).next(".dropDownSelect2"),
+      });
+    });
     $(".gallery-lb").each(function () {
       //@ts-ignore
       $(this).magnificPopup({
@@ -23,7 +34,7 @@ const ProductDetail = () => {
         mainClass: "mfp-fade",
       });
     });
-  }, [productData]);
+  }, [location.pathname]);
 
   return (
     <section className="sec-product-detail bg0 p-t-65 p-b-60">
@@ -87,6 +98,40 @@ const ProductDetail = () => {
               })}
 
               <div className="p-t-33">
+                <div className="flex-w flex-r-m p-b-10">
+                  <div className="size-203 flex-c-m respon6">Size</div>
+
+                  <div className="size-204 respon6-next">
+                    <div className="rs1-select2 bor8 bg0">
+                      <select className="js-select2" name="time">
+                        <option>Choose an option</option>
+                        <option>Size S</option>
+                        <option>Size M</option>
+                        <option>Size L</option>
+                        <option>Size XL</option>
+                      </select>
+                      <div className="dropDownSelect2"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-w flex-r-m p-b-10">
+                  <div className="size-203 flex-c-m respon6">Color</div>
+
+                  <div className="size-204 respon6-next">
+                    <div className="rs1-select2 bor8 bg0">
+                      <select className="js-select2" name="time">
+                        <option>Choose an option</option>
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>White</option>
+                        <option>Grey</option>
+                      </select>
+                      <div className="dropDownSelect2"></div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex-w flex-r-m p-b-10">
                   <div className="size-204 flex-w flex-m respon6-next">
                     <div className="wrap-num-product flex-w m-r-20 m-tb-10">

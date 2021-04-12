@@ -212,12 +212,12 @@
   $(".js-hide-modal1").on("click", function () {
     $(".js-modal1").removeClass("show-modal1");
   });
-  $(".js-select2").each(function () {
-    $(this).select2({
-      minimumResultsForSearch: 20,
-      dropdownParent: $(this).next(".dropDownSelect2"),
-    });
-  });
+  // $(".js-select2").each(function () {
+  //   $(this).select2({
+  //     minimumResultsForSearch: 20,
+  //     dropdownParent: $(this).next(".dropDownSelect2"),
+  //   });
+  // });
   $(".parallax100").parallax100();
 
   // $(".gallery-lb").each(function () {
