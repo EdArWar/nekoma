@@ -4,8 +4,8 @@ import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import { api_login } from "../../../api/API";
 import "./Login.scss";
 const Login = () => {
-  const [email, setEmail] = useState("edgarcho@mail.ru");
-  const [password, setPassword] = useState("ssssss");
+  const [email, setEmail] = useState("jimdontcare@gmail.com");
+  const [password, setPassword] = useState("jim123");
 
   const sidebar = useSelector((state: any) => state.global.sidebar);
 
