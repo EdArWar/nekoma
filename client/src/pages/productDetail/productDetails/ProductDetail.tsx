@@ -1,8 +1,23 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import {
+  faCartArrowDown,
+  faCartPlus,
+  faHeart,
+  faHeartBroken,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
+import {
+  api_addToCart,
+  api_addToFavorite,
+  api_removeCart,
+  api_removeFavorite,
+} from "../../../api/API";
 import { IProduct, IProductImage } from "../../../types/ProductType";
 import { loadAllScripts } from "../../../utils/Utils";
+import { NEKOMA } from "./../../../style/Nekoma";
+import "./ProductDetail.scss";
 
 const ProductDetail = () => {
   const productData: IProduct[] = useSelector(
@@ -12,6 +27,56 @@ const ProductDetail = () => {
   const urlId = location.search.split("=")[1];
   const galleryRef = React.useRef<HTMLDivElement>(null);
 
+  const [state, setState] = useState(false);
+  const userCart = useSelector((state: any) => state.user.userCart);
+  const userFavorite = useSelector((state: any) => state.user.favorites);
+  const [added, setAdded] = useState(false);
+  const [addedFavorite, setAddedFavorite] = useState(false);
+  const isUser = useSelector((state: any) => state.global.isUser);
+  const dispatch = useDispatch();
+  const token = useSelector((state: any) => state.user.token);
+
+  useEffect(() => {}, [state]);
+
+  useEffect(() => {
+    const isCard = userCart?.find((item: any, i: number) => {
+      return item._id === urlId;
+    });
+    const isFavorite = userFavorite?.find((item: any, i: number) => {
+      return item._id === urlId;
+    });
+    !isUser ? setAdded(false) : setAdded(isCard);
+    !isUser ? setAddedFavorite(false) : setAddedFavorite(isFavorite);
+  }, [userCart, isUser, userFavorite]);
+
+  function onAddCartClicked() {
+    console.log("onAddCartClicked");
+    if (!isUser) {
+      console.log("Need To Registration");
+    } else {
+      dispatch(api_addToCart(token, urlId));
+      !isUser ? setAdded(false) : setAdded(!added);
+    }
+  }
+  function onAddFavoriteClicked() {
+    console.log("onAddCartClicked");
+    if (!isUser) {
+      console.log("Need To Registration");
+    } else {
+      dispatch(api_addToFavorite(token, urlId));
+      !isUser ? setAddedFavorite(false) : setAddedFavorite(!added);
+    }
+  }
+
+  function onRemoveCart(cartId: string) {
+    dispatch(api_removeCart(token, cartId));
+  }
+
+  function onRemoveFavorite(e: any, cartId: string) {
+    dispatch(api_removeFavorite(token, cartId));
+    setState(false);
+  }
+
   useEffect(() => {
     // loadAllScripts();
     window.scroll(0, 0);
@@ -19,8 +84,8 @@ const ProductDetail = () => {
     $(".js-select2").each(function () {
       //@ts-ignore
       $(this).select2({
-        minimumResultsForSearch: 20,
-        dropdownParent: $(this).next(".dropDownSelect2"),
+        // minimumResultsForSearch: 20,
+        // dropdownParent: $(this).next(".dropDownSelect2"),
       });
     });
     $(".gallery-lb").each(function () {
@@ -35,6 +100,10 @@ const ProductDetail = () => {
       });
     });
   }, [location.pathname]);
+
+  function ddd() {
+    return false;
+  }
 
   return (
     <section className="sec-product-detail bg0 p-t-65 p-b-60">
@@ -98,75 +167,108 @@ const ProductDetail = () => {
               })}
 
               <div className="p-t-33">
-                <div className="flex-w flex-r-m p-b-10">
+                <div
+                  className="flex-w flex-r-m p-b-10"
+                  style={{ opacity: 0.7, cursor: "no-drop" }}
+                >
                   <div className="size-203 flex-c-m respon6">Size</div>
 
-                  <div className="size-204 respon6-next">
-                    <div className="rs1-select2 bor8 bg0">
-                      <select className="js-select2" name="time">
-                        <option>Choose an option</option>
-                        <option>Size S</option>
-                        <option>Size M</option>
-                        <option>Size L</option>
-                        <option>Size XL</option>
-                      </select>
-                      <div className="dropDownSelect2"></div>
-                    </div>
+                  <div
+                    className="size-204 respon6-next"
+                    style={{
+                      border: "2px solid gray",
+                      height: "30px",
+                      borderRadius: "50px",
+                      textAlign: "center",
+                      cursor: "no-drop",
+                    }}
+                  >
+                    M
                   </div>
                 </div>
 
-                <div className="flex-w flex-r-m p-b-10">
+                <div
+                  className="flex-w flex-r-m p-b-10"
+                  style={{ opacity: 0.7, cursor: "no-drop" }}
+                >
                   <div className="size-203 flex-c-m respon6">Color</div>
 
-                  <div className="size-204 respon6-next">
-                    <div className="rs1-select2 bor8 bg0">
-                      <select className="js-select2" name="time">
-                        <option>Choose an option</option>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>White</option>
-                        <option>Grey</option>
-                      </select>
-                      <div className="dropDownSelect2"></div>
-                    </div>
+                  <div
+                    className="size-204 respon6-next"
+                    style={{
+                      border: "2px solid gray",
+                      height: "30px",
+                      borderRadius: "50px",
+                      textAlign: "center",
+                      cursor: "no-drop",
+                    }}
+                  >
+                    White
                   </div>
                 </div>
 
                 <div className="flex-w flex-r-m p-b-10">
-                  <div className="size-204 flex-w flex-m respon6-next">
-                    <div className="wrap-num-product flex-w m-r-20 m-tb-10">
-                      <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                        <i className="fs-16 zmdi zmdi-minus"></i>
-                      </div>
-
-                      <input
-                        className="mtext-104 cl3 txt-center num-product"
-                        type="number"
-                        name="num-product"
-                        value="1"
-                      />
-
-                      <div className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                        <i className="fs-16 zmdi zmdi-plus"></i>
-                      </div>
-                    </div>
-
-                    <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                      Add to cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-w flex-m p-l-100 p-t-40 respon7">
-                <div className="flex-m bor9 p-r-10 m-r-11">
-                  <a
-                    href="#"
-                    className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                    data-tooltip="Add to Wishlist"
+                  <div
+                    className="mc-footer"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-around",
+                      alignItems: "center",
+                      width: "100%",
+                      marginTop: "5%",
+                    }}
                   >
-                    <i className="zmdi zmdi-favorite"></i>
-                  </a>
+                    <div className="prod_btn-container">
+                      {addedFavorite ? (
+                        <FontAwesomeIcon
+                          icon={faHeart}
+                          className="prod_proxz-btn"
+                          style={{
+                            color: NEKOMA.RED,
+                            fontSize: "22px",
+                            cursor: "pointer",
+                          }}
+                          onClick={(e: any) => onRemoveFavorite(e, urlId)}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faHeartBroken}
+                          className="prod_proxz-btn"
+                          style={{
+                            color: "#717FDF",
+                            fontSize: "22px",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => onAddFavoriteClicked()}
+                        />
+                      )}
+                    </div>
+                    <div className="prod_btn-container">
+                      {added ? (
+                        <FontAwesomeIcon
+                          icon={faCartArrowDown}
+                          className="prod_proxz-btn"
+                          style={{
+                            color: "#00DA00",
+                            fontSize: "22px",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => onRemoveCart(urlId)}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faCartPlus}
+                          className="prod_proxz-btn"
+                          style={{
+                            color: "#717FDF",
+                            fontSize: "22px",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => onAddCartClicked()}
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
