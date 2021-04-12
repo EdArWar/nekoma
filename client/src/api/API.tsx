@@ -126,8 +126,8 @@ export const api_logout = () => {
           lastName: null,
           email: null,
           avatar: null,
-          favorites: null,
-          userCart: null,
+          favorites: [],
+          userCart: [],
         })
       );
       localStorage.removeItem("token");
