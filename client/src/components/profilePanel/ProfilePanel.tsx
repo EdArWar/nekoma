@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebarState } from "../../redux/global.slice";
-import "./ProfilePanel.scss";
 import { api_logout } from "./../../api/API";
+import "./ProfilePanel.scss";
 const ProfilePanel = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
   const isUser = useSelector((state: any) => state.global.isUser);
@@ -56,41 +56,48 @@ const ProfilePanel = () => {
             </li>
           </ul>
         </div>
-        <div className="bar_tool">
-          <span className="ui_btn b_lg b_primary">+ Follow</span>
-        </div>
-        <p className="user_intro">
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas.
-        </p>
       </div>
-      <ul className="sidebar-link w-full">
+      <ul className="sidebar-link w-full" style={{ marginTop: "5%" }}>
         <li className="p-b-13">
-          <a href="index.html" className="stext-102 cl2 hov-cl1 trans-04">
-            Home
-          </a>
-        </li>
-
-        <li className="p-b-13">
-          <a href="#" className="stext-102 cl2 hov-cl1 trans-04">
+          <a
+            href="#"
+            className="stext-102 cl2 hov-cl1 trans-04"
+            onClick={(e: any) => e.preventDefault()}
+            style={{ cursor: "no-drop" }}
+          >
             My Wishlist
           </a>
         </li>
 
         <li className="p-b-13">
-          <a href="#" className="stext-102 cl2 hov-cl1 trans-04">
+          <a
+            href="#"
+            className="stext-102 cl2 hov-cl1 trans-04"
+            style={{ cursor: "no-drop" }}
+            onClick={(e: any) => e.preventDefault()}
+          >
             My Account
           </a>
         </li>
 
         <li className="p-b-13">
-          <a href="#" className="stext-102 cl2 hov-cl1 trans-04">
+          <a
+            href="#"
+            className="stext-102 cl2 hov-cl1 trans-04"
+            style={{ cursor: "no-drop" }}
+            onClick={(e: any) => e.preventDefault()}
+          >
             Track Oder
           </a>
         </li>
 
         <li className="p-b-13">
-          <a href="#" className="stext-102 cl2 hov-cl1 trans-04">
+          <a
+            href="#"
+            className="stext-102 cl2 hov-cl1 trans-04"
+            style={{ cursor: "no-drop" }}
+            onClick={(e: any) => e.preventDefault()}
+          >
             Refunds
           </a>
         </li>

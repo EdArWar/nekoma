@@ -15,7 +15,6 @@ import {
   api_removeFavorite,
 } from "../../../api/API";
 import { IProduct, IProductImage } from "../../../types/ProductType";
-import { loadAllScripts } from "../../../utils/Utils";
 import { NEKOMA } from "./../../../style/Nekoma";
 import "./ProductDetail.scss";
 
@@ -50,18 +49,16 @@ const ProductDetail = () => {
   }, [userCart, isUser, userFavorite]);
 
   function onAddCartClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToCart(token, urlId));
       !isUser ? setAdded(false) : setAdded(!added);
     }
   }
   function onAddFavoriteClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToFavorite(token, urlId));
       !isUser ? setAddedFavorite(false) : setAddedFavorite(!added);
@@ -78,16 +75,8 @@ const ProductDetail = () => {
   }
 
   useEffect(() => {
-    // loadAllScripts();
     window.scroll(0, 0);
 
-    $(".js-select2").each(function () {
-      //@ts-ignore
-      $(this).select2({
-        // minimumResultsForSearch: 20,
-        // dropdownParent: $(this).next(".dropDownSelect2"),
-      });
-    });
     $(".gallery-lb").each(function () {
       //@ts-ignore
       $(this).magnificPopup({
@@ -100,10 +89,6 @@ const ProductDetail = () => {
       });
     });
   }, [location.pathname]);
-
-  function ddd() {
-    return false;
-  }
 
   return (
     <section className="sec-product-detail bg0 p-t-65 p-b-60">

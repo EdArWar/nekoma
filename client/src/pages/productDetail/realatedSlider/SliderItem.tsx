@@ -1,20 +1,7 @@
 import React from "react";
-import { IProduct, IProductDataConfig } from "./../../../types/ProductType";
-
-//  _id,
-//   productBrand,
-//   date,
-//   productDescription,
-//   productImage,
-//   productName,
-//   productPrice,
-//   quantity,
-//   productTag,
-//   productTitle,
+import { IProductDataConfig } from "./../../../types/ProductType";
 
 const SliderItem = ({ configs }: IProductDataConfig) => {
-  console.log("SliderItem");
-
   return (
     <div className="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
       <div className="block2">

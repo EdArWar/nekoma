@@ -1,23 +1,20 @@
 import {
   faCartArrowDown,
   faCartPlus,
-  faHeart,
   faHeartBroken,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { RefObject, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Slider from "react-slick";
+import { api_addToCart, api_addToFavorite } from "../../../api/API";
+import { api_removeCart, api_removeFavorite } from "./../../../api/API";
+import { NEKOMA } from "./../../../style/Nekoma";
 import {
   IProductDataConfig,
   IProductImage,
 } from "./../../../types/ProductType";
-import { api_addToCart, api_addToFavorite } from "../../../api/API";
-import { api_removeFavorite, api_removeCart } from "./../../../api/API";
-import { NEKOMA } from "./../../../style/Nekoma";
 import "./FavoriteItemSlider.scss";
-import { CSSTransition } from "react-transition-group";
 
 const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
   const [state, setState] = useState(false);
@@ -53,18 +50,16 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
   };
 
   function onAddCartClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToCart(token, configs._id));
       !isUser ? setAdded(false) : setAdded(!added);
     }
   }
   function onAddFavoriteClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToFavorite(token, configs._id));
       !isUser ? setAddedFavorite(false) : setAddedFavorite(!added);
@@ -78,13 +73,7 @@ const FavoriteItemSlider: React.FC<IProductDataConfig> = ({ configs }) => {
     dispatch(api_removeCart(token, cartId));
   }
   function onRemoveFavorite(e: any, cartId: string) {
-    console.log("icon.current?.firstElementChild");
-    console.log(icon.current?.firstElementChild);
-
     icon.current?.firstElementChild?.classList.add("fa-spin-fast");
-    console.log("card.current?.className");
-    console.log(card.current?.className);
-    console.log(card.current?.className == "mc-active");
 
     if (card.current?.className.indexOf("mc-active") !== -1) {
       card.current?.classList.remove("mc-active");

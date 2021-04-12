@@ -40,18 +40,16 @@ const ProductItem: React.FC<IProductDataConfig> = ({ configs }) => {
   }, [userCart, isUser, userFavorite]);
 
   function onAddCartClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToCart(token, configs._id));
       !isUser ? setAdded(false) : setAdded(!added);
     }
   }
   function onAddFavoriteClicked() {
-    console.log("onAddCartClicked");
     if (!isUser) {
-      console.log("Need To Registration");
+      alert("Need To Registration");
     } else {
       dispatch(api_addToFavorite(token, configs._id));
       !isUser ? setAddedFavorite(false) : setAddedFavorite(!added);

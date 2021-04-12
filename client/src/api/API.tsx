@@ -58,7 +58,6 @@ export const api_registration = (
       }
     } catch (e) {
       alert(e.response.data.message);
-      console.log(e, "api_registration");
       activateForm();
     }
   };
@@ -108,7 +107,6 @@ export const api_login = (
       }
     } catch (e) {
       alert(e.response.data.message);
-      console.log(e, "api_login");
       activateForm();
     }
   };
@@ -133,7 +131,6 @@ export const api_logout = () => {
       localStorage.removeItem("token");
     } catch (e) {
       alert(e);
-      console.log(e, "api_logout");
     }
   };
 };
@@ -176,7 +173,6 @@ export const api_auth = () => {
       }
     } catch (e) {
       localStorage.removeItem("token");
-      console.log(e, "api_auth");
     }
   };
 };
@@ -205,8 +201,6 @@ export const api_addToCart = (token: string, cartId: string) => {
 
       if (response.statusText === "OK") {
         dispatch(setCartProduct(response.data.userCart));
-        console.log("------------");
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);
@@ -244,8 +238,6 @@ export const api_addToFavorite = (token: string, favoriteId: string) => {
 
       if (response.statusText === "OK") {
         dispatch(setFavorites(response.data.favorites));
-        console.log("------------");
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);

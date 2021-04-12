@@ -5,14 +5,11 @@ import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import "./Reagistration.scss";
 
 const Registration = () => {
-  const [userName, setUserName] = useState("Ed");
-  const [lastName, setLastName] = useState("Vardanyan");
-  const [email, setEmail] = useState("edgarcho@mail.ru");
-  const [password, setPassword] = useState("ssssss");
-  // const [userName, setUserName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const [avatar, setAvatar] = useState("");
 
   const onChangeFile = (e: any) => {
@@ -48,20 +45,17 @@ const Registration = () => {
   };
 
   function disableForm() {
-    console.log("disableForm");
     $(".reg_login").addClass("reg_test");
     setTimeout(function () {
       $(".reg_login").addClass("reg_testtwo");
     }, 300);
   }
   function activateForm() {
-    console.log("activateForm");
     setTimeout(function () {
       $(".reg_login").removeClass("reg_testtwo");
     }, 300);
   }
   function successForm() {
-    console.log("successForm");
     setTimeout(function () {
       $(".reg_login").removeClass("reg_test");
       $(".reg_login div").fadeOut(123);

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { cart_empty } from "../../assets/image.assets";
-import { setCartSidebarState, setCartState } from "../../redux/global.slice";
+import { setCartSidebarState } from "../../redux/global.slice";
 import CartItem from "./cartItem/CartItem";
 import "./CartPanel.scss";
 
@@ -10,8 +10,6 @@ export default function CartPanel() {
   const cartData = useSelector((state: any) => state.user.userCart);
   let totalPrice = 0;
   let content = [];
-  console.log("cartData");
-  console.log(cartData);
 
   if (!!cartData && cartData.length > 0) {
     content = cartData.map((item: any, i: any) => {

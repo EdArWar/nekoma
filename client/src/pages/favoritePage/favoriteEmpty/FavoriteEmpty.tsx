@@ -1,12 +1,10 @@
 import React from "react";
-import "./FavoriteEmpty.scss";
 import { favorite_empty_bg } from "../../../assets/image.assets";
 import { FONTS } from "./../../../style/Fonts";
 import { NEKOMA } from "./../../../style/Nekoma";
+import "./FavoriteEmpty.scss";
 
 const FavoriteEmpty = () => {
-  console.log("FavoriteEmpty");
-
   return (
     <div
       className="favoriteEmpty_wrap container-fluid"
