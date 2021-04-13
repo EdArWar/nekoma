@@ -1,5 +1,6 @@
 import React, { SetStateAction, useEffect } from "react";
 import { useSelector } from "react-redux";
+import PaypalButton from "./PaypalButton";
 
 const CartTotals = () => {
   const cartData = useSelector((state: any) => state.user.userCart);
@@ -33,12 +34,14 @@ const CartTotals = () => {
           </div>
         </div>
 
-        <button
+        <PaypalButton total={total} />
+
+        {/* <button
           className="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
           onClick={(e) => e.preventDefault()}
         >
           Proceed to Checkout
-        </button>
+        </button> */}
       </div>
     </div>
   );
