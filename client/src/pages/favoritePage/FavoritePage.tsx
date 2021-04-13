@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { bg_01 } from "../../assets/image.assets";
-import "./FavoritePage.scss";
-import FavoriteItem from "./favoriteItem/FavoriteItem";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
+import { bg_01 } from "../../assets/image.assets";
 import { loadAllScripts } from "../../utils/Utils";
 import { IProduct } from "./../../types/ProductType";
 import FavoriteEmpty from "./favoriteEmpty/FavoriteEmpty";
-import { useLocation } from "react-router";
+import FavoriteItem from "./favoriteItem/FavoriteItem";
+import "./FavoritePage.scss";
 
 const FavoritePage = () => {
   const location = useLocation();
@@ -66,7 +66,7 @@ const FavoritePage = () => {
           backgroundImage: `url(${bg_01})`,
         }}
       >
-        <h2 className="ltext-105 cl0 txt-center">FAVORITE</h2>
+        <h2 className="ltext-105 cl0 txt-center">Favorite</h2>
       </section>
       <section className="container" style={{ marginTop: "5%" }}>
         <div className="row active-with-click">
