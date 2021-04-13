@@ -6,10 +6,10 @@ import "./Loader.scss";
 export default function Loader() {
   const dispatch = useDispatch();
 
-  console.log = console.warn = console.error = () => {};
+  // console.log = console.warn = console.error = () => {};
 
-  // Look ma, no error!
-  console.error("Something bad happened.");
+  // // Look ma, no error!
+  // console.error("Something bad happened.");
   useEffect(() => {
     dispatch(api_auth());
     dispatch(api_getAllProducts());

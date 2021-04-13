@@ -52,6 +52,7 @@ const Registration = () => {
   }
   function activateForm() {
     setTimeout(function () {
+      $(".reg_login").removeClass("reg_test");
       $(".reg_login").removeClass("reg_testtwo");
     }, 300);
   }
@@ -71,19 +72,6 @@ const Registration = () => {
   const sidebar = useSelector((state: any) => state.global.sidebar);
 
   useEffect(() => {
-    // $('input[type="submit"]').click(function () {
-    //   $(".reg_login").addClass("test");
-    //   setTimeout(function () {
-    //     $(".reg_login").addClass("testtwo");
-    //   }, 300);
-    //   setTimeout(function () {
-    //     $(".reg_login").removeClass("test");
-    //     $(".reg_login div").fadeOut(123);
-    //   }, 2800);
-    //   setTimeout(function () {
-    //     $(".reg_success").fadeIn();
-    //   }, 3200);
-    // });
     $('input[type="text"],input[type="password"]').focus(function () {
       $(this).prev().animate({ opacity: "1" }, 200);
     });

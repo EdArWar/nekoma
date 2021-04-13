@@ -11,6 +11,7 @@ export { default as bg_01 } from './images/bg-01.jpg';
 export { default as bg_02 } from './images/bg-02.jpg';
 export { default as cart_empty } from './images/cart_empty.png';
 export { default as favorite_empty_bg } from './images/favorite-empty-bg.jpg';
+export { default as guest_avatar } from './images/guest_avatar.jpg';
 export { default as icon_close } from './images/icons/icon-close.png';
 export { default as icon_close2 } from './images/icons/icon-close2.png';
 export { default as icon_email } from './images/icons/icon-email.png';

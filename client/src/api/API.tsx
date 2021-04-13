@@ -57,8 +57,8 @@ export const api_registration = (
         localStorage.setItem("token", response.data.token);
       }
     } catch (e) {
-      alert(e.response.data.message);
       activateForm();
+      alert(e.response.data.message);
     }
   };
 };
@@ -106,8 +106,8 @@ export const api_login = (
         localStorage.setItem("token", response.data.token);
       }
     } catch (e) {
-      alert(e.response.data.message);
       activateForm();
+      alert(e.response.data.message);
     }
   };
 };

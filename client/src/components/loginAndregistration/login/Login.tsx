@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import { api_login } from "../../../api/API";
+import { loginUser, setSidebarState } from "../../../redux/global.slice";
 import "./Login.scss";
 const Login = () => {
   const [email, setEmail] = useState("jimdontcare@gmail.com");
@@ -27,7 +27,7 @@ const Login = () => {
   }
   function activateForm() {
     setTimeout(function () {
-      // $(".login").removeClass("test");
+      $(".login").removeClass("test");
       $(".login").removeClass("testtwo");
     }, 300);
   }
@@ -46,19 +46,6 @@ const Login = () => {
   }
 
   useEffect(() => {
-    // $('input[type="submit"]').click(function () {
-    //   $(".login").addClass("test");
-    //   setTimeout(function () {
-    //     $(".login").addClass("testtwo");
-    //   }, 300);
-    //   setTimeout(function () {
-    //     $(".login").removeClass("test");
-    //     $(".login div").fadeOut(123);
-    //   }, 2800);
-    //   setTimeout(function () {
-    //     $(".success").fadeIn();
-    //   }, 3200);
-    // });
     $('input[type="text"],input[type="password"]').focus(function () {
       $(this).prev().animate({ opacity: "1" }, 200);
     });
@@ -73,7 +60,6 @@ const Login = () => {
         $(this).next().animate({ opacity: "0", right: "20" }, 200);
       }
     });
-    var open = 0;
     $(".tab").click(function () {
       $(this).fadeOut(200, function () {
         $(this).parent().animate({ left: "0" });

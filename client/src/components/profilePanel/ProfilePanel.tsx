@@ -1,17 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { guest_avatar } from "../../assets/image.assets";
 import { setSidebarState } from "../../redux/global.slice";
 import { api_logout } from "./../../api/API";
 import "./ProfilePanel.scss";
 const ProfilePanel = () => {
   const sidebarState = useSelector((state: any) => state.global.sidebar);
-  const isUser = useSelector((state: any) => state.global.isUser);
   const userName = useSelector((state: any) => state.user.userName);
   const lastName = useSelector((state: any) => state.user.lastName);
   const userMail = useSelector((state: any) => state.user.userMail);
   const avatar = useSelector((state: any) => state.user.avatar);
   const favorites = useSelector((state: any) => state.user.favorites);
   const userCart = useSelector((state: any) => state.user.userCart);
+
+  const [imgUrl, setImgUrl] = useState("");
+
+  useEffect(() => {
+    if (!avatar.length) {
+      setImgUrl(guest_avatar);
+    } else {
+      setImgUrl(avatar[0].url);
+    }
+  }, [imgUrl]);
 
   useEffect(() => {}, [userName]);
 
@@ -39,7 +49,7 @@ const ProfilePanel = () => {
         </div>
         <div className="user_details">
           <figure style={{ width: "150px", height: "150px" }}>
-            <img srcSet={avatar[0].url} width="100%" />
+            <img srcSet={imgUrl} width="100%" alt="" />
           </figure>
           <ul className="tracking">
             <li>
@@ -60,7 +70,7 @@ const ProfilePanel = () => {
       <ul className="sidebar-link w-full" style={{ marginTop: "5%" }}>
         <li className="p-b-13">
           <a
-            href="#"
+            href="!#"
             className="stext-102 cl2 hov-cl1 trans-04"
             onClick={(e: any) => e.preventDefault()}
             style={{ cursor: "no-drop" }}
@@ -71,7 +81,7 @@ const ProfilePanel = () => {
 
         <li className="p-b-13">
           <a
-            href="#"
+            href="!#"
             className="stext-102 cl2 hov-cl1 trans-04"
             style={{ cursor: "no-drop" }}
             onClick={(e: any) => e.preventDefault()}
@@ -82,7 +92,7 @@ const ProfilePanel = () => {
 
         <li className="p-b-13">
           <a
-            href="#"
+            href="!#"
             className="stext-102 cl2 hov-cl1 trans-04"
             style={{ cursor: "no-drop" }}
             onClick={(e: any) => e.preventDefault()}
@@ -93,7 +103,7 @@ const ProfilePanel = () => {
 
         <li className="p-b-13">
           <a
-            href="#"
+            href="!#"
             className="stext-102 cl2 hov-cl1 trans-04"
             style={{ cursor: "no-drop" }}
             onClick={(e: any) => e.preventDefault()}
@@ -104,7 +114,7 @@ const ProfilePanel = () => {
 
         <li className="p-b-13">
           <a
-            href="#"
+            href="!#"
             className="stext-102 cl2 hov-cl1 trans-04"
             onClick={(e: any) => onLogoutClicked(e)}
           >
