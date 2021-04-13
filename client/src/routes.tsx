@@ -2,14 +2,12 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NotFound from "./pages/404/NotFound";
 import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
-import BlogDetail from "./pages/blogDetail/BlogDetail";
-import BlogPage from "./pages/blogPage/BlogPage";
 import ContactPage from "./pages/contact/ContactPage";
+import FavoritePage from "./pages/favoritePage/FavoritePage";
 import HomePage from "./pages/homePage/HomePage";
 import ProductDetailsContainer from "./pages/productDetail/ProductDetailsContainer";
 import ShopPage from "./pages/shopPage/ShopPage";
 import ShoppingCartPage from "./pages/shoppingCartPage/ShoppingCartPage";
-import FavoritePage from "./pages/favoritePage/FavoritePage";
 
 export const useRoutes = () => {
   return (
@@ -35,12 +33,7 @@ export const useRoutes = () => {
       <Route path="/shopping-cart">
         <ShoppingCartPage />
       </Route>
-      <Route path="/blog">
-        <BlogPage />
-      </Route>
-      <Route path="/blog-detail">
-        <BlogDetail />
-      </Route>
+
       <Route path="/about" exact>
         <AboutUsPage />
       </Route>

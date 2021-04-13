@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { blog_04, blog_05, blog_06 } from "../assets/image.assets";
 
 export const globalSlice = createSlice({
   name: "global",
@@ -11,23 +10,6 @@ export const globalSlice = createSlice({
     sidebar: false,
     cartSidebarState: false,
     filterTag: "jeans",
-    blogData: [
-      {
-        id: 1,
-        title: "8 Inspiring Ways to Wear Dresses in the Winter",
-        img: blog_04,
-      },
-      {
-        id: 2,
-        title: "The Great Big List of Men’s Gifts for the Holidays",
-        img: blog_05,
-      },
-      {
-        id: 3,
-        title: "5 Winter-to-Spring Fashion Trends to Try Now",
-        img: blog_06,
-      },
-    ],
     cart: false,
     cartCount: 0,
     cartData: [],

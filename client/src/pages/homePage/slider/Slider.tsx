@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  slide_01,
-  slide_02,
-  slide_03,
-  thumb_01,
-  thumb_02,
-  thumb_03,
-} from "../../../assets/image.assets";
+import { thumb_01, thumb_02, thumb_03 } from "../../../assets/image.assets";
 
 const Slider = () => {
   return (
@@ -17,7 +10,7 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_01})`,
+              backgroundImage: `url(${thumb_01})`,
             }}
             data-thumb={thumb_01}
             data-caption="Women’s Wear"
@@ -63,7 +56,7 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_02})`,
+              backgroundImage: `url(${thumb_02})`,
             }}
             data-thumb={thumb_02}
             data-caption="Women’s Wear"
@@ -109,7 +102,7 @@ const Slider = () => {
           <div
             className="item-slick1 bg-overlay1"
             style={{
-              backgroundImage: `url(${slide_03})`,
+              backgroundImage: `url(${thumb_03})`,
             }}
             data-thumb={thumb_03}
             data-caption="Women’s Wear"
