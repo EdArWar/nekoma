@@ -56,7 +56,7 @@ export const api_registration = (
         successForm();
         localStorage.setItem("token", response.data.token);
       }
-    } catch (e) {
+    } catch (e:any) {
       activateForm();
       alert(e.response.data.message);
     }
@@ -105,7 +105,7 @@ export const api_login = (
         successForm();
         localStorage.setItem("token", response.data.token);
       }
-    } catch (e) {
+    } catch (e:any) {
       activateForm();
       alert(e.response.data.message);
     }
